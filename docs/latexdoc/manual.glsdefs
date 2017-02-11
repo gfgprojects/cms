@@ -1,0 +1,630 @@
+\ifglsentryexists{var:C^d_b}{}%
+{%
+\gls@defglossaryentry{var:C^d_b}%
+{%
+name={$C^d_b$},%
+sort={$C^d_b$},%
+type={variable},%
+first={$C^d_b$},%
+firstplural={$C^d_b$s},%
+text={$C^d_b$},%
+plural={$C^d_b$s},%
+description={Desired Consumption of buyer $b$},%
+descriptionplural={Desired Consumption of buyer $b$},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{var:I^d_b}{}%
+{%
+\gls@defglossaryentry{var:I^d_b}%
+{%
+name={$I^d_b$},%
+sort={$I^d_b$},%
+type={variable},%
+first={$I^d_b$},%
+firstplural={$I^d_b$s},%
+text={$I^d_b$},%
+plural={$I^d_b$s},%
+description={Desired Inventories of buyer $b$},%
+descriptionplural={Desired Inventories of buyer $b$},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{var:I_{b,t}}{}%
+{%
+\gls@defglossaryentry{var:I_{b,t}}%
+{%
+name={$I_{b,t}$},%
+sort={$I_{b,t}$},%
+type={variable},%
+first={$I_{b,t}$},%
+firstplural={$I_{b,t}$s},%
+text={$I_{b,t}$},%
+plural={$I_{b,t}$s},%
+description={Inventories of buyer $b$ at beginning of period $t$},%
+descriptionplural={Inventories of buyer $b$ at beginning of period $t$},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{var:B_{b,t}}{}%
+{%
+\gls@defglossaryentry{var:B_{b,t}}%
+{%
+name={$B_{b,t}$},%
+sort={$B_{b,t}$},%
+type={variable},%
+first={$B_{b,t}$},%
+firstplural={$B_{b,t}$s},%
+text={$B_{b,t}$},%
+plural={$B_{b,t}$s},%
+description={Quantity of resources bought by buyer $b$ in period $t$},%
+descriptionplural={Quantity of resources bought by buyer $b$ in period $t$},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{var:C_{b,t}}{}%
+{%
+\gls@defglossaryentry{var:C_{b,t}}%
+{%
+name={$C_{b,t}$},%
+sort={$C_{b,t}$},%
+type={variable},%
+first={$C_{b,t}$},%
+firstplural={$C_{b,t}$s},%
+text={$C_{b,t}$},%
+plural={$C_{b,t}$s},%
+description={Consumption of resources by buyer $b$ in period $t$},%
+descriptionplural={Consumption of resources by buyer $b$ in period $t$},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{var:bar{D}_{b,ms,t}}{}%
+{%
+\gls@defglossaryentry{var:bar{D}_{b,ms,t}}%
+{%
+name={$\bar {D}_{b,ms,t}$},%
+sort={$\bar {D}_{b,ms,t}$},%
+type={variable},%
+first={$\protect \mathaccentV {bar}016{D}_{b,ms,t}$},%
+firstplural={$\protect \mathaccentV {bar}016{D}_{b,ms,t}$s},%
+text={$\protect \mathaccentV {bar}016{D}_{b,ms,t}$},%
+plural={$\protect \mathaccentV {bar}016{D}_{b,ms,t}$s},%
+description={Intercept of the $ms$ market session demand curve of buyer $b$ in period $t$},%
+descriptionplural={Intercept of the $ms$ market session demand curve of buyer $b$ in period $t$},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{var:ms_{b,t}}{}%
+{%
+\gls@defglossaryentry{var:ms_{b,t}}%
+{%
+name={$\#ms_{b,t}$},%
+sort={$\#ms_{b,t}$},%
+type={variable},%
+first={$\#ms_{b,t}$},%
+firstplural={$\#ms_{b,t}$s},%
+text={$\#ms_{b,t}$},%
+plural={$\#ms_{b,t}$s},%
+description={number of market session buyer $b$ can participate in time step $t$},%
+descriptionplural={number of market session buyer $b$ can participate in time step $t$},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{var:Y_{p}}{}%
+{%
+\gls@defglossaryentry{var:Y_{p}}%
+{%
+name={$Y_{p}$},%
+sort={$Y_{p}$},%
+type={variable},%
+first={$Y_{p}$},%
+firstplural={$Y_{p}$s},%
+text={$Y_{p}$},%
+plural={$Y_{p}$s},%
+description={production realized by producer $p$},%
+descriptionplural={production realized by producer $p$},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{var:Y_{b,0}}{}%
+{%
+\gls@defglossaryentry{var:Y_{b,0}}%
+{%
+name={$Y_{b,0}$},%
+sort={$Y_{b,0}$},%
+type={variable},%
+first={$Y_{b,0}$},%
+firstplural={$Y_{b,0}$s},%
+text={$Y_{b,0}$},%
+plural={$Y_{b,0}$s},%
+description={producer's $p$ average production},%
+descriptionplural={producer's $p$ average production},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{par:P0}{}%
+{%
+\gls@defglossaryentry{par:P0}%
+{%
+name={$P_0$},%
+sort={$P_0$},%
+type={parameter},%
+first={$P_0$},%
+firstplural={$P_0$s},%
+text={$P_0$},%
+plural={$P_0$s},%
+description={Global production at initialization},%
+descriptionplural={Global production at initialization},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{par:tau}{}%
+{%
+\gls@defglossaryentry{par:tau}%
+{%
+name={$\tau $},%
+sort={$\tau $},%
+type={parameter},%
+first={$\tau $},%
+firstplural={$\tau $s},%
+text={$\tau $},%
+plural={$\tau $s},%
+description={Production cycle length},%
+descriptionplural={Production cycle length},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{par:iota}{}%
+{%
+\gls@defglossaryentry{par:iota}%
+{%
+name={$\iota $},%
+sort={$\iota $},%
+type={parameter},%
+first={$\iota $},%
+firstplural={$\iota $s},%
+text={$\iota $},%
+plural={$\iota $s},%
+description={Share of desired consumption to compute desired inventories},%
+descriptionplural={Share of desired consumption to compute desired inventories},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{par:y}{}%
+{%
+\gls@defglossaryentry{par:y}%
+{%
+name={$y$},%
+sort={$y$},%
+type={parameter},%
+first={$y$},%
+firstplural={$y$s},%
+text={$y$},%
+plural={$y$s},%
+description={boundary of the production percentage change},%
+descriptionplural={boundary of the production percentage change},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{par:tau_{exp}}{}%
+{%
+\gls@defglossaryentry{par:tau_{exp}}%
+{%
+name={$\tau _{exp}$},%
+sort={$\tau _{exp}$},%
+type={parameter},%
+first={$\tau _{exp}$},%
+firstplural={$\tau _{exp}$s},%
+text={$\tau _{exp}$},%
+plural={$\tau _{exp}$s},%
+description={buyers interval in deciding export policy},%
+descriptionplural={buyers interval in deciding export policy},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{par:tau_{imp}}{}%
+{%
+\gls@defglossaryentry{par:tau_{imp}}%
+{%
+name={$\tau _{imp}$},%
+sort={$\tau _{imp}$},%
+type={parameter},%
+first={$\tau _{imp}$},%
+firstplural={$\tau _{imp}$s},%
+text={$\tau _{imp}$},%
+plural={$\tau _{imp}$s},%
+description={buyers interval in deciding import policy},%
+descriptionplural={buyers interval in deciding import policy},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{par:pr_{imp}}{}%
+{%
+\gls@defglossaryentry{par:pr_{imp}}%
+{%
+name={$pr_{imp}$},%
+sort={$pr_{imp}$},%
+type={parameter},%
+first={$pr_{imp}$},%
+firstplural={$pr_{imp}$s},%
+text={$pr_{imp}$},%
+plural={$pr_{imp}$s},%
+description={probability that a buyer allow import when the import policy is updated},%
+descriptionplural={probability that a buyer allow import when the import policy is updated},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{par:pr_{exp}}{}%
+{%
+\gls@defglossaryentry{par:pr_{exp}}%
+{%
+name={$pr_{exp}$},%
+sort={$pr_{exp}$},%
+type={parameter},%
+first={$pr_{exp}$},%
+firstplural={$pr_{exp}$s},%
+text={$pr_{exp}$},%
+plural={$pr_{exp}$s},%
+description={probability that a producer allow export when the export policy is updated},%
+descriptionplural={probability that a producer allow export when the export policy is updated},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{par:s}{}%
+{%
+\gls@defglossaryentry{par:s}%
+{%
+name={$s_{b,0}$},%
+sort={$s_{b,0}$},%
+type={parameter1},%
+first={$s_{b,0}$},%
+firstplural={$s_{b,0}$s},%
+text={$s_{b,0}$},%
+plural={$s_{b,0}$s},%
+description={Buyer's $b$ market share at initialization},%
+descriptionplural={Buyer's $b$ market share at initialization},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{par:s_p}{}%
+{%
+\gls@defglossaryentry{par:s_p}%
+{%
+name={$s_{p,0}$},%
+sort={$s_{p,0}$},%
+type={parameter1},%
+first={$s_{p,0}$},%
+firstplural={$s_{p,0}$s},%
+text={$s_{p,0}$},%
+plural={$s_{p,0}$s},%
+description={Producer's $p$ share of global production at initialization},%
+descriptionplural={Producer's $p$ share of global production at initialization},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{par:d_{b}}{}%
+{%
+\gls@defglossaryentry{par:d_{b}}%
+{%
+name={$d_{b}$},%
+sort={$d_{b}$},%
+type={parameter1},%
+first={$d_{b}$},%
+firstplural={$d_{b}$s},%
+text={$d_{b}$},%
+plural={$d_{b}$s},%
+description={Buyer's $b$ slope of the demand curves},%
+descriptionplural={Buyer's $b$ slope of the demand curves},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{par:barDb0}{}%
+{%
+\gls@defglossaryentry{par:barDb0}%
+{%
+name={$\bar {D}_{b,0}$},%
+sort={$\bar {D}_{b,0}$},%
+type={parameter1},%
+first={$\protect \mathaccentV {bar}016{D}_{b,0}$},%
+firstplural={$\protect \mathaccentV {bar}016{D}_{b,0}$s},%
+text={$\protect \mathaccentV {bar}016{D}_{b,0}$},%
+plural={$\protect \mathaccentV {bar}016{D}_{b,0}$s},%
+description={Intercept of buyer $b$ the demand curves in the first simulation time step},%
+descriptionplural={Intercept of buyer $b$ the demand curves in the first simulation time step},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
