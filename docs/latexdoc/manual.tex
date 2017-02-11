@@ -389,48 +389,34 @@ Suppose your workspace has the following path:\\
 
 Open the RS perspective (window $\rightarrow$ open perspective).
 
-Create a new RS project called GABRIELE (file $\rightarrow$ new $\rightarrow$ Repast Simphony project)
+Create a new RS project called \verb+cms+ (file $\rightarrow$ new $\rightarrow$ Repast Simphony project)
 
-This creates the \verb+gabriele+ folder and a series of sub folders inside the workspace:
+This creates the \verb+cms+ folder and a series of sub folders inside the workspace:
 
-The following figure show the GABRIELE RS project folders tree.
+The following figure show the cms rs project folders tree.
 
 \vskip2mm
 \noindent
-%\includegraphics[scale=0.35]{fig_gabriele_rs_navigation}
-
-\iffalse
-\begin{verbatim}
-/Users/coolcoder/Documents/workspace/gabriele
-/Users/coolcoder/Documents/workspace/gabriele/batch
-/Users/coolcoder/Documents/workspace/gabriele/bin
-. . . 
-/Users/coolcoder/Documents/workspace/gabriele/gabriele.rs
-. . . 
-/Users/coolcoder/Documents/workspace/gabriele/src
-/Users/coolcoder/Documents/workspace/gabriele/src/gabriele
-\end{verbatim}
-\fi
-%Now, the source code of the \verb+gabriele+ package and the parameters file have to be added to the gabriele project.
+\includegraphics[scale=0.35]{fig_cms_rs_navigation}
 
 \vskip2mm
-Now, the GABRIELE files have to be added to the just created RS project folders tree.
+Now, the \verb+cms+ files have to be added to the just created RS project folders tree.
 
 We give here two alternatives: via git and using a zipped archive.
 
 \subsubsection{Using git}
 
-As you probably know, this is the best option to share the code developments you will do.
+As you probably know, this is a largely used way to share the code developments.
 
-So, let us show how to fetch the GABRIELE files via git. To do that, you must have a git client installed in your system. Many system comes with a git client already installed, otherwise you have to install it. Mac and windows users can consider to install the GitHub Desktop software.
+So, let us show how to fetch the \verb+csm+ files via git. To do that, you must have a git client installed in your system. Many system comes with a git client already installed, otherwise you have to install it. Mac and windows users can consider to install the GitHub Desktop software.
 
 You can verify if git is installed in your system by checking if your command line interface recognize the \verb+git+ command.  
-If your check is successful, change directory to the gabriele project folder:\\
-\verb+cd /Users/coolcoder/Documents/workspace/gabriele+\\
+If your check is successful, change directory to the \verb+cms+ project folder:\\
+\verb+cd /Users/coolcoder/Documents/workspace/cms+\\
 and type the following commands:
 \begin{verbatim}
 git init
-git remote add origin https://github.com/ggiulion/gabriele.git
+git remote add origin https://github.com/ggiulion/cms.git
 git fetch origin master
 git reset --hard FETCH_HEAD
 \end{verbatim}
@@ -438,116 +424,36 @@ git reset --hard FETCH_HEAD
 Then if you plan to make your code changes available on GitHub, add the command:\\
 \verb+git push --set-upstream origin master+
 
-Now, the gabriele files should show up in the RS project folders.
-Refresh the gabriele RS project with the navigation tab selected in the side bar (file $\rightarrow$ refresh) to make them visible in eclipse.
+Now, the \verb+cms+ files should show up in the RS project folders.
+Refresh the \verb+cms+ RS project with the navigation tab selected in the side bar (file $\rightarrow$ refresh) to make them visible in eclipse.
 
 The following figure show how the src sub folders should look like.
 
 \vskip2mm
 \noindent
-%\includegraphics[scale=0.35]{fig_gabriele_rs_navigation1}
+\includegraphics[scale=0.35]{fig_cms_rs_navigation1}
 
 \vskip2mm
 
 \subsubsection{Using a zip archive}
 
 Point your browser to\\ 
-\verb+https://github.com/ggiulion/gabriele+\\
+\verb+https://github.com/ggiulion/cms+\\
 Click on the ``clone or download'' button and choose ``download zip''.
 
-This will download the \verb+gabriele-master.zip+ file in your system.
+This will download the \verb+cms-master.zip+ file in your system.
 
-Unpacking it creates the gabriele-master folder.
-Move the whole content of this folder in the gabriele RS project folder:\\  
-\verb+/Users/coolcoder/Documents/workspace/gabriele/+\\
+Unpacking it creates the cms-master folder.
+Move the whole content of this folder in the cms RS project folder:\\  
+\verb+/Users/coolcoder/Documents/workspace/cms/+\\
 Choose to overwrite existing files and folders if you will be asked (this will merge folders). 
-\iffalse
-At the end of this process one must have
 
-\begin{verbatim}
-/Users/coolcoder/Documents/workspace/gabriele/agents/Bank.java
-/Users/coolcoder/Documents/workspace/gabriele/agents/Consumer.java
-/Users/coolcoder/Documents/workspace/gabriele/agents/Firm.java
-/Users/coolcoder/Documents/workspace/gabriele/agents/Industry.java
-/Users/coolcoder/Documents/workspace/gabriele/agents/package-info.java
-/Users/coolcoder/Documents/workspace/gabriele/bargaining/AProductDemand.java
-/Users/coolcoder/Documents/workspace/gabriele/bargaining/Curriculum.java
-/Users/coolcoder/Documents/workspace/gabriele/bargaining/LaborOffer.java
-/Users/coolcoder/Documents/workspace/gabriele/Context.java
-/Users/coolcoder/Documents/workspace/gabriele/financialContracts/BankAccount.java
-/Users/coolcoder/Documents/workspace/gabriele/institutions/CentralBank.java
-/Users/coolcoder/Documents/workspace/gabriele/institutions/Government.java
-/Users/coolcoder/Documents/workspace/gabriele/institutions/LaborMarket.java
-/Users/coolcoder/Documents/workspace/gabriele/institutions/OfficeForStatistics.java
-/Users/coolcoder/Documents/workspace/gabriele/utils/AbsoluteRankNonAggregateDataSource.java
-\end{verbatim}
-
-Finally you have to overwrite the \verb+parameter.xml+ file already present in\\  
-\verb+/Users/coolcoder/Documents/workspace/gabriele/gabriele.rs+\\
-with that supplied with \verb+gabriele+.
-\fi
 Now refresh eclipse (file $\rightarrow$ refresh).
 
 
 
 \section{Testing the Installation}
-\subsection{Setup the data loader}
-
-
-First you have to start the RS GUI window. To do so, click on the down black arrow highlighted by the red circle in the following picture
-
-\noindent
-%\includegraphics[scale=0.35]{fig_gabriele_rs_execution1}
-
-After clicking, a menu opens as shown by the following figure. Click the \verb+gabriele Model+ item
-
-\noindent
-%\includegraphics[scale=0.35]{fig_gabriele_rs_execution2}
-
-After a while, the RS GUI (displayed in the following figure) will show up
-
-\noindent
-%\includegraphics[scale=0.35]{fig_gabriele_rs_gui1}
-
-The first time you start the RS GUI with the GABRIELE scenario you have to setup the custom dataloader. As you can see in the scenario tree under the Data Loaders item, the XML \& Model data loader is present. This must be changed in the custom loader for this model. To do so right click on the Data loaders item and choose set Data Loader as shown in the following figures
-
-
-\noindent
-%\includegraphics[scale=0.35]{fig_gabriele_rs_gui2}
-
-The following new window will appear
-
-\noindent
-%\includegraphics[scale=0.35]{fig_gabriele_rs_gui3}
-
-Choose Custom ContextBuilder implementation and click next:
-A new window with a proposal will appear. 
-
-\noindent
-%\includegraphics[scale=0.35]{fig_gabriele_rs_gui4}
-
-Clicking next will change the window as follows 
-
-\noindent
-%\includegraphics[scale=0.35]{fig_gabriele_rs_gui5}
-
-Click finish.
-
-Now, the previous data loader is replaced by the GABRIELE data loader (Context) as shown by the following figure
-
-\noindent
-%\includegraphics[scale=0.35]{fig_gabriele_rs_gui6}
-
-Click on the floppy disk icon to make the changes permanent.
-
-%Now, closing the window you are asked to make your change permanent: 
-
-%\noindent
-%\includegraphics[scale=0.35]{fig_gabriele_rs_gui8}
-
-%Click on yes.
-
-\subsection{Running GABRIELE}
+\subsection{Running cms}
 
 
 There are two ways of running RS models: The GUI and the BATCH mode.
@@ -555,31 +461,33 @@ There are two ways of running RS models: The GUI and the BATCH mode.
 The GUI mode can be of great visual impact because several monitoring devices continuously updating during runtime can be added to the RS GUI window. The flip side of the coin is that these devices slow down simulation execution. Second, the simulation runs exclusively in a machine running an X server. Notwithstanding the GUI mode can be a valid tool during the model development, when massive simulations are performed, the BATCH mode should be used instead. BATCH mode runs are faster because all the graphics elements are turned off. Furthermore, the absence of graphics makes it possible to run the model in parallel on several machines. It is worth saying that RS has very useful facilities for running a model in parallel.
 
 
-Let us start this section from the very beginning i.e. with the eclipse software just opened and show how to run the model both in GUI and BATCH mode.
+Let us start this section from the very beginning i.e. with the eclipse software just opened and show how to run the model in GUI mode. 
+We discuss the BATCH mode after the discussion on how to customize the model.
 
 First of all, click on the down black arrow highlighted by the red circle in the following picture
 
 \vskip2mm
 \noindent
-%\includegraphics[scale=0.35]{fig_gabriele_rs_execution1}
+\includegraphics[scale=0.35]{fig_cms_rs_execution1}
 
 After clicking, a menu opens as shown by the following figure. 
 
 \vskip2mm
 \noindent
-%\includegraphics[scale=0.35]{fig_gabriele_rs_execution2}
+\includegraphics[scale=0.35]{fig_cms_rs_execution2}
 
 \vskip2mm
-The GUI execution is activated by clicking the \verb+gabriele Model+ item, while the BATCH execution can be started by clicking the \verb+Batch gabriele model+.
+The GUI execution is activated by clicking the \verb+cms Model+ item.
+%, while the BATCH execution can be started by clicking the \verb+Batch cms model+.
 
 
 \subsubsection{Running in GUI mode}
 
-So, the RS GUI window opens by clicking the \verb+gabriele Model+ item. Check if Context is listed under the Data Loaders item of the scenario tree.
+So, the RS GUI window opens by clicking the \verb+cms Model+ item. Check if Context is listed under the Data Loaders item of the scenario tree.
 
-Use the RS GUI window intuitive buttons to interact with the simulation. A more detailed description on how to control the simulation is given at page 24 ``Repast Java Getting Started'' document available in RS web site.
+Use the RS GUI window intuitive buttons to interact with the simulation. A more detailed description on how to control the simulation is given at page 24 of the ``Repast Java Getting Started'' document available in RS web site.
 
-The current version of the model has no runtime monitoring graphical element, so one can check the progress of the simulation watching at the tick count number in upper right corner of the RS GUI window or looking at the text output in the console panel of Eclipse window as shown in the following figure. 
+Now the model has no runtime monitoring graphical element, so one can check the progress of the simulation watching at the tick count number in upper right corner of the RS GUI window or looking at the text output in the console panel of Eclipse window as shown in the following figure. 
 
 \vskip2mm
 \noindent
