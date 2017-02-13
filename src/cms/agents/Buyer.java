@@ -307,7 +307,8 @@ public class Buyer {
 		tmpDemandCurve=new ArrayList<ElementOfSupplyOrDemandCurve>();
 		for(Double aPrice : demandPrices){
 			tmpDemandedQuantity=interceptOfTheDemandFunction-aPrice*slopeOfTheDemandFunction;
-			tmpDemandCurve.add(new ElementOfSupplyOrDemandCurve((new BigDecimal(aPrice-transportCosts)).setScale(2,RoundingMode.HALF_EVEN).doubleValue(),(new BigDecimal(tmpDemandedQuantity)).setScale(2,RoundingMode.HALF_EVEN).doubleValue()));
+//			tmpDemandCurve.add(new ElementOfSupplyOrDemandCurve((new BigDecimal(aPrice-transportCosts)).setScale(2,RoundingMode.HALF_EVEN).doubleValue(),(new BigDecimal(tmpDemandedQuantity)).setScale(2,RoundingMode.HALF_EVEN).doubleValue()));
+			tmpDemandCurve.add(new ElementOfSupplyOrDemandCurve((new BigDecimal(aPrice)).setScale(2,RoundingMode.HALF_EVEN).doubleValue(),(new BigDecimal(tmpDemandedQuantity)).setScale(2,RoundingMode.HALF_EVEN).doubleValue()));
 		}
 		//negative quantities of the dummy demand curve are set to 0
 		for(ElementOfSupplyOrDemandCurve tmpElement : tmpDemandCurve){
