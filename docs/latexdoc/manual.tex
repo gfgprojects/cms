@@ -491,43 +491,11 @@ Now the model has no runtime monitoring graphical element, so one can check the 
 
 \vskip2mm
 \noindent
-%\includegraphics[scale=0.35]{fig_gabriele_rs_gui7}
+\includegraphics[scale=0.35]{fig_cms_rs_gui7}
 
 \vskip2mm
-On the other hand, GABRIELE record data in text and csv files. So, running the model they will be added to the model base directory:\\
-\verb+/Users/coolcoder/Documents/workspace/gabriele+\\
-Data files can be easily identified because their name starts with \verb+zdata+.
-
-The file \verb+zdata_aaa_readme.txt+ gives a description of the contents of all the data files.
-
-\subsubsection{Running in BATCH mode}
-
-Clicking on the \verb+Batch gabriele model+ as in the following figure
-
-\noindent
-%\includegraphics[scale=0.35]{fig_gabriele_rs_execution3}
-
-activates the batch run configuration wizard.
-
-We point the reader to the ``Repast Simphony Batch Runs Getting Started'' document available in RS website for a full description of the wizard.
-
-We only point out that the present version of the model uses custom output recording techniques. Therefore, the RS File Sink are not used. This implies that the ``Optional Output File Patterns'' must be set as in the following figure
-
-\noindent
-%\includegraphics[scale=0.35]{fig_gabriele_rs_batch}
-
-This configuration instructs RS to fetch from all the machines running the model in parallel all the file whose name begins with \verb+zdata+  and move them in an output sub-folder named 
-\verb+batch_date+. Needless to say that the sub-folder name can be chosen at your convenience, and it can be changed at each batch run in order to avoid overwriting the data (perhaps you want to have memory of the time of your runs. It is why we add \verb+_date+ to the folder name.
 
 
-The following figure shows the contents of the model output folder after a local batch run using Eclipse navigator panel\\ 
-\noindent
-%\includegraphics[scale=0.35]{fig_gabriele_rs_batch1}
-
-
-
-
-\section{Parameter setting}\label{sec:parameters}
 
 
 
@@ -618,14 +586,100 @@ As one can understand from headings (first line), each line contains the followi
 
 
 \subsection{Output}
+This subsection shows how to add graphical elements to the model interface or to make the model able to save data.
 
-Shapefile of the map
+\subsubsection{Adding a GIS display}
 
-http://www.naturalearthdata.com/downloads/50m-cultural-vectors/
+Right click on the Display item of the Scenario tree and click on Add display as shown in the following figure
 
-http://www.naturalearthdata.com/downloads/10m-physical-vectors/
+\vskip2mm
+\includegraphics[scale=0.35]{fig_cms_rs_gis1}
+
+\vskip2mm
+a wizard opens. Edit the display name, chose the GIS option and move the Geography item from the left to the right
+
+\includegraphics[scale=0.35]{fig_cms_rs_gis2}
+
+Click the next button and move the agents to be displayed from the left to the right
+
+\includegraphics[scale=0.35]{fig_cms_rs_gis3}
+
+By clicking the next button a new window opens. It gives the possibility to customize the appearance of each type of agents on the display and to add additional elements.
+
+To edit the appearance of an agent, select an agent type and click on the edit icon which is highlighted in the next figure (in the case of the figure the appearance of Buyers will be configured)
+
+\includegraphics[scale=0.35]{fig_cms_rs_gis4a}
+
+Click on the button highlighted in the next figure to add elements
+
+\includegraphics[scale=0.35]{fig_cms_rs_gis4b}
+
+We will show hereafter how to add a background showing a geographic zone. First of all, a shapefile of the zone is needed.  
+Shaefiles are often available for downloaded in Internet. Some shapefiles downloaded from \url{http://www.naturalearthdata.com/}\footnote{
+	in particular they relate to world maps available at \url{http://www.naturalearthdata.com/downloads/50m-cultural-vectors/} or \url{http://www.naturalearthdata.com/downloads/10m-physical-vectors/}.} are already included in the \verb+data+ folder.
+
+By clicking on the button highlighted in the figure above, a file browser opens. Manage to select your shapefile. In the following figure, a shapefile in the \verb+data+ folder is selected
+
+\includegraphics[scale=0.35]{fig_cms_rs_gis6}
+
+Clicking on the open button, an additional element appears in the agent style window as shown in the following figure.
+
+\includegraphics[scale=0.35]{fig_cms_rs_gis7}
+
+Edit this additional element if you want to customize it, and then click the next button. The following window opens. Refer to the RS documentation to customize these parameters or accept the proposed ones.
+
+\includegraphics[scale=0.35]{fig_cms_rs_gis8}
+
+By clicking the finish button the model GUI appears and the new display appears in the scenario tree as shown in the figure below
+
+\includegraphics[scale=0.35]{fig_cms_rs_gis9}
+
+Now, clicking the Step Run button (highlighted in red in the following figure), the display will show up after few seconds 
+
+\includegraphics[scale=0.35]{fig_cms_rs_gis10}
+
+In the figure above, the following customization where user:
+\begin{itemize}
+	\item producers are represented by green circles whose size is proportional to the production share specified in the \verb+producers.csv+ file;
+	\item buyers are represented by light blue circles whose size is proportional to the demand share specified in the \verb+buyers.csv+ file;
+	\item markets are represented by blue squares whose size is proportional to the exchanges share specified in the \verb+markets.csv+ file.
+\end{itemize}
 
 
+\subsubsection{Adding charts and data sinks}
+
+
+
+\section{Parameter setting}\label{sec:parameters}
+
+
+\section{Running in BATCH mode}
+
+\iffalse
+Clicking on the \verb+Batch gabriele model+ as in the following figure
+
+\noindent
+%\includegraphics[scale=0.35]{fig_gabriele_rs_execution3}
+
+activates the batch run configuration wizard.
+
+We point the reader to the ``Repast Simphony Batch Runs Getting Started'' document available in RS website for a full description of the wizard.
+
+We only point out that the present version of the model uses custom output recording techniques. Therefore, the RS File Sink are not used. This implies that the ``Optional Output File Patterns'' must be set as in the following figure
+
+\noindent
+%\includegraphics[scale=0.35]{fig_gabriele_rs_batch}
+
+This configuration instructs RS to fetch from all the machines running the model in parallel all the file whose name begins with \verb+zdata+  and move them in an output sub-folder named 
+\verb+batch_date+. Needless to say that the sub-folder name can be chosen at your convenience, and it can be changed at each batch run in order to avoid overwriting the data (perhaps you want to have memory of the time of your runs. It is why we add \verb+_date+ to the folder name.
+
+
+The following figure shows the contents of the model output folder after a local batch run using Eclipse navigator panel\\ 
+\noindent
+%\includegraphics[scale=0.35]{fig_gabriele_rs_batch1}
+
+
+\fi
 
 
 
