@@ -638,7 +638,7 @@ Now, clicking the Step Run button (highlighted in red in the following figure), 
 
 \includegraphics[scale=0.35]{fig_cms_rs_gis10}
 
-In the figure above, the following customization where user:
+In the figure above, the following customization are used:
 \begin{itemize}
 	\item producers are represented by green circles whose size is proportional to the production share specified in the \verb+producers.csv+ file;
 	\item buyers are represented by light blue circles whose size is proportional to the demand share specified in the \verb+buyers.csv+ file;
@@ -648,6 +648,55 @@ In the figure above, the following customization where user:
 
 \subsubsection{Adding charts and data sinks}
 
+These features can be added by managing the scenario tree displayed in the model GUI. The process is similar to the one described above for the display.
+
+We will briefly describe this process pointing the reader to the RS documentation\footnote{In particular, the document describing data collection available at \url{https://repast.github.io/docs/DataCollection.pdf} is recommended.} for a more detailed description. 
+
+Charts and Data Sinks take Data Sets as an input. Therefore, Data Sets have to be created first.
+
+To create a data set, right click the corresponding item in the scenario tree and click on Add data set
+
+\includegraphics[scale=0.35]{fig_cms_rs_data1}
+
+The wizard for creating the data set opens. Suppose now we want to gather data from all the market sessions. In the first wizard window displayed below we name the dataset \verb+market sessions dataset+ and inform the program that it is a Non-aggregate data set
+
+\includegraphics[scale=0.35]{fig_cms_rs_data2}
+
+The following window allows to select the variables to be included in the data set. There are three tabs in this window. The first one (\verb+Standard Sources+) lists the variable made available by RS. The second one (\verb+Method Data Source+) allows to add new variable obtained using get methods of the chosen class. While the third one is for more advanced uses. The following figure shows the second tab, where the market description, the market price and the exchanged quantity are added to the data set 
+
+\includegraphics[scale=0.35]{fig_cms_rs_data3}
+
+Once all the wizard steps are performed, the new dataset appears in the scenario tree as shown in the following figure
+
+\includegraphics[scale=0.35]{fig_cms_rs_data4}
+
+Now that we have a dataset, we can use its variables to chart data or to record them in a file (sink them). 
+
+To create a new time series chart, start the corresponding wizard by right clicking the charts item in the scenario tree and select the time series option.
+The chart name can be edited and the data set must be chosen among those created with the previously described procedure. The data set \verb+market sessions dataset+ previously created is selected in the following figure: 
+
+\includegraphics[scale=0.35]{fig_cms_rs_chart1}
+
+A new window appears. The variables in the dataset are displayed. Because we use a Non-Aggregate data set, a legend will be added to identify the lines. The \verb+Series ID+ choice serves to select which variable will be used to this aim. In the following part, the variable to be plotted against time is selected (in this case it is the MarketPrice) 
+
+\includegraphics[scale=0.35]{fig_cms_rs_chart2}
+
+The chart titles can be edited in the next wizard window as shown in the figure below
+
+\includegraphics[scale=0.35]{fig_cms_rs_chart3}
+
+Clicking the finish button, the chart item will show up in the Scenario tree as displayed in the next figure
+
+\includegraphics[scale=0.35]{fig_cms_rs_chart4}
+
+By clicking the Step Run button, RS builds all the created graphic elements and lists them in the bar highlighted in the following figure:
+
+\includegraphics[scale=0.35]{fig_cms_rs_chart5}
+
+It is possible to configure other graphic elements following the process explained above. As an example, using again the \verb+market sessions dataset+ one can build a second chart showing the exchanged quantities. 
+Other charts for producers, buyers or aggregate variables can be created provided that data sets for this purpose are previously created. 
+
+Data can be saved by adding \verb+Text Sinks+. The process starts by right clicking the \verb+Text Sinks+ and goes on following the step proposed by the wizard. The reader should be now familiar with this way of creating elements, so we overlook the details pointing readers to the repast data collection documentation. 
 
 
 \section{Parameter setting}\label{sec:parameters}
