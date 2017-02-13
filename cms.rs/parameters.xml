@@ -13,13 +13,13 @@
 									
 		/>
 				<parameter name="productionRateOfChangeControl" displayName="productionRateOfChangeControl" type="double" 
-						defaultValue="0.1" 
+						defaultValue="0.0" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
 									
 		/>
 				<parameter name="probabilityToAllowImport" displayName="probabilityToAllowImport" type="double" 
-						defaultValue="0.9" 
+						defaultValue="1.0" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
 									
@@ -31,7 +31,7 @@
 									
 		/>
 				<parameter name="probabilityToAllowExport" displayName="probabilityToAllowExport" type="double" 
-						defaultValue="0.9" 
+						defaultValue="1.0" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
 									
@@ -43,7 +43,7 @@
 									
 		/>
 				<parameter name="verboseFlag" displayName="verbose flag" type="boolean" 
-						defaultValue="true" 
+						defaultValue="false" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$BooleanConverter"
 									

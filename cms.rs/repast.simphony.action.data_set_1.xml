@@ -1,0 +1,47 @@
+<repast.simphony.data2.engine.DataSetDescriptor>
+  <name>market sessions dataset</name>
+  <type>NON_AGGREGATE</type>
+  <sourceType>cms.agents.MarketSession</sourceType>
+  <inclTick>true</inclTick>
+  <inclBatchRun>false</inclBatchRun>
+  <inclRandomSeed>false</inclRandomSeed>
+  <scheduleParams>
+    <start>1.0</start>
+    <interval>1.0</interval>
+    <priority>-Infinity</priority>
+    <pType>LAST</pType>
+    <duration>-1.0</duration>
+    <frequency>REPEAT</frequency>
+    <hashCode>1191676773</hashCode>
+  </scheduleParams>
+  <atEnd>false</atEnd>
+  <methodDataSources class="linked-hash-map">
+    <entry>
+      <string>SessionDescription</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>SessionDescription</id>
+        <className>cms.agents.MarketSession</className>
+        <methodName>getSessionDescription</methodName>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>MarketPrice</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>MarketPrice</id>
+        <className>cms.agents.MarketSession</className>
+        <methodName>getMarketPrice</methodName>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>QuantityExchanged</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>QuantityExchanged</id>
+        <className>cms.agents.MarketSession</className>
+        <methodName>getQuantityExchanged</methodName>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+  </methodDataSources>
+  <countSources class="linked-hash-map"/>
+  <customNADataSources class="linked-hash-map"/>
+  <customAggDataSources class="linked-hash-map"/>
+</repast.simphony.data2.engine.DataSetDescriptor>
