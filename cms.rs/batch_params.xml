@@ -9,4 +9,6 @@
 <parameter name="productionRateOfChangeControl" type="constant" constant_type="double" value="0.1"></parameter>
 <parameter name="probabilityToAllowExport" type="constant" constant_type="double" value="0.9"></parameter>
 <parameter name="probabilityToAllowImport" type="constant" constant_type="double" value="0.9"></parameter>
+<parameter name="batchStoppingTime" type="constant" constant_type="int" value="0"></parameter>
 </sweep>
+
