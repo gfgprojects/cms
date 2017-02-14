@@ -421,7 +421,7 @@ git fetch origin master
 git reset --hard FETCH_HEAD
 \end{verbatim}
 
-Then if you plan to make your code changes available on GitHub, add the command:\\
+Then if you plan to pull or push updates, add the command:\\
 \verb+git push --set-upstream origin master+
 
 Now, the \verb+cms+ files should show up in the RS project folders.
@@ -630,11 +630,13 @@ Edit this additional element if you want to customize it, and then click the nex
 
 \includegraphics[scale=0.35]{fig_cms_rs_gis8}
 
-By clicking the finish button the model GUI appears and the new display appears in the scenario tree as shown in the figure below
+By clicking the finish button the display item appears in the scenario tree as shown in the figure below
 
 \includegraphics[scale=0.35]{fig_cms_rs_gis9}
 
-Now, clicking the Step Run button (highlighted in red in the following figure), the display will show up after few seconds 
+Save the changes to the scenario tree by clicking the floppy disk image.
+
+Now, clicking the Step Run button (highlighted in red in the following figure), the display will show up after few seconds. If the map is not centered in the windows, click the button showing an home to frame it. The following figure shows the final outcome  
 
 \includegraphics[scale=0.35]{fig_cms_rs_gis10}
 
@@ -701,8 +703,18 @@ Data can be saved by adding \verb+Text Sinks+. The process starts by right click
 
 \section{Parameter setting}\label{sec:parameters}
 
+There are two types of parameters in this model: aggregate and individual. 
+
+Aggregate parameters relates to the whole economy, therefore they are equal for all the agents. When using the GUI, they can be changed before running the model. To change them, reach the parameters tab in the model GUI by using the arrows highlighted in the following figure.
+
+\includegraphics[scale=0.35]{fig_cms_rs_parameters}
+
+Change the parameters and then start running the model. Alternatively, the aggregate parameters can be changed by editing directly the \verb+parameters.xml+ file in the \verb+cms.rs+ folder.
+
 
 \section{Running in BATCH mode}
+
+To be written
 
 \iffalse
 Clicking on the \verb+Batch gabriele model+ as in the following figure
