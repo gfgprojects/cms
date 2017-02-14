@@ -434,7 +434,7 @@ Now refresh eclipse (file $\rightarrow$ refresh).
 
 There are two ways of running RS models: The GUI and the BATCH mode.
 
-The GUI mode can be of great visual impact because several monitoring devices continuously updating during runtime can be added to the RS GUI window. The flip side of the coin is that these devices slow down simulation execution. Second, the simulation runs exclusively in a machine running an X server. Notwithstanding the GUI mode can be a valid tool during the model development, when massive simulations are performed, the BATCH mode should be used instead. BATCH mode runs are faster because all the graphics elements are turned off. Furthermore, the absence of graphics makes it possible to run the model in parallel on several machines. It is worth saying that RS has very useful facilities for running a model in parallel.
+The GUI mode can be of great visual impact because several monitoring devices continuously updating during runtime can be added to the RS GUI window. The flip side of the coin is that these devices slow down simulation execution. Second, the simulation runs exclusively in a machine running an X server. Notwithstanding the GUI mode can be a valid tool during the model development, however when massive simulations are performed, the BATCH mode should be used instead. BATCH mode runs are faster because all the graphics elements are turned off. Furthermore, the absence of graphics makes it possible to run the model in parallel on several machines. It is worth saying that RS has very useful facilities for running a model in parallel.
 
 
 Let us start this section from the very beginning i.e. with the eclipse software just opened and show how to run the model in GUI mode. 
@@ -453,15 +453,13 @@ After clicking, a menu opens as shown by the following figure.
 \includegraphics[scale=0.35]{fig_cms_rs_execution2}
 
 \vskip2mm
-The GUI execution is activated by clicking the \verb+cms Model+ item.
+The GUI execution is activated by clicking the \verb+cms Model+ item and after few seconds the model window will show up.
 %, while the BATCH execution can be started by clicking the \verb+Batch cms model+.
-
-
-So, the RS GUI window opens by clicking the \verb+cms Model+ item. Check if Context is listed under the Data Loaders item of the scenario tree.
+%Check if Context is listed under the Data Loaders item of the scenario tree.
 
 Use the RS GUI window intuitive buttons to interact with the simulation. A more detailed description on how to control the simulation is given at page 24 of the ``Repast Java Getting Started'' document available in RS web site.
 
-Now the model has no runtime monitoring graphical element, so one can check the progress of the simulation watching at the tick count number in upper right corner of the RS GUI window or looking at the text output in the console panel of Eclipse window as shown in the following figure. 
+Now the model has no runtime monitoring graphical elements, so one can check the progress of the simulation watching at the tick count number in upper right corner of the RS GUI window or looking at the text output in the console panel of Eclipse window as shown in the following figure. 
 
 \vskip2mm
 \noindent
@@ -596,7 +594,7 @@ By clicking on the button highlighted in the figure above, a file browser opens.
 
 \includegraphics[scale=0.35]{fig_cms_rs_gis6}
 
-Clicking on the open button, an additional element appears in the agent style window as shown in the following figure.
+Clicking the open button, an additional element appears in the agent style window as shown in the following figure.
 
 \includegraphics[scale=0.35]{fig_cms_rs_gis7}
 
