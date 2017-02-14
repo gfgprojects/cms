@@ -34,6 +34,14 @@ public class Cms_scheduler{
 
 	}
 	public void scheduleEvents(){
+
+		if(Cms_builder.verboseFlag){
+			scheduleParameters=ScheduleParameters.createRepeating(1,1,100.0);
+			Cms_builder.schedule.schedule(scheduleParameters,this,"schedulePrintStartSimulationTimeStep");
+			scheduleParameters=ScheduleParameters.createRepeating(1,1,0.0);
+			Cms_builder.schedule.schedule(scheduleParameters,this,"schedulePrintEndSimulationTimeStep");
+		}
+
 		scheduleParameters=ScheduleParameters.createRepeating(1,Cms_builder.importPolicyDecisionInterval,40.0);
 		Cms_builder.schedule.schedule(scheduleParameters,this,"scheduleStepBuyersImportPolicy");
 
@@ -58,12 +66,23 @@ public class Cms_scheduler{
 		}
 	}
 
+	public void schedulePrintStartSimulationTimeStep(){
+		System.out.println();
+		System.out.println("===================================================================");
+		System.out.println("START SIMULATION TIME STEP: "+RepastEssentials.GetTickCount());
+		System.out.println("====================================================================");
+		System.out.println();
+	}
+
+	public void schedulePrintEndSimulationTimeStep(){
+		System.out.println();
+		System.out.println("===================================================================");
+		System.out.println("END SIMULATION TIME STEP: "+RepastEssentials.GetTickCount());
+		System.out.println("====================================================================");
+		System.out.println();
+	}
 	public void scheduleStepBuyersImportPolicy(){
 		if(Cms_builder.verboseFlag){
-			System.out.println();
-			System.out.println("===================================================================");
-			System.out.println("SIMULATION TIME STEP: "+RepastEssentials.GetTickCount());
-			System.out.println("====================================================================");
 			System.out.println();
 			System.out.println("BUYERS: STEP IMPORT POLICY");
 		}
