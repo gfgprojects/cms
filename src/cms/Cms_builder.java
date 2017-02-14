@@ -91,13 +91,6 @@ public Context<Object> build(Context<Object> context) {
 		System.out.println("");
 	}
 
-/*
-	elNino=new ElNino();
-	context.add(elNino);
-	Coordinate[] elNinoCoord = {new Coordinate(-120.0,5.0),new Coordinate(-170.0,5.0),new Coordinate(-170.0,-5.0),new Coordinate(-120.0,-5.0),new Coordinate(-120.0,5.0)};
-	LinearRing elNinoRing = fac.createLinearRing(elNinoCoord);
-	geography.move(elNino, elNinoRing);
-*/
 	if(verboseFlag){
 		System.out.println("");
 	}
