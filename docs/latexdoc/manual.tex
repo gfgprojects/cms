@@ -453,13 +453,13 @@ After clicking, a menu opens as shown by the following figure.
 \includegraphics[scale=0.35]{fig_cms_rs_execution2}
 
 \vskip2mm
-The GUI execution is activated by clicking the \verb+cms Model+ item and after few seconds the model window will show up.
+The GUI execution is activated by clicking the \verb+cms Model+ item and after few seconds the model window will show up. Click the \includegraphics[scale=0.4]{fig_home} button, and you should see a well framed world map.
 %, while the BATCH execution can be started by clicking the \verb+Batch cms model+.
 %Check if Context is listed under the Data Loaders item of the scenario tree.
 
 Use the RS GUI window intuitive buttons to interact with the simulation. A more detailed description on how to control the simulation is given at page 24 of the ``Repast Java Getting Started'' document available in RS web site.
 
-Now the model has no runtime monitoring graphical elements, so one can check the progress of the simulation watching at the tick count number in upper right corner of the RS GUI window or looking at the text output in the console panel of Eclipse window as shown in the following figure. 
+Now the model has no dynamic monitoring graphical elements, so one can check the progress of the simulation watching at the tick count number in upper right corner of the RS GUI window or looking at the text output in the console panel of Eclipse window as shown in the following figure. 
 
 \vskip2mm
 \noindent
@@ -561,8 +561,11 @@ As one can understand from headings (first line), each line contains the followi
 This subsection shows how to add graphical elements to the model interface or to make the model able to save data.
 
 \subsubsection{Adding a GIS display}
+The models comes with a gis display showing a world map. We will first delete it and make it again in order to show how the user can configure her/his own display.
 
-Right click on the Display item of the Scenario tree and click on Add display as shown in the following figure
+Right click the \verb+cms gis display+ in the scenario tree and choose delete to remove the display. Now we will build again the display. 
+
+Right click the Display item in the Scenario tree and click on Add display as shown in the following figure
 
 \vskip2mm
 \includegraphics[scale=0.35]{fig_cms_rs_gis1}
@@ -587,7 +590,7 @@ Click on the button highlighted in the next figure to add elements
 \includegraphics[scale=0.35]{fig_cms_rs_gis4b}
 
 We will show hereafter how to add a background showing a geographic zone. First of all, a shapefile of the zone is needed.  
-Shaefiles are often available for downloaded in Internet. Some shapefiles downloaded from \url{http://www.naturalearthdata.com/}\footnote{
+Shapefiles are often available for downloaded in Internet. Some shapefiles downloaded from \url{http://www.naturalearthdata.com/}\footnote{
 	in particular they relate to world maps available at \url{http://www.naturalearthdata.com/downloads/50m-cultural-vectors/} or \url{http://www.naturalearthdata.com/downloads/10m-physical-vectors/}.} are already included in the \verb+data+ folder.
 
 By clicking on the button highlighted in the figure above, a file browser opens. Manage to select your shapefile. In the following figure, a shapefile in the \verb+data+ folder is selected
@@ -608,7 +611,7 @@ By clicking the finish button the display item appears in the scenario tree as s
 
 Save the changes to the scenario tree by clicking the floppy disk image.
 
-Now, clicking the Step Run button (highlighted in red in the following figure), the display will show up after few seconds. If the map is not centered in the windows, click the button showing an home to frame it. The following figure shows the final outcome  
+Now, clicking the Step Run button (highlighted in red in the following figure), the display will show up after few seconds. If the map is not centered in the windows, click \includegraphics[scale=0.4]{fig_home} button to frame it. The following figure shows the final outcome  
 
 \includegraphics[scale=0.35]{fig_cms_rs_gis10}
 
