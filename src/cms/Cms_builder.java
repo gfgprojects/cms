@@ -7,7 +7,6 @@ import cms.agents.Market;
 import cms.utils.MarketLongitudeComparator;
 import cms.dynamics.Cms_scheduler;
 
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -76,6 +75,7 @@ public Context<Object> build(Context<Object> context) {
 	productionRateOfChangeControl=(double)params.getValue("productionRateOfChangeControl");
 	probabilityToAllowExport=(double)params.getValue("probabilityToAllowExport");
 	probabilityToAllowImport=(double)params.getValue("probabilityToAllowImport");
+	batchStoppingTime=(int)params.getValue("batchStoppingTime");
 
 	GeographyParameters<Object> geoParams = new GeographyParameters<Object>();
 	GeographyFactory factory = GeographyFactoryFinder.createGeographyFactory(null);
