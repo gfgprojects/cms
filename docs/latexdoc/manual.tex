@@ -689,35 +689,37 @@ Change the parameters and then start running the model. Alternatively, the aggre
 
 \section{Running in BATCH mode}
 
-To be written
+Clicking on the \verb+Batch cms model+ as in the following figure
 
-\iffalse
-Clicking on the \verb+Batch gabriele model+ as in the following figure
-
+\vskip2mm
 \noindent
-%\includegraphics[scale=0.35]{fig_gabriele_rs_execution3}
-
-activates the batch run configuration wizard.
-
-We point the reader to the ``Repast Simphony Batch Runs Getting Started'' document available in RS website for a full description of the wizard.
-
-We only point out that the present version of the model uses custom output recording techniques. Therefore, the RS File Sink are not used. This implies that the ``Optional Output File Patterns'' must be set as in the following figure
-
+\includegraphics[scale=0.35]{fig_cms_rs_batch1}
+\vskip2mm
 \noindent
-%\includegraphics[scale=0.35]{fig_gabriele_rs_batch}
+activates the batch run configuration wizard. Alternatively, the wizard can be started in the model GUI by clicking the \includegraphics[scale=0.35]{fig_cms_rs_batch2} button.
 
-This configuration instructs RS to fetch from all the machines running the model in parallel all the file whose name begins with \verb+zdata+  and move them in an output sub-folder named 
-\verb+batch_date+. Needless to say that the sub-folder name can be chosen at your convenience, and it can be changed at each batch run in order to avoid overwriting the data (perhaps you want to have memory of the time of your runs. It is why we add \verb+_date+ to the folder name.
-
-
-The following figure shows the contents of the model output folder after a local batch run using Eclipse navigator panel\\ 
+In both cases, the window displayed in the following figure will appear 
+\vskip2mm
 \noindent
-%\includegraphics[scale=0.35]{fig_gabriele_rs_batch1}
+\includegraphics[scale=0.35]{fig_cms_rs_batch3}
+\vskip2mm
 
+The wizard has four tabs. They serves to configure the run. We point the reader to the ``Repast Simphony Batch Runs Getting Started'' document available in RS website for a full description of the wizard.
 
-\fi
+To run the model accepting all the proposed configurations, click the button highlighted by a red circle in the figure above. After clicking this button, the \verb+Console+ tab is activated, and several messages flow on the console. 
 
+It make sense to run the model in batch mode if it collects the data of the run. Follow the instruction given in the ``Data Collection for Repast Java and ReLogo'' document provided in the documentation section of the RS web site to create text sinks.   
+The files defined in this way will be found in the output folder at the end of the run.
 
+It is worth mentioning that the aggregate parameters can be changed before starting the batch run using the second tab of the wizard. It is displayed in the following figure
+
+\vskip2mm
+\noindent
+\includegraphics[scale=0.35]{fig_cms_rs_batch4}
+
+\vskip2mm
+\noindent
+change the value of the parameters and click the generate button before running the model in batch mode.
 
 
 \end{document}
