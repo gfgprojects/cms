@@ -101,7 +101,7 @@ public Context<Object> build(Context<Object> context) {
 
 	//Producers creation
 	try{
-		lines=Files.readAllLines(Paths.get(System.getProperty("user.dir")+"/cms.rs/producers.csv"), Charset.forName("UTF-8"));
+		lines=Files.readAllLines(Paths.get(System.getProperty("user.dir")+"/data/producers.csv"), Charset.forName("UTF-8"));
 	} catch (IOException e) {
 		e.printStackTrace();
 	}
@@ -121,7 +121,7 @@ public Context<Object> build(Context<Object> context) {
 	}
 	//Buyers creation
 	try{
-		lines=Files.readAllLines(Paths.get(System.getProperty("user.dir")+"/cms.rs/buyers.csv"), Charset.forName("UTF-8"));
+		lines=Files.readAllLines(Paths.get(System.getProperty("user.dir")+"/data/buyers.csv"), Charset.forName("UTF-8"));
 	} catch (IOException e) {
 		e.printStackTrace();
 	}
@@ -142,7 +142,7 @@ public Context<Object> build(Context<Object> context) {
 	marketsList=new ArrayList<Market>();
 
 	try{
-		lines=Files.readAllLines(Paths.get(System.getProperty("user.dir")+"/cms.rs/markets.csv"), Charset.forName("UTF-8"));
+		lines=Files.readAllLines(Paths.get(System.getProperty("user.dir")+"/data/markets.csv"), Charset.forName("UTF-8"));
 	} catch (IOException e) {
 		e.printStackTrace();
 	}
