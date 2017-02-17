@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<sweep runs="1">
+<parameter name="verboseFlag" type="constant" constant_type="boolean" value="false"></parameter>
+<parameter name="productionCycleLength" type="constant" constant_type="int" value="12"></parameter>
+<parameter name="exportPolicyDecisionInterval" type="constant" constant_type="int" value="12"></parameter>
+<parameter name="importPolicyDecisionInterval" type="constant" constant_type="int" value="12"></parameter>
+<parameter name="globalProduction" type="constant" constant_type="int" value="500000"></parameter>
+<parameter name="consumptionShareToSetInventoriesTarget" type="constant" constant_type="double" value="0.1"></parameter>
+<parameter name="productionRateOfChangeControl" type="constant" constant_type="double" value="0.1"></parameter>
+<parameter name="probabilityToAllowExport" type="constant" constant_type="double" value="0.9"></parameter>
+<parameter name="probabilityToAllowImport" type="constant" constant_type="double" value="0.9"></parameter>
+<parameter name="batchStoppingTime" type="constant" constant_type="int" value="3"></parameter>
+</sweep>
+
