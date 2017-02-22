@@ -350,7 +350,7 @@ Furthermore, some Linux distribution must be informed on which JDK to use using 
 
 \subsection{Repast Simphony (RS)}
 
-The Repast suite website: \url{http://repast.sourceforge.net} has all the information needed to download and install RS.
+The Repast suite website: \url{http://repast.sourceforge.net} has information needed to download and install RS.
 
 Note that RS is provided as a plugin of the eclipse Integrated Development Environment. The Repast development team provides a customized version of eclipse, so you could encounter problems with already installed versions of eclipse. 
 %Note that the streamlined installation provided below show how to avoid using eclipse.
@@ -364,7 +364,7 @@ First of all, open the eclipse downloaded and installed as described in the prev
 Suppose your workspace has the following path:\\
 \verb+/Users/coolcoder/Documents/workspace+
 
-Open the RS perspective. To do that click Window $\rightarrow$ Perspective $\rightarrow$ open perspective $\rightarrow$ other. Choose Repast Simphony in the window that appears.
+Open the RS perspective. To do that click Window $\rightarrow$ Perspective $\rightarrow$ open perspective $\rightarrow$ other and choose Repast Simphony in the window that appears.
 
 Create a new RS project called \verb+cms+ (file $\rightarrow$ new $\rightarrow$ Repast Simphony project)
 
@@ -383,7 +383,7 @@ We give here two alternatives: via git and using a zipped archive.
 
 \subsubsection{Using git}
 
-As you probably know, this is a largely used way to share the code developments.
+As you probably know, this is a largely used way to share code developments.
 
 So, let us show how to fetch the \verb+csm+ files via git. To do that, you must have a git client installed in your system. Many system comes with a git client already installed, otherwise you have to install it. Mac and windows users can consider to install the GitHub Desktop software.
 
@@ -440,7 +440,7 @@ The GUI mode can be of great visual impact because several monitoring devices co
 Let us start this section from the very beginning i.e. with the eclipse software just opened and show how to run the model in GUI mode. 
 We discuss the BATCH mode after the discussion on how to customize the model.
 
-First of all, click on the down black arrow highlighted by the red circle in the following picture
+First of all, click on the down black arrow highlighted by the red circle in the following figure
 
 \vskip2mm
 \noindent
@@ -453,7 +453,7 @@ After clicking, a menu opens as shown by the following figure.
 \includegraphics[scale=0.35]{fig_cms_rs_execution2}
 
 \vskip2mm
-The GUI execution is activated by clicking the \verb+cms Model+ item and after few seconds the model window will show up. Click the \includegraphics[scale=0.4]{fig_home} button, and you should see something similar to the next figure in your screen.
+The GUI execution is activated by choosing the \verb+cms Model+ item and after few seconds the model window will show up. Clicking the \raisebox{-1mm}{\includegraphics[scale=0.4]{fig_cms_rs_execution}} button, the model is initialized and the first simulation time step is performed. The initialization phase also builds the graphical elements. Click the \includegraphics[scale=0.4]{fig_home} button to center the map in the gis display and you should see something similar to the next figure in your screen.
 %, while the BATCH execution can be started by clicking the \verb+Batch cms model+.
 %Check if Context is listed under the Data Loaders item of the scenario tree.
 
@@ -708,7 +708,7 @@ The wizard has four tabs. They serves to configure the run. We point the reader 
 
 To run the model accepting all the proposed configurations, click the button highlighted by a red circle in the figure above. After clicking this button, the \verb+Console+ tab is activated, and several messages flow on the console. 
 
-It make sense to run the model in batch mode if it collects the data of the run. Follow the instructions given in the ``Data Collection for Repast Java and ReLogo'' document provided in the documentation section of the RS web site to create text sinks.   
+It makes sense to run the model in batch mode if it collects the data of the run. Follow the instructions given in the ``Data Collection for Repast Java and ReLogo'' document provided in the documentation section of the RS web site to create text sinks.   
 The data files defined in this way will be found in the \verb+output+ folder at the end of the run.
 
 It is worth mentioning that the aggregate parameters can be changed before starting the batch run using the second tab of the wizard. It is displayed in the following figure
