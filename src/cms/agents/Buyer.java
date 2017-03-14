@@ -14,7 +14,12 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import repast.simphony.random.RandomHelper;
 import repast.simphony.util.collections.IndexedIterable;
-
+/**
+ * The Buyer class hold all the relevant variable for a Buyer. It has methods for performing the Buyer's actions. The evolution of buying strategy and of the import policy are of particular importance.  
+ * 
+ * @author giulioni
+ *
+ */
 public class Buyer {
 	public String name;
 	public double latitude,longitude,demandShare,sizeInGuiDisplay;
@@ -37,7 +42,7 @@ public class Buyer {
 	public double quantityBoughtInLatestMarketSession;
 	public double pricePayedInLatestMarketSession;
 	public String varietyBoughtInLatestMarketSession,latestMarket;
-	int desiredConsumption,realizedConsumption,gapToTarget,gapToChargeToEachPossibleMarketSession,stock,stockTargetLevel,demandToBeReallocated;
+	public int desiredConsumption,realizedConsumption,gapToTarget,gapToChargeToEachPossibleMarketSession,stock,stockTargetLevel,demandToBeReallocated;
 	Producer aProducer;
 	boolean latestPeriodVisitedMarketSessionNotFound,reallocateDemand,parametersHoldeNotFound;
 	Contract aContract,aContract1;
@@ -395,6 +400,9 @@ public class Buyer {
 			if(Cms_builder.verboseFlag){System.out.println("           "+name+" stock after: "+stock+" desired consumption: "+desiredConsumption+" target: "+stockTargetLevel);}
 		}
 	}
+	/**
+	 *Decreases the existing stock by the minimum between the desired consumption and the existing stock
+	 */
 	public void accountConsumption(){
 		if(Cms_builder.verboseFlag){System.out.println("           "+name+" stock before: "+stock+" desired Consumption: "+desiredConsumption);}
 		gapToTarget=stockTargetLevel-(stock-desiredConsumption);
@@ -409,6 +417,7 @@ public class Buyer {
 			if(Cms_builder.verboseFlag){System.out.println("           "+name+" stock after: "+stock+" target: "+stockTargetLevel+" gap to target "+gapToTarget);}
 		}	
 	}
+	
 	public void setMustImportFlag(boolean buyerMustImport){
 		mustImport=buyerMustImport;
 		if(mustImport){
@@ -440,6 +449,15 @@ public class Buyer {
 	public int getStock(){
 		return stock;
 	}
+	/**
+	 * 
+	 * The gap between the target level of the stock and the level of the stock that would be observed if the desired consumption is achieved. It is equal to the stock target level if the desired consumption could not be achieved.
+	 *   
+	 */
+	public int getGapToTarget(){
+		return gapToTarget;
+	}
+	
 
 
 }
