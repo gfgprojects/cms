@@ -63,7 +63,7 @@ public class Buyer {
 		sizeInGuiDisplay=demandShare*100;
 		initialInterceptOfTheDemandFunction=demandFunctionIntercept;
 		slopeOfTheDemandFunction=demandFunctionSlope;
-		if(Cms_builder.verboseFlag){System.out.println("Created buyer:    "+name+", latitude: "+latitude+", longitude: "+longitude+" minimum Consumption "+minimumConsumption+" stock "+stock);}
+		if(Cms_builder.verboseFlag){System.out.println("Created buyer:    "+name+", latitude: "+latitude+", longitude: "+longitude+" minimum consumption "+minimumConsumption+" stock "+stock);}
 		demandPrices=possiblePrices;
 	}
 
