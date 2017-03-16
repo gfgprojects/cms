@@ -217,46 +217,62 @@ Next, consider the case in which the buyer can participate in a new market sessi
 
 
 \vskip5mm
-The last movement of the demand curves before sending them to the market sessions is done considering the gap between the desired level of inventories and the level of inventories under the assumption that the desired consumption could be achieved (item 4 in the list of factors a buyer account for). The mechanism is described hereafter.
+The last movement of the demand curves before sending them to the market sessions is done when the quantity gathered in the market is low and people or authorities think this negatively impacts on the economy or on the population welfare. 
 
-The reasoning starts from the definition of Buyers' desired consumption (\gls{var:C^d_b}). It  is set at the beginning of the simulation as follows 
-\[C^d_b=\frac{s_{b,0}P_0}{\tau}\]
-where \gls{par:s} is the buyer market share, \gls{par:P0} is the global production at initialization, and \gls{par:tau} is the production cycle length. 
-The division by $\tau$ deserves a comment. While the buying strategy is updated each simulation time step, the global production relates to the production cycle length, this motivates the division by $\tau$. An example could help clarify. Consider a situation where a simulation time step represents a month and the production is realized yearly. $P_0$ is the yearly global production and $s_{b,0}P_0$ is the amount bought yearly by the buyer. Since this event manages the monthly demand, we have to divide by 12 (which is the $\tau$ in this example.   
+The reasoning starts from the definition of Buyers' minimum consumption (\gls{var:C^min_b}). It  is set at the beginning of the simulation as follows 
+\[C^{\min}_b=c\frac{s_{b,0}P_0}{\tau}\]
+where $0<\textnormal{\gls{par:c}}<1$, \gls{par:s} is the buyer market share, \gls{par:P0} is the global production at initialization, and \gls{par:tau} is the production cycle length. 
+The division by $\tau$ deserves a comment. While the buying strategy is updated each simulation time step, the global production relates to the production cycle length, this motivates the division by $\tau$. An example could help clarify. Consider a situation where a simulation time step represents a month and the production is realized yearly. $P_0$ is the yearly global production and $s_{b,0}P_0$ is the amount bought yearly by the buyer. Since this event manages the monthly demand, we have to divide by 12 (which is the $\tau$ in this example). Now, having computed the average monthly consumption, we use it to set the lower bond of consumption by multiplying for the $c$ parameter.   
 
-Buyers also has a desired level of inventories (\gls{var:I^d_b}), which is a fraction \gls{par:iota} of desired consumption
-\[I^d_b=C^d_b\iota\]
 
-At a given simulation step, a buyer starts with a level of inventory \gls{var:I_{b,t}}.
+Consider now the buyer buys an amount \gls{var:B_{b,t}}  in the considered time step (that in our example is $q^*_A+q^*_B+q^*_C$).
+This quantity is then consumed and represents the buyer's effective consumption (\gls{var:C_{b,t}}).
 
-%At this point the buying strategy is updated (more below).
+When the consumed quantity gets lower than the minimum consumption threshold ($C_{b,t}<C^{\min}_b$), people and authorities manage to obtain more commodity in the incoming period shifting the demand curve in the rightward direction.
 
-Consider now %, that with the updated buying strategy, 
-the buyer buys an amount \gls{var:B_{b,t}} in the considered time step.
+All the demand curves are shifted by $\frac{\max(C^{\min}_b-C_{b,t},0)}{\#ms_{b,t+1}}$, where \gls{var:ms_{b,t}}$_{+1}$ denotes the number of market session the buyer will participate.
 
-Now, it is possible to compute buyers effective consumption (\gls{var:C_{b,t}}).
+%\iffalse
+%The last movement of the demand curves before sending them to the market sessions is done when the gap between the desired level of inventories and the level of inventories under the assumption that the desired consumption could be achieved (item 4 in the list of factors a buyer account for). The mechanism is described hereafter.
 
-If $I_{b,t}+B_{b,t}\ge C^d_b$, then $C_{b,t}=C^d_b$; otherwise  $C_{b,t}=I_{b,t}+B_{b,t}$.
+%The reasoning starts from the definition of Buyers' desired consumption (\gls{var:C^d_b}). It  is set at the beginning of the simulation as follows 
+%\[C^d_b=\frac{s_{b,0}P_0}{\tau}\]
+%where \gls{par:s} is the buyer market share, \gls{par:P0} is the global production at initialization, and \gls{par:tau} is the production cycle length. 
+%The division by $\tau$ deserves a comment. While the buying strategy is updated each simulation time step, the global production relates to the production cycle length, this motivates the division by $\tau$. An example could help clarify. Consider a situation where a simulation time step represents a month and the production is realized yearly. $P_0$ is the yearly global production and $s_{b,0}P_0$ is the amount bought yearly by the buyer. Since this event manages the monthly demand, we have to divide by 12 (which is the $\tau$ in this example.   
+%
+%Buyers also has a desired level of inventories (\gls{var:I^d_b}), which is a fraction \gls{par:iota} of desired consumption
+%\[I^d_b=C^d_b\iota\]
+%
+%At a given simulation step, a buyer starts with a level of inventory \gls{var:I_{b,t}}.
+%
+%
+%Consider now the buyer buys an amount \gls{var:B_{b,t}} in the considered time step.
+%
+%Now, it is possible to compute buyers effective consumption (\gls{var:C_{b,t}}).
+%
+%If $I_{b,t}+B_{b,t}\ge C^d_b$, then $C_{b,t}=C^d_b$; otherwise  $C_{b,t}=I_{b,t}+B_{b,t}$.
+%
+%The buyer enters the new period with an inventory level equal to
+%\[
+%I_{b,t+1}=I_{b,t}+B_{b,t}-C_{b,t}
+%\]
+%
+%Note, that the buyer can also compute the quantity 
+%\[
+%	\tilde{I}_{b,t+1}=I_{b,t}+B_{b,t}-C^d_{b,t}
+%\]
+%
+%All the demand curves are shifted by $\frac{I^d_{b}-\tilde{I}_{b,t+1}}{\#ms_{b,t+1}}$, where \gls{var:ms_{b,t}}$_{+1}$ denotes the number of market session the buyer will participate.
+%\fi
+%
 
-The buyer enters the new period with an inventory level equal to
-\[
-I_{b,t+1}=I_{b,t}+B_{b,t}-C_{b,t}
-\]
-
-Note, that the buyer can also compute the quantity 
-\[
-	\tilde{I}_{b,t+1}=I_{b,t}+B_{b,t}-C^d_{b,t}
-\]
-
-All the demand curves are shifted by $\frac{I^d_{b}-\tilde{I}_{b,t+1}}{\#ms_{b,t+1}}$, where \gls{var:ms_{b,t}}$_{+1}$ denotes the number of market session the buyer will participate.
-
-The following charts display the case in which the demanded quantities are increased because the level of observed inventories is lower than those desired. In fact, all the demand curve have a rightward shift. 
+The following charts display the case in which the demanded quantities are increased because consumption was lower than the minimum. In fact, all the demand curve have a rightward shift. 
 \vskip5mm
 \hskip-1.5cm
 \includegraphics{fig_buying_strategy-4.pdf}
 
 \vskip5mm
-Demand curves shifts are opposite when inventories exceed the desired level.
+Demand curves do not move if $C_{b,t}\ge C^{\min}_b$.
 
 Because there are Buyers without an associated producer, it may happen that there are no available session because all producers forbid exports. In these cases, if none of the producers switch the export policy, no demand curve is set, otherwise demand curves for newly available sessions are set. The idea is similar to that presented above, however, the buyer has not the benchmark of the cheapest unit cost at which s/he bought in the latest time step. However, the latest prices observed in the newly available market sessions are known. The current version of the model first sets the demand curve in each market in such a way that the demanded quantity is zero at the latest observed market price as displayed in the following charts. 
 
@@ -265,7 +281,7 @@ Because there are Buyers without an associated producer, it may happen that ther
 \includegraphics{fig_buying_strategy-5.pdf}
 
 \vskip5mm
-Then, the demand functions are moved as explained above according to the $\frac{I^d_{b}-\tilde{I}_{b,t+1}}{\#ms_{b,t+1}}$ quantity.
+Then, the demand functions are moved as explained above according to the $\frac{\max(C^{\min}_b-C_{b,t},0)}{\#ms_{b,t+1}}$ quantity.
 
 Changes to the basic behaviors presented in this paragraph can be done modifying the method \verb+stepBuyingStrategy+ of the \verb+Buyer+ class.
 
@@ -531,7 +547,8 @@ As one can understand from headings (first line), each line contains the followi
 		According to our assumption, all the producers have an associated buyer, but the reverse is not true. Therefore, the number of lines in the \verb+buyers.csv+ file equals or is higher than those of the \verb+producers.csv+ file.  In the case of the configuration file reported above, the first six lines specify buyers associated to producers. The seventh line (\verb+Africa+) has not an associated producer. This buyer will never forbid import of the commodity during simulation runs.
 	\item the buyer's latitude,
 	\item the buyer's longitude,
-	\item the buyer's demand share \gls{par:s}. This is used to setup the desired consumption (\gls{var:C^d_b}) and the desired level of inventories (\gls{var:I^d_b}) as explained above. The level of inventories at the beginning ($I_{b,0}$) is set at the desired level, then they evolve as explained above.
+%	\item the buyer's demand share \gls{par:s}. This is used to setup the desired consumption (\gls{var:C^d_b}) and the desired level of inventories (\gls{var:I^d_b}) as explained above. The level of inventories at the beginning ($I_{b,0}$) is set at the desired level, then they evolve as explained above.
+	\item the buyer's demand share \gls{par:s}. This is used to setup the minimum consumption (\gls{var:C^min_b}) as explained above.
 	\item the intercept of the demand curves (\gls{par:barDb0}). This is used to setup the initial level of the intercept in each market session. As explained above, the intercepts evolve during the simulation.
 	\item the slope of the demand curves (\gls{par:d_{b}}). This remains the same in all the market sessions during simulation runs.
 \end{itemize}
