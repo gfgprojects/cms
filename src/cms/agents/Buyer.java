@@ -15,7 +15,7 @@ import java.math.RoundingMode;
 import repast.simphony.random.RandomHelper;
 import repast.simphony.util.collections.IndexedIterable;
 /**
- * The Buyer class hold all the relevant variable for a Buyer. It has methods for performing the Buyer's actions. The evolution of buying strategy and of the import policy are of particular importance.  
+ * The Buyer class hold all the relevant variable for a Buyer; It has methods for performing the Buyer's actions. The evolution of buying strategy and of the import policy are of particular importance.  
  * 
  * @author giulioni
  *
@@ -42,7 +42,7 @@ public class Buyer {
 	public double quantityBoughtInLatestMarketSession;
 	public double pricePayedInLatestMarketSession;
 	public String varietyBoughtInLatestMarketSession,latestMarket;
-	public int desiredConsumption,realizedConsumption,gapToTarget,gapToChargeToEachPossibleMarketSession,stock,stockTargetLevel,demandToBeReallocated;
+	public int minimumConsumption,realizedConsumption,gapToTarget,gapToChargeToEachPossibleMarketSession,stock,demandToBeReallocated;
 	Producer aProducer;
 	boolean latestPeriodVisitedMarketSessionNotFound,reallocateDemand,parametersHoldeNotFound;
 	Contract aContract,aContract1;
@@ -56,13 +56,14 @@ public class Buyer {
 		latitude=buyerLatitude;
 		longitude=buyerLongitude;
 		demandShare=buyerDemandShare;
-		desiredConsumption=(int)(demandShare*Cms_builder.globalProduction/Cms_builder.productionCycleLength);
-		stockTargetLevel=(int)(desiredConsumption*Cms_builder.consumptionShareToSetInventoriesTarget);
-		stock=stockTargetLevel;
+		minimumConsumption=(int)(Cms_builder.consumptionShareToSetMinimumConsumption*demandShare*Cms_builder.globalProduction/Cms_builder.productionCycleLength);
+//		stockTargetLevel=(int)(desiredConsumption*Cms_builder.consumptionShareToSetInventoriesTarget);
+//		stock=stockTargetLevel;
+		stock=0;
 		sizeInGuiDisplay=demandShare*100;
 		initialInterceptOfTheDemandFunction=demandFunctionIntercept;
 		slopeOfTheDemandFunction=demandFunctionSlope;
-		if(Cms_builder.verboseFlag){System.out.println("Created buyer:    "+name+", latitude: "+latitude+", longitude: "+longitude+" stock target level "+stockTargetLevel+" stock "+stock);}
+		if(Cms_builder.verboseFlag){System.out.println("Created buyer:    "+name+", latitude: "+latitude+", longitude: "+longitude+" minimum Consumption "+minimumConsumption+" stock "+stock);}
 		demandPrices=possiblePrices;
 	}
 
@@ -397,15 +398,22 @@ public class Buyer {
 				latestContractsList.add(new Contract(latestMarket,theProducer.getName(),name,pricePayedInLatestMarketSession,transportCosts,quantityBoughtInLatestMarketSession));
 			}
 			if(Cms_builder.verboseFlag){System.out.println("           "+name+" price "+pricePayedInLatestMarketSession+" quantity "+quantityBoughtInLatestMarketSession+" of "+varietyBoughtInLatestMarketSession);}
-			if(Cms_builder.verboseFlag){System.out.println("           "+name+" stock after: "+stock+" desired consumption: "+desiredConsumption+" target: "+stockTargetLevel);}
+			if(Cms_builder.verboseFlag){System.out.println("           "+name+" stock after: "+stock+" minimum consumption: "+minimumConsumption);}
 		}
 	}
 	/**
 	 *Decreases the existing stock by the minimum between the desired consumption and the existing stock
 	 */
 	public void accountConsumption(){
-		if(Cms_builder.verboseFlag){System.out.println("           "+name+" stock before: "+stock+" desired Consumption: "+desiredConsumption);}
-		gapToTarget=stockTargetLevel-(stock-desiredConsumption);
+		if(Cms_builder.verboseFlag){System.out.println("           "+name+" stock before: "+stock+" minimum Consumption: "+minimumConsumption);}
+		gapToTarget=minimumConsumption-stock;
+		if(gapToTarget<0){
+			gapToTarget=0;
+		}
+		realizedConsumption=stock;
+		stock=0;
+		if(Cms_builder.verboseFlag){System.out.println("           "+name+" stock after: "+stock+" minC - C "+gapToTarget);}
+/*
 		if(desiredConsumption<=stock){
 			realizedConsumption=desiredConsumption;	       
 			stock+=-realizedConsumption;
@@ -416,6 +424,7 @@ public class Buyer {
 			stock=0;
 			if(Cms_builder.verboseFlag){System.out.println("           "+name+" stock after: "+stock+" target: "+stockTargetLevel+" gap to target "+gapToTarget);}
 		}	
+*/
 	}
 	
 	public void setMustImportFlag(boolean buyerMustImport){
