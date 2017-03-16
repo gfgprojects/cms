@@ -36,8 +36,8 @@
 						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
 									
 		/>
-				<parameter name="consumptionShareToSetInventoriesTarget" displayName="consumptionShareToSetInventoriesTarget" type="double" 
-						defaultValue="0.1" 
+				<parameter name="consumptionShareToSetMinimumConsumption" displayName="consumptionShareToSetMinimumConsumption" type="double" 
+						defaultValue="0.7" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
 									
