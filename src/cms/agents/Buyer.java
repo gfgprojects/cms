@@ -47,7 +47,7 @@ public class Buyer {
 	boolean latestPeriodVisitedMarketSessionNotFound,reallocateDemand,parametersHoldeNotFound;
 	Contract aContract,aContract1;
 	DemandFunctionParameters aParametersHolder;
-	int interceptOfTheDemandFunction,initialInterceptOfTheDemandFunction,slopeOfTheDemandFunction;
+	int interceptOfTheDemandFunction,initialInterceptOfTheDemandFunction,slopeOfTheDemandFunction,demandToBeMoved;
 
 
 
@@ -230,13 +230,15 @@ public class Buyer {
 				if(Cms_builder.verboseFlag){System.out.println("              moving quantity bought in most expensive market session to cheapest market session");}
 					aContract=latestContractsInPossibleMarketSessionsList.get(0);
 					aContract1=latestContractsInPossibleMarketSessionsList.get(latestContractsInPossibleMarketSessionsList.size()-1);
-					if(1.05*aContract.getPrice()<aContract1.getPrice()){
+					demandToBeMoved=0;
+					if(Cms_builder.toleranceInMovingDemand*aContract.getPrice()<aContract1.getPrice()){
+						demandToBeMoved=(int)(aContract1.getQuantity()*Cms_builder.shareOfDemandToBeMoved);
 						for(DemandFunctionParameters aParametersHolder : demandFunctionParametersList){
 							if(aContract.getMarketName().equals(aParametersHolder.getMarketName()) && aContract.getProducerName().equals(aParametersHolder.getProducerName())){
-								aParametersHolder.increaseInterceptBy((int)aContract1.getQuantity());
+								aParametersHolder.increaseInterceptBy(demandToBeMoved);
 							}
 							if(aContract1.getMarketName().equals(aParametersHolder.getMarketName()) && aContract1.getProducerName().equals(aParametersHolder.getProducerName())){
-								aParametersHolder.decreaseInterceptBy((int)aContract1.getQuantity());
+								aParametersHolder.decreaseInterceptBy(demandToBeMoved);
 							}
 						}
 					}

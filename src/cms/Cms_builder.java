@@ -55,7 +55,7 @@ public class Cms_builder implements ContextBuilder<Object> {
 	
 	int batchStoppingTime=2;
 	public static int productionCycleLength,exportPolicyDecisionInterval,importPolicyDecisionInterval,globalProduction;
-	public static double consumptionShareToSetMinimumConsumption,productionRateOfChangeControl,probabilityToAllowExport,probabilityToAllowImport;
+	public static double consumptionShareToSetMinimumConsumption,productionRateOfChangeControl,probabilityToAllowExport,probabilityToAllowImport,toleranceInMovingDemand,shareOfDemandToBeMoved;
 
 
 	@Override
@@ -72,6 +72,8 @@ public Context<Object> build(Context<Object> context) {
 	productionRateOfChangeControl=(double)params.getValue("productionRateOfChangeControl");
 	probabilityToAllowExport=(double)params.getValue("probabilityToAllowExport");
 	probabilityToAllowImport=(double)params.getValue("probabilityToAllowImport");
+	toleranceInMovingDemand=(double)params.getValue("toleranceInMovingDemand");
+	shareOfDemandToBeMoved=(double)params.getValue("shareOfDemandToBeMoved");
 	batchStoppingTime=(int)params.getValue("batchStoppingTime");
 
 	GeographyParameters<Object> geoParams = new GeographyParameters<Object>();
