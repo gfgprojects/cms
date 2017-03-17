@@ -460,6 +460,9 @@ public class Buyer {
 	public int getStock(){
 		return stock;
 	}
+	public int getRealizedConsumption(){
+		return realizedConsumption;
+	}
 	/**
 	 * 
 	 * The gap between the target level of the stock and the level of the stock that would be observed if the desired consumption is achieved. It is equal to the stock target level if the desired consumption could not be achieved.

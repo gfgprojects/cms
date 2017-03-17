@@ -121,5 +121,8 @@ public class Producer {
 	public int getStock(){
 		return stock;
 	}
+	public int getProduction(){
+		return production;
+	}
 
 }
