@@ -24,6 +24,19 @@
 						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
 									
 		/>
+				<parameter name="toleranceInMovingDemand" displayName="toleranceInMovingDemand" type="double" 
+						defaultValue="0.05" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
+									
+		/>
+				<parameter name="shareOfDemandToBeMoved" displayName="shareOfDemandToBeMoved" type="double" 
+						defaultValue="1.0" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
+									
+		/>
+
 				<parameter name="importPolicyDecisionInterval" displayName="importPolicyDecisionInterval" type="int" 
 						defaultValue="12" 
 						isReadOnly="false" 
