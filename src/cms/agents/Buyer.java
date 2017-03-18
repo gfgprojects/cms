@@ -202,6 +202,7 @@ public class Buyer {
 
 					//increasing the intercept of the new available market sessions parameters holder to fill the gap to the target  
 					gapToChargeToEachPossibleMarketSession=gapToTarget/startBuyingMarketSessionsList.size();
+					if(gapToTarget>0){System.out.println("gap To Target "+gapToTarget);}
 					if(Cms_builder.verboseFlag){System.out.println("          gap to target in each market session "+gapToChargeToEachPossibleMarketSession);}
 					for(MarketSession aMarketSession : startBuyingMarketSessionsList){
 						for(DemandFunctionParameters aParametersHolder : demandFunctionParametersList){
