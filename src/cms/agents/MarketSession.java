@@ -106,6 +106,7 @@ public class MarketSession {
 			}
 			
 			qsqdRatio=1;
+			//when demand curve is too high, resize quantity to that supplied
 			if(marketPrice==sessionSupplyCurve.get(sessionSupplyCurve.size()-1).getPrice()){
 				qsqdRatio=tmpElement.getQuantity()/tmpElement1.getQuantity();			
 				if(qsqdRatio>1){
@@ -120,7 +121,7 @@ public class MarketSession {
 		quantityExchanged=0;
 		for(int i=0;i<buyersList.size();i++){
 			aBuyer=(Buyer)buyersList.get(i);
-			aBuyer.computeBoughtQuantity(market,theProducer,variety,marketPrice);
+			aBuyer.computeBoughtQuantity(market,theProducer,variety,marketPrice,qsqdRatio);
 			quantityExchanged+=aBuyer.getQuantityBoughtInLatestMarketSession();
 		}
 		if(Cms_builder.verboseFlag){System.out.println("           SELLER COMPUTES SOLD QUANTITY ");}

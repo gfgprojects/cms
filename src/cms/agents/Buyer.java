@@ -374,7 +374,7 @@ public class Buyer {
 		return demandCurve;
 	}
 
-	public void computeBoughtQuantity(String theMarket,Producer theProducer,String theVariety, double marketPrice){
+	public void computeBoughtQuantity(String theMarket,Producer theProducer,String theVariety, double marketPrice,double rescalingFactor){
 		demandPriceLowerThanMarketPrice=true;
 		if(demandCurve.size()<1){
 			if(Cms_builder.verboseFlag){System.out.println("           demand curve was not sent by "+name);}
@@ -390,7 +390,7 @@ public class Buyer {
 					demandPriceLowerThanMarketPrice=false;
 				}
 			}
-			quantityBoughtInLatestMarketSession=tmpElement.getQuantity();
+			quantityBoughtInLatestMarketSession=tmpElement.getQuantity()*rescalingFactor;
 			pricePayedInLatestMarketSession=tmpElement.getPrice();
 			varietyBoughtInLatestMarketSession=theVariety;
 			latestMarket=theMarket;
