@@ -25,7 +25,8 @@ public class MarketSession {
 
 	private Iterator<ElementOfSupplyOrDemandCurve> sessionSupplyCurveIterator,sessionDemandCurveIterator;
 	private boolean lookingFroEquilibrium,northEastElementFound;
-	public double marketPrice,quantityExchanged; 
+	public double marketPrice,quantityExchanged;
+	double qsqdRatio;
 
 	public MarketSession(String thisSessionMarket,Producer producer,String varietyName,Context<Object> theContext,ArrayList<Double> possiblePrices){
 		market=thisSessionMarket;
@@ -102,7 +103,15 @@ public class MarketSession {
 			if(!northEastElementFound){
 				lookingFroEquilibrium=false;
 				marketPrice=tmpElement.getPrice();
-			}				
+			}
+			
+			qsqdRatio=1;
+			if(marketPrice==sessionSupplyCurve.get(sessionSupplyCurve.size()-1).getPrice()){
+				qsqdRatio=tmpElement.getQuantity()/tmpElement1.getQuantity();			
+				if(qsqdRatio>1){
+					qsqdRatio=1;
+				}
+			}
 
 		}
 		if(Cms_builder.verboseFlag){System.out.println("           market price is "+marketPrice);}
