@@ -14,6 +14,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import repast.simphony.random.RandomHelper;
 import repast.simphony.util.collections.IndexedIterable;
+//import repast.simphony.essentials.RepastEssentials;
 /**
  * The Buyer class hold all the relevant variable for a Buyer; It has methods for performing the Buyer's actions. The evolution of buying strategy and of the import policy are of particular importance.  
  * 
@@ -414,7 +415,7 @@ public class Buyer {
 		}
 		realizedConsumption=stock;
 		stock=0;
-		if(gapToTarget>0){System.out.println("           "+name+" stock after: "+stock+" minC - C "+gapToTarget);}
+//		if(gapToTarget>0){System.out.println("           time "+RepastEssentials.GetTickCount()+" "+name+" consumption: "+realizedConsumption+" minC "+minimumConsumption);}
 
 		if(Cms_builder.verboseFlag){System.out.println("           "+name+" stock after: "+stock+" minC - C "+gapToTarget);}
 /*
