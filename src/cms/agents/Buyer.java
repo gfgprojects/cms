@@ -345,6 +345,14 @@ public class Buyer {
 		}
 		//System.out.println("size "+demandCurve.size());
 
+//revise demand curve for minimumImportQuantity
+		if(!name.equals(theProducer.getName())){
+			for(ElementOfSupplyOrDemandCurve tmpElement : tmpDemandCurve){
+				if(tmpElement.getQuantity()<Cms_builder.minimumImportQuantity){
+					tmpElement.setQuantityToZero();
+				}
+			}			
+		}
 
 
 		if(importAllowed){
@@ -367,7 +375,6 @@ public class Buyer {
 				if(Cms_builder.verboseFlag){System.out.println("           demand curve is sent by "+name+" for product "+theVariety);}
 			}
 			else{
-
 				if(Cms_builder.verboseFlag){System.out.println("           demand curve is not sent by "+name+" because importAllowed is "+importAllowed);}
 				demandCurve=new ArrayList<ElementOfSupplyOrDemandCurve>();
 			}
