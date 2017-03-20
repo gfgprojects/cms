@@ -232,7 +232,7 @@ public class Buyer {
 					aContract=latestContractsInPossibleMarketSessionsList.get(0);
 					aContract1=latestContractsInPossibleMarketSessionsList.get(latestContractsInPossibleMarketSessionsList.size()-1);
 					demandToBeMoved=0;
-					if(Cms_builder.toleranceInMovingDemand*aContract.getPrice()<aContract1.getPrice()){
+					if((1+Cms_builder.toleranceInMovingDemand)*aContract.getPrice()<aContract1.getPrice()){
 						demandToBeMoved=(int)(aContract1.getQuantity()*Cms_builder.shareOfDemandToBeMoved);
 						for(DemandFunctionParameters aParametersHolder : demandFunctionParametersList){
 							if(aContract.getMarketName().equals(aParametersHolder.getMarketName()) && aContract.getProducerName().equals(aParametersHolder.getProducerName())){
