@@ -12,6 +12,12 @@
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
 		/>
+				<parameter name="minimumImportQuantity" displayName="minimumImportQuantity" type="int" 
+						defaultValue="10" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
+									
+		/>
 				<parameter name="productionRateOfChangeControl" displayName="productionRateOfChangeControl" type="double" 
 						defaultValue="0.0" 
 						isReadOnly="false" 
