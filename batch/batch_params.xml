@@ -5,6 +5,7 @@
 <parameter name="exportPolicyDecisionInterval" type="constant" constant_type="int" value="12"></parameter>
 <parameter name="importPolicyDecisionInterval" type="constant" constant_type="int" value="12"></parameter>
 <parameter name="globalProduction" type="constant" constant_type="int" value="500000"></parameter>
+<parameter name="minimumImportQuantity" type="constant" constant_type="int" value="10"></parameter>
 <parameter name="consumptionShareToSetMinimumConsumption" type="constant" constant_type="double" value="0.7"></parameter>
 <parameter name="productionRateOfChangeControl" type="constant" constant_type="double" value="0.0"></parameter>
 <parameter name="probabilityToAllowExport" type="constant" constant_type="double" value="1.0"></parameter>
