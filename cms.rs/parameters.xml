@@ -61,6 +61,12 @@
 						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
 									
 		/>
+				<parameter name="percentageOfPriceMarkDownInNewlyAccessibleMarkets" displayName="percentageOfPriceMarkDownInNewlyAccessibleMarkets" type="double" 
+						defaultValue="0.05" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
+									
+		/>
 				<parameter name="verboseFlag" displayName="verbose flag" type="boolean" 
 						defaultValue="true" 
 						isReadOnly="false" 
