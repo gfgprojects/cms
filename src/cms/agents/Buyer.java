@@ -232,8 +232,9 @@ public class Buyer {
 					aContract=latestContractsInPossibleMarketSessionsList.get(0);
 					aContract1=latestContractsInPossibleMarketSessionsList.get(latestContractsInPossibleMarketSessionsList.size()-1);
 					demandToBeMoved=0;
-					if((1+Cms_builder.toleranceInMovingDemand)*aContract.getPrice()<aContract1.getPrice()){
-						demandToBeMoved=(int)(aContract1.getQuantity()*Cms_builder.shareOfDemandToBeMoved);
+//					if((1+Cms_builder.toleranceInMovingDemand)*aContract.getPrice()<aContract1.getPrice()){
+					if((Cms_builder.toleranceInMovingDemand)*aContract.getPrice()<aContract1.getPrice()){
+					demandToBeMoved=(int)(aContract1.getQuantity()*Cms_builder.shareOfDemandToBeMoved);
 						for(DemandFunctionParameters aParametersHolder : demandFunctionParametersList){
 							if(aContract.getMarketName().equals(aParametersHolder.getMarketName()) && aContract.getProducerName().equals(aParametersHolder.getProducerName())){
 								aParametersHolder.increaseInterceptBy(demandToBeMoved);
@@ -253,7 +254,7 @@ public class Buyer {
 					for(DemandFunctionParameters aParametersHolder : demandFunctionParametersList){
 						if(aMarketSession.getMarketName().equals(aParametersHolder.getMarketName()) && aMarketSession.getProducerName().equals(aParametersHolder.getProducerName())){
 							parametersHoldeNotFound=false;
-							aParametersHolder.setIntercept((int)(slopeOfTheDemandFunction*aContract.getPricePlusTransport()));
+							aParametersHolder.setIntercept((int)(slopeOfTheDemandFunction*aContract.getPricePlusTransport()*(1-Cms_builder.percentageOfPriceMarkDownInNewlyAccessibleMarkets)));
 						}
 					}
 					if(parametersHoldeNotFound){
@@ -261,7 +262,7 @@ public class Buyer {
 						demandFunctionParametersList.add(aParametersHolder);
 					}
 				}
-				//increasing the intercept of the available market sessions parameters holder to fill the gap to the target  
+				//increasing the intercept of the available market sessions parameters holder to fill the gap to minimum consumption  
 				if(Cms_builder.verboseFlag){System.out.println("              moving demand functions to fill the gap to target level of inventories"); }
 				gapToChargeToEachPossibleMarketSession=gapToTarget/possibleMarketSessionsList.size();
 				if(Cms_builder.verboseFlag){System.out.println("                gap to target in each market session "+gapToChargeToEachPossibleMarketSession);}
