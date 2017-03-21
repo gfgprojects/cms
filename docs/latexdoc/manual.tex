@@ -205,6 +205,14 @@ Suppose now that the buyer we are considering and the producer selling in market
  This account for factors 1 and 2 listed above. 
 However, there will be no movements in the demand curves if the buyer can continue participating in all markets sessions. The attempt to reduce the unit cost (factor 1 in the list) is lost in this case. To allow for factor 1 even when there are no export/import policy changes, we introduce the following device. The buyer can move demand from the most expensive market session ($A$ in our example) to the cheapest one ($B$). We introduce a tolerance to perform this action by using the parameter \gls{par:iota}. In particular, the movement is made if:
 \[(1+\iota)p^+_{\min}<p^+_{\max}\]
+the $\iota$ parameter corresponds to the \verb+toleranceInMovingDemand+ parameter in the code.
+
+We furthermore introduce and additional parameter to control the size of this movements. Suppose the quantity bought in the market with the highest cost is $q_{p^+_{\max}}$, the quantity to be moved from the most expensive to the cheapest market (\gls{var:q_moved}) can be tuned by the researcher by setting the \gls{par:m} parameter. It is thus computed as follows:
+\[
+	q_{p^+_{\max} -> p^+_{\max}}=mq_{p^+_{\max}}
+\]
+the $m$ parameter corresponds to the \verb+shareOfDemandToBeMoved+ parameter in the code.
+
 The two charts below shows the leftward shift of the demand curve in market session $A$ and the rightward shift of the curve in market session $B$.     
 
 \vskip5mm
