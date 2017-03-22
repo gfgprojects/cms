@@ -751,4 +751,116 @@ It is worth mentioning that the aggregate parameters can be changed before start
 change the value of the parameters and click the generate button before running the model in batch mode.
 
 
+\section{Basic behavior}
+\subsection{Two Identical Countries, One market, No Supply Shock}
+\subsubsection{Parametrization}
+
+The \verb+markets.csv+ file
+\begin{verbatim}
+City,latitude,longitude,exchanges share
+Internet,0.0,0.0,0.1
+\end{verbatim}
+
+The \verb+producers.csv+ file
+\begin{verbatim}
+name,latitude,longitude,production share,markets,products,first production time
+China,39.9390731,120.1172706,0.1,Internet,Product A,2
+Argentina,-27.9878842,-62.6300825,0.1,Internet,Product A,2
+\end{verbatim}
+
+The \verb+buyers.csv+ file
+\begin{verbatim}
+name,latitude,longitude,demand share,demand curve intercept,demand curve slope
+China,39.9390731,116.1172706,0.1,5000,500
+Argentina,-34.6155729,-58.5033604,0.1,5000,500
+\end{verbatim}
+
+The aggregate parameters are set as follows
+
+\begin{verbatim}
+productionCycleLength = 12
+exportPolicyDecisionInterval = 12
+importPolicyDecisionInterval = 12
+globalProduction = 500000
+minimumImportQuantity = 10
+consumptionShareToSetMinimumConsumption = 07
+percentageOfPriceMarkDownInNewlyAccessibleMarkets = 0.05
+productionRateOfChangeControl = 0.0
+probabilityToAllowExport = 1.0
+probabilityToAllowImport = 1.0
+toleranceInMovingDemand = 0.0
+shareOfDemandToBeMoved = 0.1
+\end{verbatim}
+
+
+\includegraphics[scale=0.4]{fig_case1_map}
+
+Distance in kilometers:
+
+\vskip2mm
+\begin{tabular}{c | c  c }
+	& \multicolumn{2}{c}{Producer}\\
+	buyer & China&Argentina\\
+	\hline
+	China & 342&18673\\
+	\hline
+	Argentina & 19401&833\\
+	\hline
+\end{tabular}
+
+\vskip4mm
+Transport cost are proportional to distance:
+
+\vskip2mm
+\begin{tabular}{c | c  c }
+	& \multicolumn{2}{c}{Producer}\\
+	buyer & China&Argentina\\
+	\hline
+	China & 0.03&1.87\\
+	\hline
+	Argentina & 1.94&0.08\\
+	\hline
+\end{tabular}
+
+
+\subsubsection{Results}
+
+The dynamics show how the presence of transport cost make buyers move demand toward domestic producers reducing imports to the minimum.
+
+
+Data from buyers
+
+\includegraphics[scale=0.2]{fig_case1_qs}
+\includegraphics[scale=0.2]{fig_case1_imports}
+
+\noindent Data from market sessions
+
+\includegraphics[scale=0.2]{fig_case1_prices}
+\includegraphics[scale=0.2]{fig_case1_quantities}
+
+Prices in both market session are constant to 5.83. Adding transport cost to the market session prices gives the following costs for buyers:
+
+\vskip2mm
+\begin{tabular}{c | c  c }
+	& \multicolumn{2}{c}{Producer}\\
+	buyer & China&Argentina\\
+	\hline
+	China & 5.86&7.7\\
+	\hline
+	Argentina & 7.77&5.91\\
+	\hline
+\end{tabular}
+
+\vskip2mm
+China moves the \verb+shareOfDemandToBeMoved+ (set to 10\%) of its import from the Argentina market session to then domestic market session because the domestic resource is cheaper ($5.86<7.7$).
+
+Argentina moves the \verb+shareOfDemandToBeMoved+ (set to 10\%) of its total import from the China market session to then domestic market session because the domestic resource is cheaper ($5.91<7.77$).
+
+
+Both China and Argentina have an increase of demand from the domestic buyer and a reduction of demand from the foreign buyer. These effects balance perfectly and the market session demands are not affected. Since supply curves also remain constant because of the absence of supply shock, prices in the two sessions remain constant.   
+
+
+
+
+
 \end{document}
