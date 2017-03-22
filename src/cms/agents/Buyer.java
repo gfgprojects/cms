@@ -43,7 +43,7 @@ public class Buyer {
 	public double quantityBoughtInLatestMarketSession;
 	public double pricePayedInLatestMarketSession;
 	public String varietyBoughtInLatestMarketSession,latestMarket;
-	public int minimumConsumption,realizedConsumption,gapToTarget,gapToChargeToEachPossibleMarketSession,stock,demandToBeReallocated;
+	public int minimumConsumption,realizedConsumption,domesticConsumption,gapToTarget,gapToChargeToEachPossibleMarketSession,stock,domesticStock,demandToBeReallocated;
 	Producer aProducer;
 	boolean latestPeriodVisitedMarketSessionNotFound,reallocateDemand,parametersHoldeNotFound;
 	Contract aContract,aContract1;
@@ -61,6 +61,7 @@ public class Buyer {
 //		stockTargetLevel=(int)(desiredConsumption*Cms_builder.consumptionShareToSetInventoriesTarget);
 //		stock=stockTargetLevel;
 		stock=0;
+		domesticStock=0;
 		sizeInGuiDisplay=demandShare*100;
 		initialInterceptOfTheDemandFunction=demandFunctionIntercept;
 		slopeOfTheDemandFunction=demandFunctionSlope;
@@ -214,7 +215,7 @@ public class Buyer {
 
 				}
 			}
-			else{ //buyers with at leas one contract in the previous period concluded in a market session that will be open in the current period
+			else{ //buyers with at least one contract in the previous period concluded in a market session that will be open in the current period
 				for(Contract aContract : latestContractsInPossibleMarketSessionsList){
 					if(Cms_builder.verboseFlag){System.out.println("                 renew "+aContract.getPricePlusTransport()+" price: "+aContract.getPrice()+" market: "+aContract.getMarketName()+" producer: "+aContract.getProducerName()+" quantity "+aContract.getQuantity());}
 				}
@@ -232,8 +233,8 @@ public class Buyer {
 					aContract=latestContractsInPossibleMarketSessionsList.get(0);
 					aContract1=latestContractsInPossibleMarketSessionsList.get(latestContractsInPossibleMarketSessionsList.size()-1);
 					demandToBeMoved=0;
-//					if((1+Cms_builder.toleranceInMovingDemand)*aContract.getPrice()<aContract1.getPrice()){
-					if((Cms_builder.toleranceInMovingDemand)*aContract.getPrice()<aContract1.getPrice()){
+					if((1+Cms_builder.toleranceInMovingDemand)*aContract.getPricePlusTransport()<aContract1.getPricePlusTransport()){
+//					if((Cms_builder.toleranceInMovingDemand)*aContract.getPrice()<aContract1.getPrice()){
 					demandToBeMoved=(int)(aContract1.getQuantity()*Cms_builder.shareOfDemandToBeMoved);
 						for(DemandFunctionParameters aParametersHolder : demandFunctionParametersList){
 							if(aContract.getMarketName().equals(aParametersHolder.getMarketName()) && aContract.getProducerName().equals(aParametersHolder.getProducerName())){
@@ -403,13 +404,16 @@ public class Buyer {
 			pricePayedInLatestMarketSession=tmpElement.getPrice();
 			varietyBoughtInLatestMarketSession=theVariety;
 			latestMarket=theMarket;
-			if(Cms_builder.verboseFlag){System.out.println("           "+name+" stock before: "+stock); }
+			if(Cms_builder.verboseFlag){System.out.println("           "+name+" stock before: "+stock+" domestic stock before: "+domesticStock); }
 			stock+=quantityBoughtInLatestMarketSession;
+			if(name.equals(theProducer.getName())){
+				domesticStock+=quantityBoughtInLatestMarketSession;
+			}
 			if(quantityBoughtInLatestMarketSession>0){
 				latestContractsList.add(new Contract(latestMarket,theProducer.getName(),name,pricePayedInLatestMarketSession,transportCosts,quantityBoughtInLatestMarketSession));
 			}
 			if(Cms_builder.verboseFlag){System.out.println("           "+name+" price "+pricePayedInLatestMarketSession+" quantity "+quantityBoughtInLatestMarketSession+" of "+varietyBoughtInLatestMarketSession);}
-			if(Cms_builder.verboseFlag){System.out.println("           "+name+" stock after: "+stock+" minimum consumption: "+minimumConsumption);}
+			if(Cms_builder.verboseFlag){System.out.println("           "+name+" stock after: "+stock+" domestic stock after: "+domesticStock+" minimum consumption: "+minimumConsumption);}
 		}
 	}
 	/**
@@ -422,7 +426,9 @@ public class Buyer {
 			gapToTarget=0;
 		}
 		realizedConsumption=stock;
+		domesticConsumption=domesticStock;
 		stock=0;
+		domesticStock=0;
 //		if(gapToTarget>0){System.out.println("           time "+RepastEssentials.GetTickCount()+" "+name+" consumption: "+realizedConsumption+" minC "+minimumConsumption);}
 
 		if(Cms_builder.verboseFlag){System.out.println("           "+name+" stock after: "+stock+" minC - C "+gapToTarget);}
@@ -474,6 +480,13 @@ public class Buyer {
 	public int getRealizedConsumption(){
 		return realizedConsumption;
 	}
+	public int getDomesticConsumption(){
+		return domesticConsumption;
+	}
+	public int getImportedQuantity(){
+		return realizedConsumption-domesticConsumption;
+	}
+
 	/**
 	 * 
 	 * The gap between the target level of the stock and the level of the stock that would be observed if the desired consumption is achieved. It is equal to the stock target level if the desired consumption could not be achieved.
