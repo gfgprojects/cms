@@ -860,6 +860,47 @@ Argentina moves the \verb+shareOfDemandToBeMoved+ (set to 10\%) of its total imp
 Both China and Argentina have an increase of demand from the domestic buyer and a reduction of demand from the foreign buyer. These effects balance perfectly and the market session demands are not affected. Since supply curves also remain constant because of the absence of supply shock, prices in the two sessions remain constant.   
 
 
+\subsection{Two Identical Countries, One market, Supply Shock}
+\subsubsection{Parametrization}
+Parametrization is the same as before except the following aggregate parameter:
+
+\verb+productionRateOfChangeControl=0.1+
+
+\subsubsection{Results}
+
+Different effects overlaps in this case.
+
+As it is expected, a positive production shock in a country reduces the price in its market session, and a negative shock has opposite effects. 
+
+The dynamics show however another effect: the gap between the prices in the two market sessions gradually increases, then the two prices suddenly get closer to each other. Afterwards, the gap start increasing again, and the dynamic tend to repeats over time.  
+
+This is due to the behavior of the buyers with higher price who periodically try to save by buying from the foreign producer who has a lower price. Thus, the country with higher price usually imports while the country with lower price does not.
+
+Data from buyers
+
+\includegraphics[scale=0.2]{fig_case2_qs}
+\includegraphics[scale=0.2]{fig_case2_imports}
+
+\noindent Data from market sessions
+
+\includegraphics[scale=0.2]{fig_case2_prices}
+\includegraphics[scale=0.2]{fig_case2_quantities}
+
+\begin{itemize}
+	\item [Q:] Which country has the highest price?
+	\item [A:] The one having bigger negative production shocks at the beginning.
+	\item [Q:] When the prices get suddenly closer?
+	\item [A:] When the price in the most expensive country is higher that the price in the cheapest country plus the transport cost for import minus the transport cost for domestic products.  
+	\item [Q:] Why the price get closer? 
+	\item [A:] Because for the expensive country it is convenient to move demand from domestic market to the foreign market: the domestic price decreases and the foreign price increases.
+	\item [Q:] Why the gap between price start increasing again? 
+	\item [A:] Because now that prices are close, the most expensive country find domestic product more convenient. It thus start moving back demand from the foreign to the domestic market. 
+
+\end{itemize}
+
+
+
+
 
 
 
