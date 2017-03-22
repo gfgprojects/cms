@@ -295,6 +295,8 @@ Then, the demand functions are moved as explained above according to the $\frac{
 
 Changes to the basic behaviors presented in this paragraph can be done modifying the method \verb+stepBuyingStrategy+ of the \verb+Buyer+ class.
 
+As a last note on demand curves, we highlight a slight difference between demand directed to the domestic producer and these addressed to abroad producers. We introduce a parameter for tuning the minimum importable quantity:  \verb+minimumImportQuantity+. If it is set to a positive value, quantities lower than this threshold are set to zero in the abroad demand curves. This correction does not applies for the domestic demand curve. 
+
 \subsection{Perform market sessions}
 
 We will now describe the functioning of a market session. The program will perform the following actions for all the market sessions.
