@@ -910,7 +910,29 @@ Data from buyers
 \end{itemize}
 
 
+\subsection{Two Different Countries, One market, No Supply Shock}
+\subsubsection{Parametrization}
+The best way to control the setup is to set the \verb+autarkyAtTheBeginning+ to true. In this way the prices on the various market session can be controlled by moving the demand curve intercept in the \verb+buyers.csv+ file.
 
+As an example, the following buyers file 
+
+\begin{verbatim}
+name,latitude,longitude,demand share,demand curve intercept,demand curve slope
+China,39.9390731,116.1172706,0.2,10000,500
+Argentina,-34.6155729,-58.5033604,0.1,5800,500
+\end{verbatim}
+
+and the following producers file
+
+\begin{verbatim}
+name,latitude,longitude,production share,markets,products,first production time
+China,39.9390731,120.1172706,0.2,Internet,Product A,2
+Argentina,-27.9878842,-62.6300825,0.1,Internet,Product A,8
+\end{verbatim}
+
+deliver two very close initial prices prices in the two market session.
+
+Note that the autarky is preserved by choosing a high level of the \verb+percentageOfPriceMarkDownInNewlyAccessibleMarkets+ parameter.
 
 
 
