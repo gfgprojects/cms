@@ -220,7 +220,7 @@ The two charts below shows the leftward shift of the demand curve in market sess
 \includegraphics{fig_buying_strategy-2.pdf}
 \vskip5mm
 
-Next, consider the case in which the buyer can participate in a new market session named $D$. The problem now is how to formulate the demand curve for this new session (item 3 in the list of factors a buyer account for). The idea is that the buyer is willing to buy in this new market only if the unit cost will be lower than the lowest unit cost observed in the previous period. This allows to set the demand curve in the new market session as in the rightmost chart of the following figure. 
+Next, consider the case in which the buyer can participate in a new market session named $D$. The problem now is how to formulate the demand curve for this new session (item 3 in the list of factors a buyer account for). The idea is that the buyer is willing to buy in this new market only if the unit cost will be lower than the lowest unit cost observed in the previous period. In the previous figure, the lowest unit cost is $p^+_B$ wile the transport cost for the new available producer is $c_D$. Thus the price in session $D$ should be lower than $p^+_B-c_D$. We add the parameter \gls{par:d} to tune the price mark down that convince a buyer to enter a new available market session. This allows to set the demand curve in the new market session as in the rightmost chart of the following figure. 
 \vskip5mm
 \hskip-1.5cm
 \includegraphics{fig_buying_strategy-3.pdf}
@@ -295,7 +295,7 @@ Then, the demand functions are moved as explained above according to the $\frac{
 
 Changes to the basic behaviors presented in this paragraph can be done modifying the method \verb+stepBuyingStrategy+ of the \verb+Buyer+ class.
 
-As a last note on demand curves, we highlight a slight difference between demand directed to the domestic producer and these addressed to abroad producers. We introduce a parameter for tuning the minimum importable quantity:  \verb+minimumImportQuantity+. If it is set to a positive value, quantities lower than this threshold are set to zero in the abroad demand curves. This correction does not applies for the domestic demand curve. 
+As a last note on demand curves, we highlight a slight difference between demand directed to the domestic producer and these addressed to abroad producers. We introduce a parameter for tuning the minimum importable quantity (\gls{par:minImp}. If it is set to a positive value, quantities lower than this threshold are set to zero in the abroad demand curves. This correction does not applies for the domestic demand curve. 
 
 \subsection{Perform market sessions}
 

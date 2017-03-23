@@ -219,7 +219,7 @@ e:=(5cm,1.5cm)--(9cm,1.5cm);
 draw d;
 %z3=d intersectionpoint e;
 %draw (5cm,1.5cm)-- z3 -- (xpart(z3),0) dashed evenly;
-label.lft(btex $p^+_B-c_D$ etex,(5cm,2cm));
+label.lft(btex $p^+_B-c_D-d$ etex,(5cm,2cm));
 draw(4.9cm,2cm)--(5.1cm,2cm);
 %label.bot(btex $q^*_C$ etex,(xpart(z3),0cm));
 
