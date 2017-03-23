@@ -36,6 +36,7 @@ import org.geotools.referencing.GeodeticCalculator;
 
 public class Cms_builder implements ContextBuilder<Object> {
 	public static boolean verboseFlag=false;
+	public static boolean autarkyAtTheBeginning=true;
 	Producer aProducer;
 	Buyer aBuyer;
 	Market aMarket;
@@ -64,6 +65,7 @@ public Context<Object> build(Context<Object> context) {
 
 	Parameters params = RunEnvironment.getInstance().getParameters();
 	verboseFlag=(boolean)params.getValue("verboseFlag");
+	autarkyAtTheBeginning=(boolean)params.getValue("autarkyAtTheBeginning");
 	productionCycleLength=(int)params.getValue("productionCycleLength");
 	exportPolicyDecisionInterval=(int)params.getValue("exportPolicyDecisionInterval");
 	importPolicyDecisionInterval=(int)params.getValue("importPolicyDecisionInterval");
