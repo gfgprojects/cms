@@ -48,7 +48,7 @@ public class Buyer {
 	boolean latestPeriodVisitedMarketSessionNotFound,reallocateDemand,parametersHoldeNotFound;
 	Contract aContract,aContract1;
 	DemandFunctionParameters aParametersHolder;
-	int interceptOfTheDemandFunction,initialInterceptOfTheDemandFunction,slopeOfTheDemandFunction,demandToBeMoved;
+	int interceptOfTheDemandFunction,initialInterceptOfTheDemandFunction,tmpIntercept,slopeOfTheDemandFunction,demandToBeMoved;
 
 
 
@@ -284,7 +284,17 @@ public class Buyer {
 		}
 		else{
 			for(MarketSession aMarketSession : possibleMarketSessionsList){
-				demandFunctionParametersList.add(new DemandFunctionParameters(initialInterceptOfTheDemandFunction,aMarketSession.getMarketName(),aMarketSession.getProducerName()));
+				aProducer=aMarketSession.getProducer();
+				if(name.equals(aProducer.getName())){
+					demandFunctionParametersList.add(new DemandFunctionParameters(initialInterceptOfTheDemandFunction,aMarketSession.getMarketName(),aMarketSession.getProducerName()));					
+				}
+				else{
+					Cms_builder.distanceCalculator.setStartingGeographicPoint(longitude, latitude);
+					Cms_builder.distanceCalculator.setDestinationGeographicPoint(aProducer.getLongitude(),aProducer.getLatitude());
+					distanceFromSellerInKm=(int) Math.round(Cms_builder.distanceCalculator.getOrthodromicDistance()/1000);
+					tmpIntercept=(int) Math.round(initialInterceptOfTheDemandFunction-Cms_builder.weightOfDistanceInInitializingIntercept*distanceFromSellerInKm);
+					demandFunctionParametersList.add(new DemandFunctionParameters(tmpIntercept,aMarketSession.getMarketName(),aMarketSession.getProducerName()));
+				}
 			}
 		}
 	}

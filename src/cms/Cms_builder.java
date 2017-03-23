@@ -55,7 +55,7 @@ public class Cms_builder implements ContextBuilder<Object> {
 	
 	int batchStoppingTime=2;
 	public static int productionCycleLength,exportPolicyDecisionInterval,importPolicyDecisionInterval,globalProduction,minimumImportQuantity;
-	public static double consumptionShareToSetMinimumConsumption,productionRateOfChangeControl,probabilityToAllowExport,probabilityToAllowImport,toleranceInMovingDemand,shareOfDemandToBeMoved,percentageOfPriceMarkDownInNewlyAccessibleMarkets;
+	public static double consumptionShareToSetMinimumConsumption,productionRateOfChangeControl,probabilityToAllowExport,probabilityToAllowImport,toleranceInMovingDemand,shareOfDemandToBeMoved,percentageOfPriceMarkDownInNewlyAccessibleMarkets,weightOfDistanceInInitializingIntercept;
 
 
 	@Override
@@ -69,6 +69,7 @@ public Context<Object> build(Context<Object> context) {
 	importPolicyDecisionInterval=(int)params.getValue("importPolicyDecisionInterval");
 	globalProduction=(int)params.getValue("globalProduction");
 	minimumImportQuantity=(int)params.getValue("minimumImportQuantity");
+	weightOfDistanceInInitializingIntercept=(double)params.getValue("weightOfDistanceInInitializingIntercept");
 	consumptionShareToSetMinimumConsumption=(double)params.getValue("consumptionShareToSetMinimumConsumption");
 	productionRateOfChangeControl=(double)params.getValue("productionRateOfChangeControl");
 	probabilityToAllowExport=(double)params.getValue("probabilityToAllowExport");
