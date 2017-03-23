@@ -1,6 +1,7 @@
 <?xml version="1.0" ?>
 <sweep runs="1">
 <parameter name="verboseFlag" type="constant" constant_type="boolean" value="false"></parameter>
+<parameter name="autarkyAtTheBeginning" type="constant" constant_type="boolean" value="true"></parameter>
 <parameter name="productionCycleLength" type="constant" constant_type="int" value="12"></parameter>
 <parameter name="exportPolicyDecisionInterval" type="constant" constant_type="int" value="12"></parameter>
 <parameter name="importPolicyDecisionInterval" type="constant" constant_type="int" value="12"></parameter>
