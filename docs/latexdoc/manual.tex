@@ -561,9 +561,16 @@ As one can understand from headings (first line), each line contains the followi
 	\item the buyer's longitude,
 %	\item the buyer's demand share \gls{par:s}. This is used to setup the desired consumption (\gls{var:C^d_b}) and the desired level of inventories (\gls{var:I^d_b}) as explained above. The level of inventories at the beginning ($I_{b,0}$) is set at the desired level, then they evolve as explained above.
 	\item the buyer's demand share \gls{par:s}. This is used to setup the minimum consumption (\gls{var:C^min_b}) as explained above.
-	\item the intercept of the demand curves (\gls{par:barDb0}). This is used to setup the initial level of the intercept in each market session. As explained above, the intercepts evolve during the simulation.
+	\item the intercept of the demand curves (\gls{par:barDb0}). This is used to setup the initial level of the intercept in each market session. 
+		In particular, \gls{par:barDb0} is the intercept in the domestic market for those buyers with an associated producer. The model has the possibility to tune the intercept on foreign producers by introducing the parameter \gls{par:w}. The intercept of the demand function in foreign market is set as follows:
+		\[
+			\bar{D}_{b,ms,0}=\bar{D}_{b,0}-w \times \textnormal{distance from producer in km}
+		\]
+		As explained above, the intercepts evolve during the simulation. The model has the feature of setting up the intercept for newly available markets. If the \verb+autarkyAtTheBeginning+ (\gls{par:a}) parameter is set to true the value of $\bar{D}_{b,ms,0}$ is not relevant for those buyers with an associated producer. These intercepts are set following the rules for newly available section when possible.
 	\item the slope of the demand curves (\gls{par:d_{b}}). This remains the same in all the market sessions during simulation runs.
 \end{itemize}
+
+
 
 \subsubsection{Markets}
 An example of the \verb+markets.csv+ file is the following 
