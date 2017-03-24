@@ -996,8 +996,69 @@ If we increase the demand curve intercept in China (say to 11000 an keeping that
 \includegraphics[scale=0.4]{fig_case5_quantities}
 
 
+\subsection{Three Different Countries, One market, Supply Shock}
 
 
+
+\begin{verbatim}
+----buyers.csv-----
+name,latitude,longitude,demand share,demand curve intercept,demand curve slope
+China,39.9390731,116.1172706,0.2,9000,500
+Argentina,-34.6155729,-58.5033604,0.1,4800,500
+Africa,0.1659234,22.938695,0.08,4000,500
+
+----producers.csv-----
+name,latitude,longitude,production share,markets,products,first production time
+China,39.9390731,120.1172706,0.2,Internet,Product A,2
+Argentina,-27.9878842,-62.6300825,0.1,Internet,Product A,8
+\end{verbatim}
+
+
+\vskip2mm
+\noindent
+\includegraphics[scale=0.6]{fig_case6_map}
+
+\noindent Data from buyers
+\vskip2mm
+\hskip-2cm
+\includegraphics[scale=0.4]{fig_case6_qs}
+\includegraphics[scale=0.4]{fig_case6_imports}
+
+\noindent Data from market sessions
+
+\vskip2mm
+\hskip-2cm
+\includegraphics[scale=0.4]{fig_case6_prices}
+\includegraphics[scale=0.4]{fig_case6_quantities}
+
+
+
+\subsection{Three Different Countries, two markets, Supply Shock}
+\begin{verbatim}
+---markets.csv
+City,latitude,longitude,exchanges share
+China,38.0,100.0,0.2
+Argentina,-38.0,-66.0,0.1
+
+\end{verbatim}
+
+
+\vskip2mm
+\noindent
+\includegraphics[scale=0.6]{fig_case7_map}
+
+\noindent Data from buyers
+\vskip2mm
+\hskip-2cm
+\includegraphics[scale=0.4]{fig_case7_qs}
+\includegraphics[scale=0.4]{fig_case7_imports}
+
+\noindent Data from market sessions
+
+\vskip2mm
+\hskip-2cm
+\includegraphics[scale=0.4]{fig_case7_prices}
+\includegraphics[scale=0.4]{fig_case7_quantities}
 
 
 \end{document}
