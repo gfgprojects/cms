@@ -837,12 +837,14 @@ The dynamics show how the presence of transport cost make buyers move demand tow
 
 Data from buyers
 
+\vskip2mm
 \hskip-2cm
 \includegraphics[scale=0.4]{fig_case1_qs}
 \includegraphics[scale=0.4]{fig_case1_imports}
 
 \noindent Data from market sessions
 
+\vskip2mm
 \hskip-2cm
 \includegraphics[scale=0.4]{fig_case1_prices}
 \includegraphics[scale=0.4]{fig_case1_quantities}
@@ -887,12 +889,14 @@ This is due to the behavior of the buyers with higher price who periodically try
 
 Data from buyers
 
+\vskip2mm
 \hskip-2cm
 \includegraphics[scale=0.4]{fig_case2_qs}
 \includegraphics[scale=0.4]{fig_case2_imports}
 
 \noindent Data from market sessions
 
+\vskip2mm
 \hskip-2cm
 \includegraphics[scale=0.4]{fig_case2_prices}
 \includegraphics[scale=0.4]{fig_case2_quantities}
@@ -912,7 +916,7 @@ Data from buyers
 
 \subsection{Two Different Countries, One market, No Supply Shock}
 \subsubsection{Parametrization}
-The best way to control the setup is to set the \verb+autarkyAtTheBeginning+ to true. In this way the prices on the various market session can be controlled by moving the demand curve intercept in the \verb+buyers.csv+ file.
+Producers' and buyers' size can be controlled in their configuration files. 
 
 As an example, the following buyers file 
 
@@ -930,9 +934,68 @@ China,39.9390731,120.1172706,0.2,Internet,Product A,2
 Argentina,-27.9878842,-62.6300825,0.1,Internet,Product A,8
 \end{verbatim}
 
-deliver two very close initial prices prices in the two market session.
+gives the situation represented in the following figure.
 
-Note that the autarky is preserved by choosing a high level of the \verb+percentageOfPriceMarkDownInNewlyAccessibleMarkets+ parameter.
+\vskip2mm
+\noindent
+\includegraphics[scale=0.6]{fig_case3_map}
+
+
+\subsubsection{Result: autarky}
+The best way to control the dynamics is to set the \verb+autarkyAtTheBeginning+ to true. In this case, the prices on the various market sessions can be controlled by moving the demand curve intercept in the \verb+buyers.csv+ file.
+Setting the demand curve intercept to 10000 for china and to 5800 for Argentina we get very close prices at the beginning. Furthermore, \verb+autarkyAtTheBeginning=true+ prevent exchanges between the two countries.
+With these settings, the autarky is preserved if the \\
+\verb+percentageOfPriceMarkDownInNewlyAccessibleMarkets+ parameter is not too low.
+
+\noindent Data from buyers
+\vskip2mm
+\hskip-2cm
+\includegraphics[scale=0.4]{fig_case3_qs}
+\includegraphics[scale=0.4]{fig_case3_imports}
+
+\noindent Data from market sessions
+
+\vskip2mm
+\hskip-2cm
+\includegraphics[scale=0.4]{fig_case3_prices}
+\includegraphics[scale=0.4]{fig_case3_quantities}
+
+
+\subsubsection{Result: high price in Argentina}
+
+If we increase the demand curve intercept in Argentina (say to 6800 an keeping the Chinese to 10000) we will get higher prices for this country at the beginning. As a result, this country will periodically attempt to save by importing from China when the price gap get high as explained above.
+
+\noindent Data from buyers
+\vskip2mm
+\hskip-2cm
+\includegraphics[scale=0.4]{fig_case4_qs}
+\includegraphics[scale=0.4]{fig_case4_imports}
+
+\noindent Data from market sessions
+
+\vskip2mm
+\hskip-2cm
+\includegraphics[scale=0.4]{fig_case4_prices}
+\includegraphics[scale=0.4]{fig_case4_quantities}
+
+\subsubsection{Result: high price in China}
+
+If we increase the demand curve intercept in China (say to 11000 an keeping that of Argentina to 5800) we will get higher prices for this country at the beginning. As a result,  China will periodically attempt to save by importing from Argentina when the price gap get high as explained above.
+
+\noindent Data from buyers
+\vskip2mm
+\hskip-2cm
+\includegraphics[scale=0.4]{fig_case5_qs}
+\includegraphics[scale=0.4]{fig_case5_imports}
+
+\noindent Data from market sessions
+
+\vskip2mm
+\hskip-2cm
+\includegraphics[scale=0.4]{fig_case5_prices}
+\includegraphics[scale=0.4]{fig_case5_quantities}
+
+
 
 
 
