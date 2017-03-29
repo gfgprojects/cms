@@ -129,6 +129,7 @@ We report hereafter the sequence of events that can happen in a simulation time 
 		\end{itemize}
 	\item buyers account consumption
 	\item producers produce
+	\item producers update target production
 \end{enumerate}
 
 Following this list, we will now detail the simulation loop. 
@@ -346,14 +347,35 @@ I_p=I_p+Y_p
 \]
 where \gls{var:Y_{p}} is the production realized in a period. In the present version of the model it is modeled as a white noise:
 \[
-	Y_p=Y_{b,0}(1+u)
+	Y_p=Y^T_{p}(1+u)
 \]
-where \gls{var:Y_{b,0}} is seller's $b$ average production computed as \gls{par:s_p}\gls{par:P0},  
+where \gls{var:YT} is the production target level   
 and $u$ is the realization of a uniform random variable: $u\sim U(-\textnormal{\gls{par:y}},\textnormal{\gls{par:y}})$.
 
 Differently from buyers, this update is not necessarily performed at each time step.
 As mentioned above, there are commodities whose production is not continuous. For those commodities, if the time step represents a shorter time interval than the production one, this update is performed at regular interval.
 
+\subsection{Producer Set Target Level of Production}
+
+To evolve the target level of production (\gls{var:YT}) the following parameters are used:
+\begin{itemize}
+	\item the producers prices memory length \gls{par:ppml};
+	\item the high price threshold \gls{par:phigh};
+	\item the low price threshold  \gls{par:plow};
+	\item the percentage change of target production \gls{par:targetProductionstep}
+\end{itemize}
+  
+The software first computes the average price observed by producer $p$ in the latest $ppml$ market sessions, say $\bar{p}$, then the following rule is used to update $Y^T_p$:
+\[
+	Y^T_p=\left\{\begin{array}{l l l}
+		Y^T_p(1+\delta Y^T)& if& \bar{p}>p^l\\
+		Y^T_p(1-\delta Y^T)& if& \bar{p}<p^l\\
+		Y^T_p& & othewise\\
+	\end{array}\right.
+\]
+
+The initial level of the production target \gls{var:Y_{b,0}} is computed as \gls{par:s_p}\gls{par:P0}.
+Then it is updated at regular intervals as explained above.
 
 \section{Installation}
 
