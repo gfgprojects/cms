@@ -368,7 +368,7 @@ To evolve the target level of production (\gls{var:YT}) the following parameters
 The software first computes the average price observed by producer $p$ in the latest $ppml$ market sessions, say $\bar{p}$, then the following rule is used to update $Y^T_p$:
 \[
 	Y^T_p=\left\{\begin{array}{l l l}
-		Y^T_p(1+\delta Y^T)& if& \bar{p}>p^l\\
+		Y^T_p(1+\delta Y^T)& if& \bar{p}>p^h\\
 		Y^T_p(1-\delta Y^T)& if& \bar{p}<p^l\\
 		Y^T_p& & othewise\\
 	\end{array}\right.
