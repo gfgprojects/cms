@@ -55,8 +55,8 @@ public class Cms_builder implements ContextBuilder<Object> {
 
 	
 	int batchStoppingTime=2;
-	public static int productionCycleLength,exportPolicyDecisionInterval,importPolicyDecisionInterval,globalProduction,minimumImportQuantity;
-	public static double consumptionShareToSetMinimumConsumption,productionRateOfChangeControl,probabilityToAllowExport,probabilityToAllowImport,toleranceInMovingDemand,shareOfDemandToBeMoved,percentageOfPriceMarkDownInNewlyAccessibleMarkets,weightOfDistanceInInitializingIntercept;
+	public static int productionCycleLength,exportPolicyDecisionInterval,importPolicyDecisionInterval,globalProduction,minimumImportQuantity,producersPricesMemoryLength;
+	public static double consumptionShareToSetMinimumConsumption,productionRateOfChangeControl,probabilityToAllowExport,probabilityToAllowImport,toleranceInMovingDemand,shareOfDemandToBeMoved,percentageOfPriceMarkDownInNewlyAccessibleMarkets,weightOfDistanceInInitializingIntercept,percentageChangeInTargetProduction,priceThresholdToIncreaseTargetProduction,priceThresholdToDecreaseTargetProduction;
 
 
 	@Override
@@ -70,6 +70,7 @@ public Context<Object> build(Context<Object> context) {
 	exportPolicyDecisionInterval=(int)params.getValue("exportPolicyDecisionInterval");
 	importPolicyDecisionInterval=(int)params.getValue("importPolicyDecisionInterval");
 	globalProduction=(int)params.getValue("globalProduction");
+	producersPricesMemoryLength=(int)params.getValue("producersPricesMemoryLength");
 	minimumImportQuantity=(int)params.getValue("minimumImportQuantity");
 	weightOfDistanceInInitializingIntercept=(double)params.getValue("weightOfDistanceInInitializingIntercept");
 	consumptionShareToSetMinimumConsumption=(double)params.getValue("consumptionShareToSetMinimumConsumption");
@@ -79,6 +80,9 @@ public Context<Object> build(Context<Object> context) {
 	toleranceInMovingDemand=(double)params.getValue("toleranceInMovingDemand");
 	shareOfDemandToBeMoved=(double)params.getValue("shareOfDemandToBeMoved");
 	percentageOfPriceMarkDownInNewlyAccessibleMarkets=(double)params.getValue("percentageOfPriceMarkDownInNewlyAccessibleMarkets");
+	percentageChangeInTargetProduction=(double)params.getValue("percentageChangeInTargetProduction");
+	priceThresholdToIncreaseTargetProduction=(double)params.getValue("priceThresholdToIncreaseTargetProduction");
+	priceThresholdToDecreaseTargetProduction=(double)params.getValue("priceThresholdToDecreaseTargetProduction");
 	batchStoppingTime=(int)params.getValue("batchStoppingTime");
 
 	GeographyParameters<Object> geoParams = new GeographyParameters<Object>();

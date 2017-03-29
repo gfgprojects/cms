@@ -12,12 +12,14 @@ public class Producer {
 	public double latitude,longitude,productionShare,sizeInGuiDisplay;
 	public boolean exportAllowed=true;
 	public ArrayList<Double> supplyPrices=new ArrayList<Double>();
+	public ArrayList<Double> marketSessionsPricesRecord=new ArrayList<Double>();
 	public ArrayList<ElementOfSupplyOrDemandCurve> supplyCurve=new ArrayList<ElementOfSupplyOrDemandCurve>();
 	public ArrayList<MarketSession> marketSessionsList=new ArrayList<MarketSession>();
 	public double priceEarnedInLatestMarketSession,quantitySoldInLatestMarketSession;
 	public String varietySoldInLatestMarketSession;
 	int timeOfFirstProduction=1;
-	int initialProduction,stock,numberOfMarkets,totalMarketSessions,remainingMarketSessions,offerInThisSession,production;
+	int initialProduction,targetProduction,stock,numberOfMarkets,totalMarketSessions,remainingMarketSessions,offerInThisSession,production;
+	double sumOfSellingPrices,averageSellingPrice;
 
 
 	public Producer(String producerName,double producerLatitude,double producerLongitude,double producerProductionShare,String producerMarkets,String producerVarieties,ArrayList<Double> possiblePrices){
@@ -61,6 +63,10 @@ public class Producer {
 		varietySoldInLatestMarketSession=theVariety;
 		priceEarnedInLatestMarketSession=marketPrice;
 		quantitySoldInLatestMarketSession=soldQuantity;
+		marketSessionsPricesRecord.add(new Double(priceEarnedInLatestMarketSession));
+		if(marketSessionsPricesRecord.size()>Cms_builder.producersPricesMemoryLength){
+			marketSessionsPricesRecord.remove(0);
+		}
 			if(Cms_builder.verboseFlag){System.out.println("           "+name+" state before session stock: "+stock+" remaining sessions: "+remainingMarketSessions);}
 			if(Cms_builder.verboseFlag){System.out.println("           "+name+" price "+priceEarnedInLatestMarketSession+" quantity sold in this session "+quantitySoldInLatestMarketSession+" of "+varietySoldInLatestMarketSession);}
 			stock+=-quantitySoldInLatestMarketSession;
@@ -70,15 +76,39 @@ public class Producer {
 
 	public void makeProduction(){
 			if(Cms_builder.verboseFlag){System.out.println(name+" state before production stock: "+stock+" remaining sessions: "+remainingMarketSessions);}
-			production=(new Double(initialProduction*(1+(RandomHelper.nextDouble()*2-1.0)*Cms_builder.productionRateOfChangeControl))).intValue();
+			production=(new Double(targetProduction*(1+(RandomHelper.nextDouble()*2-1.0)*Cms_builder.productionRateOfChangeControl))).intValue();
 			stock+=production;
 			remainingMarketSessions=totalMarketSessions;
 		if(Cms_builder.verboseFlag){System.out.println(name+" production realized: "+production);}
-			if(Cms_builder.verboseFlag){System.out.println(name+" state after production stock: "+stock+" remaining sessions: "+remainingMarketSessions);}
+		if(Cms_builder.verboseFlag){System.out.println(name+" state after production stock: "+stock+" remaining sessions: "+remainingMarketSessions);}
+		//plan production for the next period
+		if(marketSessionsPricesRecord.size()==Cms_builder.producersPricesMemoryLength){
+			if(Cms_builder.verboseFlag){System.out.println(name+" set target production for next production cycle");}
+			//compute average price
+			sumOfSellingPrices=0;
+			for(Double tmpDouble : marketSessionsPricesRecord){
+				sumOfSellingPrices+=tmpDouble;
+			}
+			averageSellingPrice=sumOfSellingPrices/marketSessionsPricesRecord.size();
+			//increase production if average selling price higher than threshold
+			if(averageSellingPrice>Cms_builder.priceThresholdToIncreaseTargetProduction){
+				targetProduction=(int)(targetProduction*(1+Cms_builder.percentageChangeInTargetProduction));
+				if(Cms_builder.verboseFlag){System.out.println(name+" target production increased to "+targetProduction);}
+			}
+			//increase production if average selling price higher than threshold
+			if(averageSellingPrice<Cms_builder.priceThresholdToDecreaseTargetProduction){
+				targetProduction=(int)(targetProduction*(1+Cms_builder.percentageChangeInTargetProduction));
+				if(Cms_builder.verboseFlag){System.out.println(name+" target production decreased to "+targetProduction);}
+			}
+		}
+		else{
+			if(Cms_builder.verboseFlag){System.out.println(name+" there are not enough data to set target production for next production cycle");}
+		}
 	}
 	public void setup(int producerTimeOfFirstProduction){
 		timeOfFirstProduction=producerTimeOfFirstProduction;
 		initialProduction=(int)(productionShare*Cms_builder.globalProduction);
+		targetProduction=initialProduction;
 		stock=(int)(productionShare*Cms_builder.globalProduction*((double)timeOfFirstProduction/Cms_builder.productionCycleLength));
 		totalMarketSessions=numberOfMarkets*Cms_builder.productionCycleLength;
 		remainingMarketSessions=numberOfMarkets*timeOfFirstProduction;
@@ -123,6 +153,9 @@ public class Producer {
 	}
 	public int getProduction(){
 		return production;
+	}
+	public int getTargetProduction(){
+		return targetProduction;
 	}
 
 }
