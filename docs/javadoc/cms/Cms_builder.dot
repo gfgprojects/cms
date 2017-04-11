@@ -10,70 +10,112 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// cms.Cms_builder
-	c89 [label=<<table title="cms.Cms_builder" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Cms_builder.html" target="_parent">
+	c104 [label=<<table title="cms.Cms_builder" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Cms_builder.html" target="_parent">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Cms_builder </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Cms_builder.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// cms.agents.Producer
-	c90 [label=<<table title="cms.agents.Producer" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./agents/Producer.html" target="_parent">
+	c105 [label=<<table title="cms.agents.Producer" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./agents/Producer.html" target="_parent">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Producer </td></tr>
 		</table></td></tr>
 		</table>>, URL="./agents/Producer.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// cms.agents.Market
-	c92 [label=<<table title="cms.agents.Market" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./agents/Market.html" target="_parent">
+	c107 [label=<<table title="cms.agents.Market" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./agents/Market.html" target="_parent">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Market </td></tr>
 		</table></td></tr>
 		</table>>, URL="./agents/Market.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// cms.agents.Buyer
-	c93 [label=<<table title="cms.agents.Buyer" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./agents/Buyer.html" target="_parent">
+	c108 [label=<<table title="cms.agents.Buyer" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./agents/Buyer.html" target="_parent">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Buyer </td></tr>
 		</table></td></tr>
 		</table>>, URL="./agents/Buyer.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+	//cms.Cms_builder implements repast.simphony.dataLoader.ContextBuilder<T>
+	c116:p -> c104:p [dir=back,arrowtail=empty,style=dashed];
 	// cms.Cms_builder NAVASSOC cms.agents.Producer
-	c89:p -> c90:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c104:p -> c105:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// cms.Cms_builder NAVASSOC cms.agents.Buyer
-	c89:p -> c93:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c104:p -> c108:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// cms.Cms_builder NAVASSOC cms.agents.Market
-	c89:p -> c92:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c104:p -> c107:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	// cms.Cms_builder NAVASSOC com.vividsolutions.jts.geom.Coordinate
+	c104:p -> c117:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	// cms.Cms_builder NAVASSOC com.vividsolutions.jts.geom.Point
+	c104:p -> c118:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	// cms.Cms_builder NAVASSOC repast.simphony.gis.display.RepastMapLayer
+	c104:p -> c119:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// cms.Cms_builder NAVASSOC java.util.List<E>
-	c89:p -> c101:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c104:p -> c120:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// cms.Cms_builder NAVASSOC java.lang.String
-	c89:p -> c102:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c104:p -> c121:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// cms.Cms_builder NAVASSOC java.util.ArrayList<E>
-	c89:p -> c103:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c104:p -> c122:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	// cms.Cms_builder NAVASSOC repast.simphony.util.collections.IndexedIterable<T>
+	c104:p -> c123:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// cms.agents.Producer NAVASSOC java.lang.String
-	c90:p -> c102:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c105:p -> c121:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// cms.agents.Producer NAVASSOC java.util.ArrayList<E>
-	c90:p -> c103:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c105:p -> c122:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// cms.agents.Market NAVASSOC java.lang.String
-	c92:p -> c102:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c107:p -> c121:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// cms.agents.Market NAVASSOC java.util.ArrayList<E>
-	c92:p -> c103:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c107:p -> c122:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// cms.agents.Buyer NAVASSOC java.lang.String
-	c93:p -> c102:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c108:p -> c121:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// cms.agents.Buyer NAVASSOC java.util.ArrayList<E>
-	c93:p -> c103:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c108:p -> c122:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// cms.agents.Buyer NAVASSOC cms.agents.Producer
-	c93:p -> c90:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c108:p -> c105:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	// com.vividsolutions.jts.geom.Coordinate
+	c117 [label=<<table title="com.vividsolutions.jts.geom.Coordinate" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://docs.oracle.com/javase/7/docs/api/com/vividsolutions/jts/geom/Coordinate.html" target="_parent">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> Coordinate </td></tr>
+		</table></td></tr>
+		</table>>, URL="http://docs.oracle.com/javase/7/docs/api/com/vividsolutions/jts/geom/Coordinate.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+	// com.vividsolutions.jts.geom.Point
+	c118 [label=<<table title="com.vividsolutions.jts.geom.Point" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://docs.oracle.com/javase/7/docs/api/com/vividsolutions/jts/geom/Point.html" target="_parent">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> Point </td></tr>
+		</table></td></tr>
+		</table>>, URL="http://docs.oracle.com/javase/7/docs/api/com/vividsolutions/jts/geom/Point.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// java.util.ArrayList<E>
-	c103 [label=<<table title="java.util.ArrayList" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://docs.oracle.com/javase/7/docs/api/java/util/ArrayList.html" target="_parent">
+	c122 [label=<<table title="java.util.ArrayList" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://docs.oracle.com/javase/7/docs/api/java/util/ArrayList.html" target="_parent">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> ArrayList&lt;E&gt; </td></tr>
 		</table></td></tr>
 		</table>>, URL="http://docs.oracle.com/javase/7/docs/api/java/util/ArrayList.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// java.util.List<E>
-	c101 [label=<<table title="java.util.List" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html" target="_parent">
+	c120 [label=<<table title="java.util.List" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html" target="_parent">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
 <tr><td align="center" balign="center"> List&lt;E&gt; </td></tr>
 		</table></td></tr>
 		</table>>, URL="http://docs.oracle.com/javase/7/docs/api/java/util/List.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+	// repast.simphony.dataLoader.ContextBuilder<T>
+	c116 [label=<<table title="repast.simphony.dataLoader.ContextBuilder" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://docs.oracle.com/javase/7/docs/api/repast/simphony/dataLoader/ContextBuilder.html" target="_parent">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
+<tr><td align="center" balign="center"> ContextBuilder&lt;T&gt; </td></tr>
+		</table></td></tr>
+		</table>>, URL="http://docs.oracle.com/javase/7/docs/api/repast/simphony/dataLoader/ContextBuilder.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+	// repast.simphony.util.collections.IndexedIterable<T>
+	c123 [label=<<table title="repast.simphony.util.collections.IndexedIterable" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://docs.oracle.com/javase/7/docs/api/repast/simphony/util/collections/IndexedIterable.html" target="_parent">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
+<tr><td align="center" balign="center"> IndexedIterable&lt;T&gt; </td></tr>
+		</table></td></tr>
+		</table>>, URL="http://docs.oracle.com/javase/7/docs/api/repast/simphony/util/collections/IndexedIterable.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
+	// repast.simphony.gis.display.RepastMapLayer
+	c119 [label=<<table title="repast.simphony.gis.display.RepastMapLayer" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://docs.oracle.com/javase/7/docs/api/repast/simphony/gis/display/RepastMapLayer.html" target="_parent">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> RepastMapLayer </td></tr>
+		</table></td></tr>
+		</table>>, URL="http://docs.oracle.com/javase/7/docs/api/repast/simphony/gis/display/RepastMapLayer.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// java.lang.String
-	c102 [label=<<table title="java.lang.String" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html" target="_parent">
+	c121 [label=<<table title="java.lang.String" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html" target="_parent">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> String </td></tr>
 		</table></td></tr>

@@ -9,8 +9,8 @@
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 184)">
 <title>G</title>
 <polygon fill="white" stroke="none" points="-4,4 -4,-184 96,-184 96,4 -4,4"/>
-<!-- c120 -->
-<g id="node1" class="node"><title>c120</title>
+<!-- c148 -->
+<g id="node1" class="node"><title>c148</title>
 <g id="a_node1"><a xlink:href="../agents/Buyer.html" xlink:title="&lt;TABLE&gt;">
 </a>
 </g>
@@ -23,8 +23,8 @@
 </a>
 </g>
 </g>
-<!-- c127 -->
-<g id="node2" class="node"><title>c127</title>
+<!-- c155 -->
+<g id="node2" class="node"><title>c155</title>
 <g id="a_node2"><a xlink:href="./Contract.html" xlink:title="&lt;TABLE&gt;">
 </a>
 </g>
@@ -38,13 +38,13 @@
 </a>
 </g>
 </g>
-<!-- c120&#45;&gt;c127 -->
-<g id="edge2" class="edge"><title>c120:p&#45;&gt;c127:p</title>
+<!-- c148&#45;&gt;c155 -->
+<g id="edge2" class="edge"><title>c148:p&#45;&gt;c155:p</title>
 <path fill="none" stroke="black" d="M60.9439,-152.97C56.1832,-142.22 47.6083,-122.858 41.3065,-108.628"/>
 <polygon fill="black" stroke="black" points="37.2066,-99.3698 45.3705,-106.691 39.2313,-103.942 41.2559,-108.513 41.2559,-108.513 41.2559,-108.513 39.2313,-103.942 37.1414,-110.335 37.2066,-99.3698 37.2066,-99.3698"/>
 </g>
-<!-- c128 -->
-<g id="node3" class="node"><title>c128</title>
+<!-- c156 -->
+<g id="node3" class="node"><title>c156</title>
 <g id="a_node3"><a xlink:href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html" xlink:title="&lt;TABLE&gt;">
 </a>
 </g>
@@ -57,13 +57,13 @@
 </a>
 </g>
 </g>
-<!-- c120&#45;&gt;c128 -->
-<g id="edge1" class="edge"><title>c120:p&#45;&gt;c128:p</title>
+<!-- c148&#45;&gt;c156 -->
+<g id="edge1" class="edge"><title>c148:p&#45;&gt;c156:p</title>
 <path fill="none" stroke="black" d="M66.9458,-152.835C69.8999,-142.508 74.6972,-124.127 76.5,-108 78.2776,-92.0991 78.2776,-87.9009 76.5,-72 75.176,-60.1571 72.2372,-47.098 69.5993,-36.9061"/>
 <polygon fill="black" stroke="black" points="66.9458,-27.1653 73.916,-35.6309 68.26,-31.9895 69.5742,-36.8137 69.5742,-36.8137 69.5742,-36.8137 68.26,-31.9895 65.2325,-37.9965 66.9458,-27.1653 66.9458,-27.1653"/>
 </g>
-<!-- c127&#45;&gt;c128 -->
-<g id="edge3" class="edge"><title>c127:p&#45;&gt;c128:p</title>
+<!-- c155&#45;&gt;c156 -->
+<g id="edge3" class="edge"><title>c155:p&#45;&gt;c156:p</title>
 <path fill="none" stroke="black" d="M37.0561,-80.9701C41.8168,-70.2202 50.3917,-50.8575 56.6935,-36.6276"/>
 <polygon fill="black" stroke="black" points="60.7934,-27.3698 60.8586,-38.3355 58.7687,-31.9415 56.7441,-36.5133 56.7441,-36.5133 56.7441,-36.5133 58.7687,-31.9415 52.6295,-34.6911 60.7934,-27.3698 60.7934,-27.3698"/>
 </g>

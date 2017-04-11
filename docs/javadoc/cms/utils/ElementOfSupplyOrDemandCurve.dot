@@ -10,28 +10,28 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// cms.agents.MarketSession
-	c157 [label=<<table title="cms.agents.MarketSession" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../agents/MarketSession.html" target="_parent">
+	c185 [label=<<table title="cms.agents.MarketSession" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../agents/MarketSession.html" target="_parent">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> MarketSession </td></tr>
 		</table></td></tr>
 		</table>>, URL="../agents/MarketSession.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// cms.agents.Buyer
-	c159 [label=<<table title="cms.agents.Buyer" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../agents/Buyer.html" target="_parent">
+	c187 [label=<<table title="cms.agents.Buyer" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../agents/Buyer.html" target="_parent">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Buyer </td></tr>
 		</table></td></tr>
 		</table>>, URL="../agents/Buyer.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// cms.utils.ElementOfSupplyOrDemandCurve
-	c163 [label=<<table title="cms.utils.ElementOfSupplyOrDemandCurve" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./ElementOfSupplyOrDemandCurve.html" target="_parent">
+	c191 [label=<<table title="cms.utils.ElementOfSupplyOrDemandCurve" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./ElementOfSupplyOrDemandCurve.html" target="_parent">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> ElementOfSupplyOrDemandCurve </td></tr>
 		</table></td></tr>
 		</table>>, URL="./ElementOfSupplyOrDemandCurve.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// cms.agents.MarketSession NAVASSOC cms.agents.Buyer
-	c157:p -> c159:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c185:p -> c187:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// cms.agents.MarketSession NAVASSOC cms.utils.ElementOfSupplyOrDemandCurve
-	c157:p -> c163:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c185:p -> c191:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// cms.agents.Buyer NAVASSOC cms.utils.ElementOfSupplyOrDemandCurve
-	c159:p -> c163:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c187:p -> c191:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 }
 
