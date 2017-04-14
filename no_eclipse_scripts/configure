@@ -1,0 +1,36 @@
+repastPosition=$(sed -n '1p' paths.txt)
+repastVersion=$(sed -n '2p' paths.txt)
+modelFolder=$(sed -n '3p' paths.txt)
+librariesFolder=$(sed -n '4p' paths.txt)
+find "$modelFolder/src/cms" -name "*.java" > sourcefilespath
+
+echo "javac -d $modelFolder/bin -cp $repastPosition/repast.simphony.dataLoader_$repastVersion/bin:$repastPosition/repast.simphony.core_$repastVersion/bin:$repastPosition/repast.simphony.essentials_$repastVersion/bin:$repastPosition/repast.simphony.data_$repastVersion/bin:$repastPosition/repast.simphony.gis_$repastVersion/bin:$repastPosition/repast.simphony.gis.visualization_$repastVersion/bin:$repastPosition/repast.simphony.data.ui_$repastVersion/bin:$librariesFolder/jts/lib/*:$librariesFolder/geotools-16.1/*:. @sourcefilespath" > compile
+
+echo "java -Duser.dir=$modelFolder -cp $repastPosition/repast.simphony.runtime_$repastVersion/lib/*:$repastPosition/repast.simphony.runtime_$repastVersion/bin: repast.simphony.runtime.RepastBatchMain -params $modelFolder/batch/batch_params.xml $modelFolder/cms.rs"> run_batch
+
+echo "java -Duser.dir=$modelFolder -cp $repastPosition/repast.simphony.runtime_$repastVersion/lib/*:$repastPosition/repast.simphony.runtime_$repastVersion/bin: repast.simphony.runtime.RepastMain $modelFolder/cms.rs"> run_gui
+
+echo "#command to generate doc for all classes. Replace the argument containing the underscore before uncommenting" >> run_umlgraph
+echo "#javadoc -d $modelFolder/docs/html -cp $repastPosition/repast.simphony.dataLoader_$repastVersion/bin:$repastPosition/repast.simphony.core_$repastVersion/bin:$repastPosition/repast.simphony.essentials_$repastVersion/bin:$repastPosition/repast.simphony.data_$repastVersion/bin:$repastPosition/repast.simphony.gis_$repastVersion/bin:$repastPosition/repast.simphony.gis.visualization_$repastVersion/bin:$repastPosition/repast.simphony.data.ui_$repastVersion/bin:$librariesFolder/jts/lib/*:$librariesFolder/geotools-16.1/*:. -overview path_to_overview -sourcepath $modelFolder/src  -docletpath path_to_umlgraph_jar -doclet org.umlgraph.doclet.UmlGraphDoc -collapsible -inferrel list_of_packages_separed_by_a_white_space" >> run_umlgraph
+
+
+echo "" >> run_umlgraph
+echo "#command to generate a graph file for a set of packges to be post processed with graphviz dot" >> run_umlgraph
+echo "#Replace the argument containing the underscore before uncommenting" >> run_umlgraph
+echo "#javadoc -d $modelFolder/docs/html -cp $repastPosition/repast.simphony.dataLoader_$repastVersion/bin:$repastPosition/repast.simphony.core_$repastVersion/bin:$repastPosition/repast.simphony.essentials_$repastVersion/bin:$repastPosition/repast.simphony.data_$repastVersion/bin:$repastPosition/repast.simphony.gis_$repastVersion/bin:$repastPosition/repast.simphony.gis.visualization_$repastVersion/bin:$repastPosition/repast.simphony.data.ui_$repastVersion/bin:$librariesFolder/jts/lib/*:$librariesFolder/geotools-16.1/*:. -sourcepath $modelFolder/src  -docletpath path_to_umlgraph_jar -doclet org.umlgraph.doclet.UmlGraph  -inferreltype assoc -inferrel -nodefillcolor lightyellow list_of_packages_separed_by_a_white_space"  >> run_umlgraph
+echo "#post process the graph.dot file with the following command" >> run_umlgraph
+echo "#dot -Tjpg -o tmp.jpg graph1.dot" >> run_umlgraph
+echo "#if no output file is produced try the following commend" >> run_umlgraph
+echo "#sed 's/<any>/any/g' graph.dot > graph1.dot" >> run_umlgraph
+
+echo "" >> run_umlgraph
+echo "#command to generate a graph file for a single class to be post processed with graphviz dot" >> run_umlgraph
+echo "#Replace the argument containing the underscore before uncommenting" >> run_umlgraph
+echo "#javadoc -d $modelFolder/docs/html -cp $repastPosition/repast.simphony.dataLoader_$repastVersion/bin:$repastPosition/repast.simphony.core_$repastVersion/bin:$repastPosition/repast.simphony.essentials_$repastVersion/bin:$repastPosition/repast.simphony.data_$repastVersion/bin:$repastPosition/repast.simphony.gis_$repastVersion/bin:$repastPosition/repast.simphony.gis.visualization_$repastVersion/bin:$repastPosition/repast.simphony.data.ui_$repastVersion/bin:$librariesFolder/jts/lib/*:$librariesFolder/geotools-16.1/*:. -docletpath path_to_umlgraph_jar -doclet org.umlgraph.doclet.UmlGraph  -private -all -nodefillcolor lightyellow path_to_java_class/class_file.java"  >> run_umlgraph
+echo "#post process the graph.dot file with the following command" >> run_umlgraph
+echo "#dot -Tjpg -o tmp.jpg graph1.dot" >> run_umlgraph
+echo "#if no output file is produced try the following commend" >> run_umlgraph
+echo "#sed 's/<any>/any/g' graph.dot > graph1.dot" >> run_umlgraph
+
+
+
