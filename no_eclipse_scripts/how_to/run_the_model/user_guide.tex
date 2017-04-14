@@ -4,18 +4,19 @@
 
 \begin{center}
 	{\bf
-	Instruction manual for 
-
-An Agent-based model of the economy with consumer credit
+	Running the Commodity Markets Simulator without eclipse
 }
 
 by
 
 %Paola D'Orazio and Gianfranco Giulioni
-Anonymised for review
+Gianfranco Giulioni
 \end{center}
 
 
+
+
+\section{Installation}
 This document reports the instructions for installing and running the model in Unix like Operating Systems using a command line approach. Therefore, the instructions will be also valid for Linux and recent Mac machines.
 
 The examples and the command line outcomes given below relate to a user named \verb+coolcoder+. You should easily be able to adapt the paths to you own user account. 
@@ -26,76 +27,126 @@ The following colors are used:\\
 \color{green}green \color{black} to denote an executable file in command line output;\\
 \color{magenta}magenta \color{black} to denote the contents of text files.\\
 
-\section{Install Repast}
+\subsection{Java Development Kit (JDK)}
+Follow the instructions given in the previous chapter to install or update JDK if needed. 
+\subsection{Repast Simphony (RS)}
+Also in this case, you can follow the instructions given in the previous chapter. However, the process therein described implies the installation of eclipse. We will give here an alternative way to install the RS library and using it directly.
 
-Follow the instruction in
-\url{http://repast.sourceforge.net}
-to install the newest Repast Simphony release.
+First of all you have to download all the packages which make up the RS library.\footnote{Note that the installation process described in RS web site implies downloading the RS library and put them in the eclipse plugins folder.}
 
-\section{Install the model}
+You can download all the jars by using the \verb+wget+ command with the recursion option (\verb+-r+).\footnote{If the command is not available in your system you have to install it.}
 
-Download the model installation bundle \verb+modelJasss.zip+ from \\
-\url{https://www.openabm.org/model/4990}
+The following steps have to be taken to install RS.
 
-Suppose the model destination folder is called \verb+models+ and has the following absolute path: \\
+Suppose, for example, you have the directory \verb+/Users/coolcoder/abm_java_libraries+. Create the directory\\
+\verb+mkdir repast+\\
+inside this directory an move into it\\
+\verb+cd repast+\\
+
+Download the files from the RS repository\\
+%\verb+wget -r http://mirror.anl.gov/repastsimphony/plugins/+\\
+\verb+wget -r -l1 --no-parent -nd --no-check-certificate +\\
+\verb+             https://repo.anl-external.org/repos/repast/plugins/+\\
+
+Some minutes are needed to complete the download.% Press \verb/ctrl+c/ to release the cursor.
+
+The directory now should contain many jar files.
+
+Give the following command:\\
+\verb+ls *.jar|awk -F'.jar' '{print "unzip "$0" -d "$1}'|sh+
+
+Each jar file now has the corresponding folder.
+Remove all the jar files by typing:\\
+\verb+rm *.jar+
+
+Now the RS library is installed in your system and is ready to be used.
+To test your installation type the command:\\
+\begin{verbatim}
+java -cp /Users/coolcoder/abm_java_libraries/
+               repast/repast.simphony.runtime_<version>/lib/*:
+         /Users/coolcoder/abm_java_libraries/
+               repast/repast.simphony.runtime_<version>/bin 
+         repast.simphony.runtime.RepastMain
+\end{verbatim}
+where you have to replace \verb+<version>+ with the version identification number (for example \verb+2.3.0+).
+
+After a while, the RS GUI window should pop up.
+
+Close the window because we will run the model in BATCH mode only.
+
+
+
+\subsection{CMS}
+
+Now you have to choose or create the CMS destination folder.
+Suppose it is called \verb+models+ and has the following absolute path: \\
 \verb+/Users/coolcoder/models+
 
-Move \verb+modelJasss.zip+ to this directory and \verb+cd+ into it.
+You can use again the two methods described in the previous chapter (git or compressed archive) to install the model. 
 
-The content of the folder is
-
-\vskip2mm
-\noindent\verb+~/models$ +\color{red}\verb+ls+ \color{blue}\\
-\verb+modelJass.zip+
-\color{black}
+Briefly, using git, change directory in \verb+models+ and give the following command:
 
 \vskip2mm
-Extract the zip file:
+\noindent\verb+~/models$ +\color{red}\verb+git clone https://github.com/gfgprojects/cms.git+ \color{black}
 
 \vskip2mm
-\noindent\verb+~/models$ +\color{red}\verb+unzip modelJasss.zip+ \color{blue}\\
-\verb+Archive:  modelJasss.zip+\\
-\verb+   creating: modelJasss/+\\
-\verb+   creating: modelJasss/bin/+\\
-\verb+   creating: modelJasss/bin/modelJasss/+\\
-\verb+  inflating: modelJasss/bin/modelJasss/Bank.class+\\ 
-\verb+  inflating: modelJasss/bin/modelJasss/Consumer.class+\\ 
-\verb+  . . .+\\
-\verb+  . . .+\\
-\color{black}
-\noindent\verb+~/models$ +\color{red}\verb+ls+ \color{blue}\\
-\verb+modelJasss+\\
-\verb+modelJasss.zip+\\
-\color{black}
+That's it!
 
-\verb+cd+ into the \verb+modelJasss+ directory and get its absolute path  
+Otherwise, you have to download the zip archive: point your browser to\\ 
+\verb+https://github.com/gfgprojects/cms+\\
+Click on the ``clone or download'' button and choose ``download zip''.
+
+This will download the \verb+cms-master.zip+ file in your system.
+
+Move the archive in\\
+\verb+/Users/coolcoder/models+
+
+Unpacking it, the \verb+cms-master+ folder is created.
+
+Rename the \verb+cms-master+ in \verb+cms+.
+
+Delete the \verb+cms-master.zip+ file.
+
+\vskip1cm
+Regardless of the method used, you should have the following directories tree: 
+
+\begin{verbatim}
+/Users/coolcoder/models/cms
+/Users/coolcoder/models/cms/src
+/Users/coolcoder/models/cms/docs
+/Users/coolcoder/models/cms/cms.rs
+/Users/coolcoder/models/cms/scenario
+\end{verbatim}
+
+Now, \verb+cd+ into the \verb+cms+ directory and get its absolute path  
 
 
 
 \vskip2mm
-\noindent\verb+~/models$ +\color{red}\verb+cd modelJasss+ \color{black}\\
-\verb+~/models/modelJasss$ +\color{red}\verb+pwd+ \color{blue}\\
-\verb+/Users/coolcoder/models/modelJasss+
+\noindent\verb+~/models$ +\color{red}\verb+cd cms+ \color{black}\\
+\verb+~/models/cms$ +\color{red}\verb+pwd+ \color{blue}\\
+\verb+/Users/coolcoder/models/cms+
 \color{black}
 \vskip2mm
 
 
 Save this information because it will be used in the configuration phase. \\ We will refer to it as the model base directory.
 
+\section{Testing the installation}
 
-\section{Configuration}
+\subsection{Configuration}
 
 Create a new directory outside the model base directory. \\ We will refer to it as the data directory.
 
-Suppose the data directory is called \verb+modelJasssData+ and has the following absolute path: \\
-\verb+/Users/coolcoder/Documents/modelJasssData+
+Suppose the data directory is called \verb+cms_data+ and has the following absolute path: \\
+\verb+/Users/coolcoder/Documents/cms_data+
 
 \verb+cd+ into the data directory.
 
 Find out the Repast installation directory:
 
 \vskip2mm
-\noindent\verb+~/Documents/modelJasssData$ +\color{red}\verb+sudo find / -name "repast.simphony.core*"+ \color{black}
+\noindent\verb+~/Documents/cms_data$ +\color{red}\verb+sudo find / -name "repast.simphony.core*"+ \color{black}
 \verb+Password:+ \\ \color{blue}
 \verb+/Users/coolcoder/abm_java_libraries/repast/repast.simphony.core_2.3.1 +\\
 \color{black}
@@ -103,13 +154,14 @@ Find out the Repast installation directory:
 
 In this expression, \verb+/Users/coolcoder/abm_java_libraries/repast+ is repast base directory and \verb+2.3.1+ is repast version.
 
-Prepare a text file named \verb+paths.txt+ having the repast base directory in its first line, repast version in the second line and the model base directory in the third line:
+Prepare a text file named \verb+paths.txt+ having the repast base directory in its first line, repast version in the second line, the model base directory in the third line and the directory where the other needed java libraries are located:
 
 \color{magenta}
 \vskip2mm \noindent
 \verb+/Users/coolcoder/abm_java_libraries/repast+ \\
 \verb+2.3.1+ \\
-\verb+/Users/coolcoder/models/modelJasss+
+\verb+/Users/coolcoder/models/cms+
+\verb+/Users/coolcoder/abm_java_libraries+ \\
 \vskip2mm
 
 \color{black}
@@ -117,33 +169,31 @@ You must adapt the paths and the repast version of this file to your settings.
 
 Save this file into the data directory.
 
-\vskip2mm
-Download the \verb+configure.txt+ file from \\
-\url{https://www.openabm.org/model/4990}
+Move the \verb+configure+ file from the cms scenario folder to the data directory:
 
-Move it in the data folder.
+\verb+mv /Users/coolcoder/models/cms/scenario/configure . +
+
 
 The contents of your data folder is now:
 
 \vskip2mm
-\noindent\verb+~/Documents/modelJasssData$ +\color{red}\verb+ls+ \color{blue}\\
-\verb+configure.txt+ \\
+\noindent\verb+~/Documents/cms_data$ +\color{red}\verb+ls+ \color{blue}\\
+\verb+configure+ \\
 \verb+paths.txt+
 \color{black}
 
 \vskip2mm
-Rename the \verb+configure+ file, make it executable and run it:
+Make the \verb+configure+ file executable and run it:
 
 \vskip2mm
-\noindent\verb+~/Documents/modelJasssData$ +\color{red}\verb|mv configure.txt configure| \color{black}\\
-\noindent\verb+~/Documents/modelJasssData$ +\color{red}\verb|chmod +x configure| \color{black}\\
-\verb+~/Documents/modelJasssData$ +\color{red}\verb|./configure| \color{black}
+\noindent\verb+~/Documents/cms_data$ +\color{red}\verb|chmod +x configure| \color{black}\\
+\verb+~/Documents/cms_data$ +\color{red}\verb|./configure| \color{black}
 
 \vskip2mm
 This creates three additional files:
 
 \vskip2mm
-\noindent\verb+~/Documents/modelJasssData$ +\color{red}\verb+ls+ \color{blue}\\
+\noindent\verb+~/Documents/cms_data$ +\color{red}\verb+ls+ \color{blue}\\
 \verb+compile+\\ \color{green}
 \verb+configure+\\ \color{blue}
 \verb+paths.txt+ \\
@@ -155,115 +205,35 @@ This creates three additional files:
 Make the \verb+compile+ and \verb+run_batch+ files executable:
 
 \vskip2mm
-\noindent\verb+~/Documents/modelJasssData$ +\color{red}\verb|chmod +x compile| \color{black}\\
-\verb+~/Documents/modelJasssData$ +\color{red}\verb|chmod +x run_batch| \color{black}
+\noindent\verb+~/Documents/cms_data$ +\color{red}\verb|chmod +x compile| \color{black}\\
+\verb+~/Documents/cms_data$ +\color{red}\verb|chmod +x run_batch| \color{black}
 \vskip2mm
 
-\section{Compile and run the model}
 
-To compile the model type
-\vskip2mm
-\noindent\verb+~/Documents/modelJasssData$ +\color{red}\verb|./compile| \color{black}
-\vskip2mm
+\subsection{Running CMS}
 
-To run the model type
+We recall that the streamlined installation was built to run the model in BATCH mode in a fast way avoiding the slowness of the batch wizard. Therefore we will only give instruction for the command line batch run.
+
+First of all compile the model by typing:
 \vskip2mm
-\noindent\verb+~/Documents/modelJasssData$ +\color{red}\verb|./run_batch| \color{black}
+\noindent\verb+~/Documents/cms_data$ +\color{red}\verb|./compile| \color{black}
 \vskip2mm
 
-When the run completes, you will find the files containing the output of your simulation inside the data directory.
-The data file have the \verb+z_+ prefix for ease of their identification: 
-
+The batch run is started with the following command:
 \vskip2mm
-\noindent\verb+~/Documents/modelJasssData$ +\color{red}\verb|ls| \\ \color{green}
-\verb+compile+ \\
-\verb+configure+ \\ \color{blue}
-\verb+paths.txt+ \\ \color{green}
-\verb+run_batch+ \\ \color{blue}
-\verb+sourcefilespath+ \\
-\verb+z_consumersAskedCredit_run1.txt+ \\
-\verb+z_consumersAvailableIncome_run1.txt+ \\
-\verb+z_consumersConsumption_run1.txt+ \\
-\verb+z_consumersEmployment_run1.txt+ \\
-\verb+z_consumersObtainedCredit_run1.txt+ \\
-\verb+z_consumersPossibleAdditionalConsumption_run1.txt+ \\
-\verb+z_consumersProductivity_run1.txt+ \\
-\verb+z_consumersRho_run1.txt+ \\
-\verb+z_consumersWage_run1.txt+ \\
-\verb+z_consumersWealth_run1.txt+ \\
-\verb+z_datiBanca_run1.txt+ \\
-\verb+z_datiFirm_run1.txt+ \\
+\noindent\verb+~/Documents/cms_data$ +\color{red}\verb|./run_batch| \color{black}
 \vskip2mm
-\color{black}
 
-Use your favorite data handling software to load the data and make analysis.
-
-
-We provide hereafter the code to load the data in \verb+R+: 
-
-\begin{verbatim}
-#change the following instruction with the absolute path of the data folder 
-#(only if R current working directory is different from your data folder)
-dir<-"./"
-#Load aggregate data
-bankdata1<-read.csv(paste(dir,"z_datiBanca_run1.txt",sep=""),sep=";")
-bankdata<-bankdata1[-dim(bankdata1)[1],]
-firmdata1<-read.csv(paste(dir,"z_datiFirm_run1.txt",sep=""),sep=";")
-firmdata<-bankdata1[-dim(bankdata1)[1],]
-
-#Load microeconomic data
-consumersWealth1<-read.csv(paste(dir,"z_consumersWealth_run1.txt",sep=""),
-                                                        header=F,sep=";")
-consumersWealth<-consumersWealth1[,-dim(consumersWealth1)[2]]
-consumersWage1<-read.csv(paste(dir,"z_consumersWage_run1.txt",sep=""),
-                                                        header=F,sep=";")
-consumersWage<-consumersWage1[,-dim(consumersWage1)[2]]
-consumersConsumption1<-read.csv(paste(dir,"z_consumersConsumption_run1.txt",sep=""),
-                                                        header=F,sep=";")
-consumersConsumption<-consumersConsumption1[,-dim(consumersConsumption1)[2]]
-consumersEmployment1<-read.csv(paste(dir,"z_consumersEmployment_run1.txt",sep=""),
-                                                                header=F,sep=";")
-consumersEmployment<-consumersEmployment1[,-dim(consumersEmployment1)[2]]
-\end{verbatim}
-
-
-\section{Changing parameters}
+\subsection{Changing parameters}
 
 Open the\\
-\verb+/Users/coolcoder/models/modelJasss/scenario/batch_parameters.xml+ \\
+\verb+/Users/coolcoder/models/cms/scenario/batch_parameters.xml+ \\
 file with your favorite text editor. Change the parameter values and save the file.
 
 Run the model with the command
 \vskip2mm
-\noindent\verb+~/Documents/modelJasssData$ +\color{red}\verb|./run_batch| \color{black}
+\noindent\verb+~/Documents/cms_data$ +\color{red}\verb|./run_batch| \color{black}
 \vskip2mm
-
-\subsection*{About parameters}
-
-\subsubsection*{The random seed}
-In the parameter file included in the \verb+modelJasss.zip+, the random seed is set.
-This implies that each run of the model delivers exactly the same results.
-
- 
-If you need different results in different run, you have to comment the seed setting line as follows:
-
-\color{magenta}
-\begin{verbatim}
-<!--  begin comment
-<parameter name="randomSeed" type="constant" constant_type="int" value="1435673">
-</parameter>
-end comment -->
-\end{verbatim}
-\color{black}
-
-\subsubsection*{Saving data}
-In the parameter file included in the \verb+modelJasss.zip+, the options to save households' individual data is enabled.
-
-In case you want to go for an aggregate analysis, you can disable these options.
-This will speed up your simulations and will avoid recording huge data files especially when you set up your simulation with a large number of agents and/or you set the stopping time to a large values. 
-
-To disable these options change \color{magenta}value=''true'' \color{black} in \color{magenta}value=''false'' \color{black} in the setting line for the parameters whose name start with \verb+saveToFile+ expression.
-
 
 
 \end{document}
