@@ -513,6 +513,23 @@ Use the RS GUI window intuitive buttons to interact with the simulation. A more 
 
 Now the model has no dynamic monitoring graphical elements, so one can check the progress of the simulation watching at the tick count number in upper right corner of the RS GUI window or looking at the text output in the console panel of Eclipse window as shown in the following figure. 
 
+\textbf{If anything happens}
+
+If anything happens, you have to integrate the scenario tree.
+
+\textit{Adding the Data Loader}
+
+Right click the \verb+Data Loaders+ item and click \verb+Set Data Loader+. Choose the \verb+Custom ContextBuilder Implementation+ item in the following window. Click the next button. A new window opens with a proposal for a class name. Accept all the following proposals of the wizard.
+
+\textit{Adding the geography projection}
+Edit the \verb+context.xml+ file in the scenario folder (\verb+cms.rs+) and add the line
+
+\verb+<projection id="Geography" type="geography" />+
+
+between \verb+<context id=''. . .''>+ and \verb+</context>+.
+
+This will allow to setup a \verb+Display+ in the scenario tree as explained below.
+
 \vskip2mm
 \noindent
 \includegraphics[scale=0.35]{fig_cms_rs_gui7}
@@ -1083,6 +1100,193 @@ Argentina,-38.0,-66.0,0.1
 \hskip-2cm
 \includegraphics[scale=0.4]{fig_case7_prices}
 \includegraphics[scale=0.4]{fig_case7_quantities}
+
+\newpage
+
+\section{Two Different Countries, two markets}
+
+\includegraphics[scale=0.6]{fig_2_2_2_map}
+
+\newpage
+\subsection{Two Different Countries, two markets, no Supply Shock}
+high advantages from import needed
+
+\vskip2mm
+\hskip-1cm
+\includegraphics[scale=0.5]{fig_case01_consumption}
+\includegraphics[scale=0.5]{fig_case01_import}
+
+\noindent
+\vskip-5mm
+\hskip-1cm
+\includegraphics[scale=0.5]{fig_case01_prices}
+\includegraphics[scale=0.5]{fig_case01_quantities}
+
+\noindent
+\vskip-5mm
+\hskip-1cm
+\includegraphics[scale=0.5]{fig_case01_price}
+\includegraphics[scale=0.5]{fig_case01_production}
+
+\newpage
+\subsection{Two Different Countries, two markets, low Supply Shock}
+high advantages from import needed
+
+\vskip2mm
+\hskip-1cm
+\includegraphics[scale=0.5]{fig_case02_consumption}
+\includegraphics[scale=0.5]{fig_case02_import}
+
+\noindent
+\vskip-5mm
+\hskip-1cm
+\includegraphics[scale=0.5]{fig_case02_prices}
+\includegraphics[scale=0.5]{fig_case02_quantities}
+
+\noindent
+\vskip-5mm
+\hskip-1cm
+\includegraphics[scale=0.5]{fig_case02_price}
+\includegraphics[scale=0.5]{fig_case02_production}
+
+\newpage
+
+
+\subsection{Two Different Countries, two markets, low Supply Shock}
+medium advantages from import needed
+
+\vskip2mm
+\hskip-1cm
+\includegraphics[scale=0.5]{fig_case03_consumption}
+\includegraphics[scale=0.5]{fig_case03_import}
+
+\noindent
+\vskip-5mm
+\hskip-1cm
+\includegraphics[scale=0.5]{fig_case03_prices}
+\includegraphics[scale=0.5]{fig_case03_quantities}
+
+\noindent
+\vskip-5mm
+\hskip-1cm
+\includegraphics[scale=0.5]{fig_case03_price}
+\includegraphics[scale=0.5]{fig_case03_production}
+
+\newpage
+
+\subsection{Two Different Countries, two markets, low Supply Shock}
+low advantages from import needed
+
+\vskip2mm
+\hskip-1cm
+\includegraphics[scale=0.5]{fig_case04_consumption}
+\includegraphics[scale=0.5]{fig_case04_import}
+
+\noindent
+\vskip-5mm
+\hskip-1cm
+\includegraphics[scale=0.5]{fig_case04_prices}
+\includegraphics[scale=0.5]{fig_case04_quantities}
+
+\noindent
+\vskip-5mm
+\hskip-1cm
+\includegraphics[scale=0.5]{fig_case04_price}
+\includegraphics[scale=0.5]{fig_case04_production}
+
+\newpage
+
+\subsection{Two Different Countries, two markets, high Supply Shock}
+medium advantages from import needed
+
+\vskip2mm
+\hskip-1cm
+\includegraphics[scale=0.5]{fig_case05_consumption}
+\includegraphics[scale=0.5]{fig_case05_import}
+
+\noindent
+\vskip-5mm
+\hskip-1cm
+\includegraphics[scale=0.5]{fig_case05_prices}
+\includegraphics[scale=0.5]{fig_case05_quantities}
+
+\noindent
+\vskip-5mm
+\hskip-1cm
+\includegraphics[scale=0.5]{fig_case05_price}
+\includegraphics[scale=0.5]{fig_case05_production}
+
+\newpage
+
+\subsection{Two Different Countries, two markets, high Supply Shock}
+high advantages from import needed
+
+\vskip2mm
+\hskip-1cm
+\includegraphics[scale=0.5]{fig_case06_consumption}
+\includegraphics[scale=0.5]{fig_case06_import}
+
+\noindent
+\vskip-5mm
+\hskip-1cm
+\includegraphics[scale=0.5]{fig_case06_prices}
+\includegraphics[scale=0.5]{fig_case06_quantities}
+
+\noindent
+\vskip-5mm
+\hskip-1cm
+\includegraphics[scale=0.5]{fig_case06_price}
+\includegraphics[scale=0.5]{fig_case06_production}
+
+\newpage
+
+\subsection{Two Different Countries, two markets, high Supply Shock}
+low advantages from import needed
+
+\vskip2mm
+\hskip-1cm
+\includegraphics[scale=0.5]{fig_case07_consumption}
+\includegraphics[scale=0.5]{fig_case07_import}
+
+\noindent
+\vskip-5mm
+\hskip-1cm
+\includegraphics[scale=0.5]{fig_case07_prices}
+\includegraphics[scale=0.5]{fig_case07_quantities}
+
+\noindent
+\vskip-5mm
+\hskip-1cm
+\includegraphics[scale=0.5]{fig_case07_price}
+\includegraphics[scale=0.5]{fig_case07_production}
+
+\newpage
+
+\subsection{Two producers, three buyers, two markets}
+
+\includegraphics[scale=0.6]{fig_2_2_3_map}
+
+After a small and medium supply shock, prices increase an then return to the previous level.
+
+After a big shock, prices do not return to their previous level, but they are persistently higher.i
+
+
+\newpage
+\subsection{Two producers, three buyers, two markets, small Supply Shock}
+
+\includegraphics[scale=0.55]{figs_small}
+
+\subsection{Two producers, three buyers, two markets, medium Supply Shock}
+
+\includegraphics[scale=0.55]{figs_medium}
+
+\subsection{Two producers, three buyers, two markets, big Supply Shock}
+
+\includegraphics[scale=0.55]{figs_large}
+
+
+
+
 
 
 \end{document}
