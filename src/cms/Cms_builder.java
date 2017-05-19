@@ -1,3 +1,22 @@
+/*
+Copyright 2017 Gianfranco Giulioni
+
+This file is part of the Commodity Market Simulator (CMS):
+
+    CMS is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    CMS is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with CMS.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 package cms;
 
 import cms.agents.Producer;
@@ -56,7 +75,7 @@ public class Cms_builder implements ContextBuilder<Object> {
 	
 	int batchStoppingTime=2;
 	public static int productionCycleLength,exportPolicyDecisionInterval,importPolicyDecisionInterval,globalProduction,minimumImportQuantity,producersPricesMemoryLength;
-	public static double consumptionShareToSetMinimumConsumption,productionRateOfChangeControl,probabilityToAllowExport,probabilityToAllowImport,toleranceInMovingDemand,shareOfDemandToBeMoved,percentageOfPriceMarkDownInNewlyAccessibleMarkets,weightOfDistanceInInitializingIntercept,percentageChangeInTargetProduction,priceThresholdToIncreaseTargetProduction,priceThresholdToDecreaseTargetProduction;
+	public static double consumptionShareToSetMinimumConsumption,consumptionShareToSetMaximumConsumption,productionRateOfChangeControl,probabilityToAllowExport,probabilityToAllowImport,toleranceInMovingDemand,shareOfDemandToBeMoved,percentageOfPriceMarkDownInNewlyAccessibleMarkets,weightOfDistanceInInitializingIntercept,percentageChangeInTargetProduction,priceThresholdToIncreaseTargetProduction,priceThresholdToDecreaseTargetProduction;
 
 
 	@Override
@@ -74,6 +93,7 @@ public Context<Object> build(Context<Object> context) {
 	minimumImportQuantity=(int)params.getValue("minimumImportQuantity");
 	weightOfDistanceInInitializingIntercept=(double)params.getValue("weightOfDistanceInInitializingIntercept");
 	consumptionShareToSetMinimumConsumption=(double)params.getValue("consumptionShareToSetMinimumConsumption");
+	consumptionShareToSetMaximumConsumption=(double)params.getValue("consumptionShareToSetMaximumConsumption");
 	productionRateOfChangeControl=(double)params.getValue("productionRateOfChangeControl");
 	probabilityToAllowExport=(double)params.getValue("probabilityToAllowExport");
 	probabilityToAllowImport=(double)params.getValue("probabilityToAllowImport");
