@@ -1,3 +1,22 @@
+/*
+Copyright 2017 Gianfranco Giulioni
+
+This file is part of the Commodity Market Simulator (CMS):
+
+    CMS is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    CMS is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with CMS.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 package cms.agents;
 import cms.Cms_builder;
 import cms.agents.MarketSession;
@@ -6,7 +25,11 @@ import cms.agents.Producer;
 import java.util.ArrayList;
 
 import repast.simphony.context.Context;
-
+/**
+ * A market class is a container for the various market sessions
+ * @author Gianfranco Giulioni
+ *
+ */
 public class Market {
 	public String name;
 	public double latitude,longitude,exchangesShare,sizeInGuiDisplay;

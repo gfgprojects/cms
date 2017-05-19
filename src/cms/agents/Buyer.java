@@ -1,3 +1,22 @@
+/*
+Copyright 2017 Gianfranco Giulioni
+
+This file is part of the Commodity Market Simulator (CMS):
+
+    CMS is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    CMS is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with CMS.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 package cms.agents;
 
 import cms.Cms_builder;
@@ -18,11 +37,11 @@ import repast.simphony.essentials.RepastEssentials;
 /**
  * The Buyer class hold all the relevant variable for a Buyer; It has methods for performing the Buyer's actions. The evolution of buying strategy and of the import policy are of particular importance.  
  * 
- * @author giulioni
+ * @author Gianfranco Giulioni
  *
  */
 public class Buyer {
-	public String name;
+	public String name,originOfConsumedResources;
 	public double latitude,longitude,demandShare,sizeInGuiDisplay;
 	public boolean importAllowed=true;
 	public ArrayList<Double> demandPrices=new ArrayList<Double>();
@@ -43,7 +62,7 @@ public class Buyer {
 	public double quantityBoughtInLatestMarketSession;
 	public double pricePayedInLatestMarketSession;
 	public String varietyBoughtInLatestMarketSession,latestMarket;
-	public int minimumConsumption,realizedConsumption,domesticConsumption,gapToTarget,gapToChargeToEachPossibleMarketSession,stock,domesticStock,demandToBeReallocated;
+	public int averageConsumption,minimumConsumption,maximumConsumption,realizedConsumption,domesticConsumption,gapToTarget,gapToChargeToEachPossibleMarketSession,stock,domesticStock,demandToBeReallocated;
 	Producer aProducer;
 	boolean latestPeriodVisitedMarketSessionNotFound,reallocateDemand,parametersHoldeNotFound;
 	Contract aContract,aContract1;
@@ -57,14 +76,18 @@ public class Buyer {
 		latitude=buyerLatitude;
 		longitude=buyerLongitude;
 		demandShare=buyerDemandShare;
-		minimumConsumption=(int)(Cms_builder.consumptionShareToSetMinimumConsumption*demandShare*Cms_builder.globalProduction/Cms_builder.productionCycleLength);
+		averageConsumption=(int)(demandShare*Cms_builder.globalProduction/Cms_builder.productionCycleLength);
+		minimumConsumption=(int)(Cms_builder.consumptionShareToSetMinimumConsumption*averageConsumption);
+		maximumConsumption=(int)(Cms_builder.consumptionShareToSetMaximumConsumption*averageConsumption);
+
 //		stockTargetLevel=(int)(desiredConsumption*Cms_builder.consumptionShareToSetInventoriesTarget);
 //		stock=stockTargetLevel;
 		stock=0;
 		domesticStock=0;
 		sizeInGuiDisplay=demandShare*100;
 		initialInterceptOfTheDemandFunction=demandFunctionIntercept;
-		slopeOfTheDemandFunction=demandFunctionSlope;
+//		slopeOfTheDemandFunction=demandFunctionSlope;
+		slopeOfTheDemandFunction=(int)(initialInterceptOfTheDemandFunction/possiblePrices.get(possiblePrices.size()-1));
 		if(Cms_builder.verboseFlag){System.out.println("Created buyer:    "+name+", latitude: "+latitude+", longitude: "+longitude+" minimum consumption "+minimumConsumption+" stock "+stock);}
 		demandPrices=possiblePrices;
 	}
@@ -413,18 +436,25 @@ public class Buyer {
 					demandPriceLowerThanMarketPrice=false;
 				}
 			}
-			quantityBoughtInLatestMarketSession=tmpElement.getQuantity()*rescalingFactor;
-			pricePayedInLatestMarketSession=tmpElement.getPrice();
+			if(demandPriceLowerThanMarketPrice){
+				quantityBoughtInLatestMarketSession=0;
+				pricePayedInLatestMarketSession=marketPrice;				
+			}
+			else{
+				quantityBoughtInLatestMarketSession=tmpElement.getQuantity()*rescalingFactor;
+				pricePayedInLatestMarketSession=tmpElement.getPrice();
+			}
 			varietyBoughtInLatestMarketSession=theVariety;
 			latestMarket=theMarket;
+
 			if(Cms_builder.verboseFlag){System.out.println("           "+name+" stock before: "+stock+" domestic stock before: "+domesticStock); }
 			stock+=quantityBoughtInLatestMarketSession;
 			if(name.equals(theProducer.getName())){
 				domesticStock+=quantityBoughtInLatestMarketSession;
 			}
-			if(quantityBoughtInLatestMarketSession>0){
+//			if(quantityBoughtInLatestMarketSession>0){
 				latestContractsList.add(new Contract(latestMarket,theProducer.getName(),name,pricePayedInLatestMarketSession,transportCosts,quantityBoughtInLatestMarketSession));
-			}
+//			}
 			if(Cms_builder.verboseFlag){System.out.println("           "+name+" price "+pricePayedInLatestMarketSession+" quantity "+quantityBoughtInLatestMarketSession+" of "+varietyBoughtInLatestMarketSession);}
 			if(Cms_builder.verboseFlag){System.out.println("           "+name+" stock after: "+stock+" domestic stock after: "+domesticStock+" minimum consumption: "+minimumConsumption);}
 		}
@@ -434,9 +464,17 @@ public class Buyer {
 	 */
 	public void accountConsumption(){
 		if(Cms_builder.verboseFlag){System.out.println("           "+name+" stock before: "+stock+" minimum Consumption: "+minimumConsumption);}
-		gapToTarget=minimumConsumption-stock;
-		if(gapToTarget<0){
-			gapToTarget=0;
+		gapToTarget=0;
+		if(stock<minimumConsumption){
+			gapToTarget=averageConsumption-stock;
+		}
+		if(stock>maximumConsumption){
+			gapToTarget=averageConsumption-stock;
+		}
+
+		if(gapToTarget!=0){
+			System.out.println(name+" stock "+stock+" minimumConsumption "+minimumConsumption+" maximumConsumption "+maximumConsumption+" gap to Target "+gapToTarget);
+			if(Cms_builder.verboseFlag){System.out.println(name+" stock "+stock+" minimumConsumption "+minimumConsumption+" maximumConsumption "+maximumConsumption+" gap to Target "+gapToTarget);}
 		}
 		realizedConsumption=stock;
 		domesticConsumption=domesticStock;
@@ -499,14 +537,32 @@ public class Buyer {
 	public int getImportedQuantity(){
 		return realizedConsumption-domesticConsumption;
 	}
+	public String getOriginOfConsumedResouces(){
+		originOfConsumedResources=new String(this.getName()+":");
+		for(Contract aContract : latestContractsList){
+			originOfConsumedResources=originOfConsumedResources+aContract.getProducerName()+"|"+aContract.getQuantity()+";";
+		}
+		return originOfConsumedResources;
+	}
+	
 
 	/**
-	 * 
 	 * The gap between the target level of the stock and the level of the stock that would be observed if the desired consumption is achieved. It is equal to the stock target level if the desired consumption could not be achieved.
-	 *   
+	 * @return gapToTarget
 	 */
 	public int getGapToTarget(){
 		return gapToTarget;
+	}
+	/**
+	 * The minimum consumption below which demand function is shifted to the left
+	 * @return minimumConsumption
+	 * 
+	 */
+	public int getMinimumConsumption(){
+		return minimumConsumption;
+	}
+	public int getMaximumConsumption(){
+		return maximumConsumption;
 	}
 	
 

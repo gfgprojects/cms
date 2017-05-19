@@ -1,3 +1,22 @@
+/*
+Copyright 2017 Gianfranco Giulioni
+
+This file is part of the Commodity Market Simulator (CMS):
+
+    CMS is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    CMS is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with CMS.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 package cms.dynamics;
 
 import cms.Cms_builder;
@@ -9,7 +28,11 @@ import repast.simphony.engine.schedule.ScheduleParameters;
 import repast.simphony.essentials.RepastEssentials;
 import repast.simphony.engine.schedule.DefaultActionFactory;
 import repast.simphony.engine.schedule.IAction;
-
+/**
+ * The class schedules the events of the main loop.
+ * @author giulioni
+ *
+ */
 public class Cms_scheduler{
 	public IndexedIterable<Object> buyersList,producersList,marketsList;
 	public Context<Object> cmsContext;
@@ -33,6 +56,11 @@ public class Cms_scheduler{
 		statActionFactory = new DefaultActionFactory();
 
 	}
+	
+	/**
+	 * this method calls all the other schedule method of this class.
+	 */
+
 	public void scheduleEvents(){
 
 		if(Cms_builder.verboseFlag){
