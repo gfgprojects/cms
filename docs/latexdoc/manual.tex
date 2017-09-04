@@ -65,7 +65,168 @@
 \newpage
 
 \pagenumbering{arabic}
-\section{Overview}
+\section{Installation}
+
+In this section we describe the standard installation process needed to prepare the system to run simulations. After taking the steps described below, the user should be able to run the model regardless of the operative system s/he is using.
+
+The model needs Repast Symphony (RS), who in turn needs the Java Development Kit (JDK). Therefore we need first to check if the JDK is installed in the system and install it if needed. Once JDK is properly running, we have to install RS. Finally the model can be installed and run in RS.
+
+\subsection{Java Development Kit (JDK)}
+
+Check the list of installed software to know if JDK is installed in your system. If yes, note the JDK version.
+Alternatively, you can open the command line interface of your system, type \verb+javac -version+ and hit the return key. 
+
+Once verified if JDK is installed and, if yes, its version, visit the following URL:\\
+\url{http://www.oracle.com/technetwork/java/javase/downloads/index.html}\\
+to know which is latest released version of JDK.
+
+If JDK is not installed in your system or if it is not at the latest release, follow the instruction found in the JDK download page to install or upgrade it. You can also search the internet for alternative ways to install or upgrade the JDK on your system.
+
+This installation phase is complete when the \verb+javac -version+ command returns what you expect.
+If not, you should fist check if the folder containing the JDK executables are in your execution path and add it manually if needed.
+Furthermore, some Linux distribution must be informed on which JDK to use using the \verb+update-alternatives+ command. 
+
+\subsection{Repast Simphony (RS)}
+
+The Repast suite website: \url{http://repast.sourceforge.net} has information needed to download and install RS.
+
+Note that RS is provided as a plugin of the eclipse Integrated Development Environment. The Repast development team provides a customized version of eclipse, so you could encounter problems with already installed versions of eclipse. 
+%Note that the streamlined installation provided below show how to avoid using eclipse.
+
+\subsection{CMS}
+
+CMS has to be installed as an eclipse RS project. We will give hereafter the instructions to achieve this goal.
+
+First of all, open the eclipse downloaded and installed as described in the previous section.
+
+Suppose your workspace has the following path:\\
+\verb+/Users/coolcoder/Documents/workspace+
+
+Open the RS perspective. To do that click Window $\rightarrow$ Perspective $\rightarrow$ open perspective $\rightarrow$ other and choose Repast Simphony in the window that appears.
+
+Create a new RS project called \verb+cms+ (file $\rightarrow$ new $\rightarrow$ Repast Simphony project)
+
+This creates the \verb+cms+ folder and a series of sub folders inside the workspace:
+
+The following figure show the cms rs project folders tree.
+
+\vskip2mm
+\noindent
+\includegraphics[scale=0.35]{fig_cms_rs_navigation}
+
+\vskip2mm
+Now, the \verb+cms+ files have to be added to the just created RS project folders tree.
+
+We give here two alternatives: via git and using a zipped archive.
+
+\subsubsection{Using git}
+
+As you probably know, this is a largely used way to share code developments.
+
+So, let us show how to fetch the \verb+csm+ files via git. To do that, you must have a git client installed in your system. Many system comes with a git client already installed, otherwise you have to install it. Mac and windows users can consider to install the GitHub Desktop software.
+
+You can verify if git is installed in your system by checking if your command line interface recognize the \verb+git+ command.  
+If your check is successful, change directory to the \verb+cms+ project folder:\\
+\verb+cd /Users/coolcoder/Documents/workspace/cms+\\
+and type the following commands:
+\begin{verbatim}
+git init
+git remote add origin https://github.com/gfgprojects/cms.git
+git fetch origin master
+git reset --hard FETCH_HEAD
+\end{verbatim}
+
+Then, if you plan to pull or push updates, add the command:\\
+\verb+git push --set-upstream origin master+
+
+Now, the \verb+cms+ files should show up in the RS project folders.
+Refresh the \verb+cms+ RS project with the navigation tab selected in the side bar (file $\rightarrow$ refresh) to make them visible in eclipse.
+
+The following figure show how the src sub folders should look like.
+
+\vskip2mm
+\noindent
+\includegraphics[scale=0.35]{fig_cms_rs_navigation1}
+
+\vskip2mm
+
+\subsubsection{Using a zip archive}
+
+Point your browser to\\ 
+\verb+https://github.com/gfgprojects/cms+\\
+Click on the ``clone or download'' button and choose ``download zip''.
+
+This will download the \verb+cms-master.zip+ file in your system.
+
+Unpacking it creates the cms-master folder.
+Move the whole content of this folder in the cms RS project folder:\\  
+\verb+/Users/coolcoder/Documents/workspace/cms/+\\
+Choose to overwrite existing files and folders if you will be asked (this will merge folders). 
+
+Now refresh eclipse (file $\rightarrow$ refresh).
+
+
+\section{Testing the Installation}
+
+
+There are two ways of running RS models: The GUI and the BATCH mode.
+
+The GUI mode can be of great visual impact because several monitoring devices continuously updating during runtime can be added to the RS GUI window. The flip side of the coin is that these devices slow down simulation execution. Second, the simulation runs exclusively in a machine running an X server. Notwithstanding the GUI mode can be a valid tool during the model development, however when massive simulations are performed, the BATCH mode should be used instead. BATCH mode runs are faster because all the graphics elements are turned off. Furthermore, the absence of graphics makes it possible to run the model in parallel on several machines. It is worth saying that RS has very useful facilities for running a model in parallel.
+
+
+Let us start this section from the very beginning i.e. with the eclipse software just opened and show how to run the model in GUI mode. 
+We discuss the BATCH mode after the discussion on how to customize the model.
+
+First of all, click on the down black arrow highlighted by the red circle in the following figure
+
+\vskip2mm
+\noindent
+\includegraphics[scale=0.35]{fig_cms_rs_execution1}
+
+After clicking, a menu opens as shown by the following figure. 
+
+\vskip2mm
+\noindent
+\includegraphics[scale=0.35]{fig_cms_rs_execution2}
+
+\vskip2mm
+The GUI execution is activated by choosing the \verb+cms Model+ item and after few seconds the model window will show up. Clicking the \raisebox{-1mm}{\includegraphics[scale=0.4]{fig_cms_rs_execution}} button, the model is initialized and the first simulation time step is performed. The initialization phase also builds the graphical elements. Click the \includegraphics[scale=0.4]{fig_home} button to center the map in the gis display and you should see something similar to the next figure in your screen.
+%, while the BATCH execution can be started by clicking the \verb+Batch cms model+.
+%Check if Context is listed under the Data Loaders item of the scenario tree.
+
+Use the RS GUI window intuitive buttons to interact with the simulation. A more detailed description on how to control the simulation is given at page 24 of the ``Repast Java Getting Started'' document available in RS web site.
+
+Now the model has no dynamic monitoring graphical elements, so one can check the progress of the simulation watching at the tick count number in upper right corner of the RS GUI window or looking at the text output in the console panel of Eclipse window as shown in the following figure. 
+
+\textbf{If anything happens}
+
+If anything happens, you have to integrate the scenario tree.
+
+\textit{Adding the Data Loader}
+
+Right click the \verb+Data Loaders+ item and click \verb+Set Data Loader+. Choose the \verb+Custom ContextBuilder Implementation+ item in the following window. Click the next button. A new window opens with a proposal for a class name. Accept all the following proposals of the wizard.
+
+\textit{Adding the geography projection}
+Edit the \verb+context.xml+ file in the scenario folder (\verb+cms.rs+) and add the line
+
+\verb+<projection id="Geography" type="geography" />+
+
+between \verb+<context id=''. . .''>+ and \verb+</context>+.
+
+This will allow to setup a \verb+Display+ in the scenario tree as explained below.
+
+\vskip2mm
+\noindent
+\includegraphics[scale=0.35]{fig_cms_rs_gui7}
+
+\vskip2mm
+
+
+
+
+
+
+\section{Model overview}
 
 The CMS has three types of agents: producers, buyers and markets.
 These agents' common feature is that each of them has a geographic location given by a latitude and a longitude. 
@@ -378,167 +539,6 @@ The initial level of the production target \gls{var:Y_{b,0}} is computed as \gls
 Then it is updated at regular intervals applying the rule given above.
 
 Note that this supply management effect can be disabled by setting $\delta Y^T=0$.
-
-\section{Installation}
-
-In this section we describe the standard installation process needed to prepare the system to run simulations. After taking the steps described below, the user should be able to run the model regardless of the operative system s/he is using.
-
-The model needs Repast Symphony (RS), who in turn needs the Java Development Kit (JDK). Therefore we need first to check if the JDK is installed in the system and install it if needed. Once JDK is properly running, we have to install RS. Finally the model can be installed and run in RS.
-
-\subsection{Java Development Kit (JDK)}
-
-Check the list of installed software to know if JDK is installed in your system. If yes, note the JDK version.
-Alternatively, you can open the command line interface of your system, type \verb+javac -version+ and hit the return key. 
-
-Once verified if JDK is installed and, if yes, its version, visit the following URL:\\
-\url{http://www.oracle.com/technetwork/java/javase/downloads/index.html}\\
-to know which is latest released version of JDK.
-
-If JDK is not installed in your system or if it is not at the latest release, follow the instruction found in the JDK download page to install or upgrade it. You can also search the internet for alternative ways to install or upgrade the JDK on your system.
-
-This installation phase is complete when the \verb+javac -version+ command returns what you expect.
-If not, you should fist check if the folder containing the JDK executables are in your execution path and add it manually if needed.
-Furthermore, some Linux distribution must be informed on which JDK to use using the \verb+update-alternatives+ command. 
-
-\subsection{Repast Simphony (RS)}
-
-The Repast suite website: \url{http://repast.sourceforge.net} has information needed to download and install RS.
-
-Note that RS is provided as a plugin of the eclipse Integrated Development Environment. The Repast development team provides a customized version of eclipse, so you could encounter problems with already installed versions of eclipse. 
-%Note that the streamlined installation provided below show how to avoid using eclipse.
-
-\subsection{CMS}
-
-CMS has to be installed as an eclipse RS project. We will give hereafter the instructions to achieve this goal.
-
-First of all, open the eclipse downloaded and installed as described in the previous section.
-
-Suppose your workspace has the following path:\\
-\verb+/Users/coolcoder/Documents/workspace+
-
-Open the RS perspective. To do that click Window $\rightarrow$ Perspective $\rightarrow$ open perspective $\rightarrow$ other and choose Repast Simphony in the window that appears.
-
-Create a new RS project called \verb+cms+ (file $\rightarrow$ new $\rightarrow$ Repast Simphony project)
-
-This creates the \verb+cms+ folder and a series of sub folders inside the workspace:
-
-The following figure show the cms rs project folders tree.
-
-\vskip2mm
-\noindent
-\includegraphics[scale=0.35]{fig_cms_rs_navigation}
-
-\vskip2mm
-Now, the \verb+cms+ files have to be added to the just created RS project folders tree.
-
-We give here two alternatives: via git and using a zipped archive.
-
-\subsubsection{Using git}
-
-As you probably know, this is a largely used way to share code developments.
-
-So, let us show how to fetch the \verb+csm+ files via git. To do that, you must have a git client installed in your system. Many system comes with a git client already installed, otherwise you have to install it. Mac and windows users can consider to install the GitHub Desktop software.
-
-You can verify if git is installed in your system by checking if your command line interface recognize the \verb+git+ command.  
-If your check is successful, change directory to the \verb+cms+ project folder:\\
-\verb+cd /Users/coolcoder/Documents/workspace/cms+\\
-and type the following commands:
-\begin{verbatim}
-git init
-git remote add origin https://github.com/gfgprojects/cms.git
-git fetch origin master
-git reset --hard FETCH_HEAD
-\end{verbatim}
-
-Then, if you plan to pull or push updates, add the command:\\
-\verb+git push --set-upstream origin master+
-
-Now, the \verb+cms+ files should show up in the RS project folders.
-Refresh the \verb+cms+ RS project with the navigation tab selected in the side bar (file $\rightarrow$ refresh) to make them visible in eclipse.
-
-The following figure show how the src sub folders should look like.
-
-\vskip2mm
-\noindent
-\includegraphics[scale=0.35]{fig_cms_rs_navigation1}
-
-\vskip2mm
-
-\subsubsection{Using a zip archive}
-
-Point your browser to\\ 
-\verb+https://github.com/gfgprojects/cms+\\
-Click on the ``clone or download'' button and choose ``download zip''.
-
-This will download the \verb+cms-master.zip+ file in your system.
-
-Unpacking it creates the cms-master folder.
-Move the whole content of this folder in the cms RS project folder:\\  
-\verb+/Users/coolcoder/Documents/workspace/cms/+\\
-Choose to overwrite existing files and folders if you will be asked (this will merge folders). 
-
-Now refresh eclipse (file $\rightarrow$ refresh).
-
-
-
-\section{Testing the Installation}
-
-
-There are two ways of running RS models: The GUI and the BATCH mode.
-
-The GUI mode can be of great visual impact because several monitoring devices continuously updating during runtime can be added to the RS GUI window. The flip side of the coin is that these devices slow down simulation execution. Second, the simulation runs exclusively in a machine running an X server. Notwithstanding the GUI mode can be a valid tool during the model development, however when massive simulations are performed, the BATCH mode should be used instead. BATCH mode runs are faster because all the graphics elements are turned off. Furthermore, the absence of graphics makes it possible to run the model in parallel on several machines. It is worth saying that RS has very useful facilities for running a model in parallel.
-
-
-Let us start this section from the very beginning i.e. with the eclipse software just opened and show how to run the model in GUI mode. 
-We discuss the BATCH mode after the discussion on how to customize the model.
-
-First of all, click on the down black arrow highlighted by the red circle in the following figure
-
-\vskip2mm
-\noindent
-\includegraphics[scale=0.35]{fig_cms_rs_execution1}
-
-After clicking, a menu opens as shown by the following figure. 
-
-\vskip2mm
-\noindent
-\includegraphics[scale=0.35]{fig_cms_rs_execution2}
-
-\vskip2mm
-The GUI execution is activated by choosing the \verb+cms Model+ item and after few seconds the model window will show up. Clicking the \raisebox{-1mm}{\includegraphics[scale=0.4]{fig_cms_rs_execution}} button, the model is initialized and the first simulation time step is performed. The initialization phase also builds the graphical elements. Click the \includegraphics[scale=0.4]{fig_home} button to center the map in the gis display and you should see something similar to the next figure in your screen.
-%, while the BATCH execution can be started by clicking the \verb+Batch cms model+.
-%Check if Context is listed under the Data Loaders item of the scenario tree.
-
-Use the RS GUI window intuitive buttons to interact with the simulation. A more detailed description on how to control the simulation is given at page 24 of the ``Repast Java Getting Started'' document available in RS web site.
-
-Now the model has no dynamic monitoring graphical elements, so one can check the progress of the simulation watching at the tick count number in upper right corner of the RS GUI window or looking at the text output in the console panel of Eclipse window as shown in the following figure. 
-
-\textbf{If anything happens}
-
-If anything happens, you have to integrate the scenario tree.
-
-\textit{Adding the Data Loader}
-
-Right click the \verb+Data Loaders+ item and click \verb+Set Data Loader+. Choose the \verb+Custom ContextBuilder Implementation+ item in the following window. Click the next button. A new window opens with a proposal for a class name. Accept all the following proposals of the wizard.
-
-\textit{Adding the geography projection}
-Edit the \verb+context.xml+ file in the scenario folder (\verb+cms.rs+) and add the line
-
-\verb+<projection id="Geography" type="geography" />+
-
-between \verb+<context id=''. . .''>+ and \verb+</context>+.
-
-This will allow to setup a \verb+Display+ in the scenario tree as explained below.
-
-\vskip2mm
-\noindent
-\includegraphics[scale=0.35]{fig_cms_rs_gui7}
-
-\vskip2mm
-
-
-
-
 
 \section{Customizing the simulation}\label{sec:initialization}
 \subsection{Creation and configuration of agents}
