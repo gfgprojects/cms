@@ -1,4 +1,5 @@
 name,latitude,longitude,production share,markets,products,first production time
-China,40.0,120.0,0.21,Europe,Product A,2
-Argentina,-28.0,-64.6,0.15,Europe,Product A,8
+Argentina,-28.0,-64.6,0.35,Sydney,Product A,8
+Burundi,-3.50,30.0,0.25,Bruxelles,Product A,6
+China,40.0,120.0,0.40,Sydney,Product A,2
 

@@ -1,5 +1,7 @@
 name,latitude,longitude,demand share,demand curve intercept,demand curve slope
-China,32.0,110.0,0.155,14000,500
-Argentina,-34.6155729,-58.5033604,0.2,6000,500
-Importer 1,0.1659234,22.938695,0.15,3000,500
+Argentina,-34.6155729,-58.5033604,0.25,14000,500
+Burundi,0.1659234,22.938695,0.25,14000,500
+China,32.0,110.0,0.25,14000,500
+Djibouti,11.5,42.5,0.1,7000,500
+Ecuador,0.0,-77.0,0.15,9000,500
 
