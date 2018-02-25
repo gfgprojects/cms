@@ -10,13 +10,16 @@
 						defaultValue="0.0" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
-									
 		/>
 				<parameter name="consumptionShareToSetMinimumConsumption" displayName="consumptionShareToSetMinimumConsumption" type="double" 
-						defaultValue="0.7" 
+						defaultValue="0.2" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
-									
+		/>
+				<parameter name="consumptionShareToSetMaximumConsumption" displayName="consumptionShareToSetMaximumConsumption" type="double" 
+						defaultValue="1.8" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
 		/>
 				<parameter name="minimumImportQuantity" displayName="minimumImportQuantity" type="int" 
 						defaultValue="10" 
@@ -97,7 +100,7 @@
 									
 		/>
 				<parameter name="percentageChangeInTargetProduction" displayName="percentageChangeInTargetProduction" type="double" 
-						defaultValue="0.1" 
+						defaultValue="0.0" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
 									
