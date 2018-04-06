@@ -1,5 +1,5 @@
 /*
-Copyright 2017 Gianfranco Giulioni
+Copyright 2018 Gianfranco Giulioni
 
 This file is part of the Commodity Market Simulator (CMS):
 
